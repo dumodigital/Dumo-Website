@@ -21,18 +21,18 @@ const AsSeenOn: React.FC = () => {
   ];
 
   return (
-    <section className="as-seen-on py-8 bg-white">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+    <section className="as-seen-on py-8 px-2 sm:py-8 sm:px-0 bg-white">
+      <div className="max-w-7xl mx-auto px-0 sm:px-4 lg:px-6">
         <div className="text-center mb-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-wide mb-4">
             As Seen On
           </h2>
         </div>
-        <div className="grid grid-cols-3 gap-x-4 gap-y-0 items-center justify-items-center w-full max-w-xs mx-auto sm:max-w-none sm:gap-x-16 sm:gap-y-8 opacity-60 hover:opacity-80 transition-opacity duration-300">
+        <div className="grid grid-cols-3 gap-x-6 gap-y-0 items-center justify-items-center w-full max-w-xs mx-auto sm:max-w-none sm:gap-x-16 sm:gap-y-8 opacity-60 hover:opacity-80 transition-opacity duration-300">
           {logos.map((logo) => (
             <div
               key={logo.name}
-              className={`flex flex-col items-center justify-center ${logo.width} h-12 sm:h-20 transform hover:scale-105 transition-transform duration-300`}
+              className={`flex flex-col items-center justify-center ${logo.width} h-14 sm:h-20 transform hover:scale-105 transition-transform duration-300`}
             >
               {logo.image ? (
                 logo.link ? (
