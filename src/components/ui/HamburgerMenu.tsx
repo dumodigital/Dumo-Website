@@ -81,9 +81,9 @@ const HamburgerMenu: React.FC = () => {
           ))}
         </div>
         {/* Centered Keenan Logo */}
-        <div className="flex justify-center items-center pb-12">
+        <div className="flex justify-center items-center pb-16">
           <a href="https://keenan.osu.edu/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/keenan-logo.png" alt="Keenan Logo" className="h-24 w-auto object-contain" style={{ maxWidth: 150 }} />
+            <img src="/images/keenan-logo.png" alt="Keenan Logo" className="h-32 w-auto object-contain" style={{ maxWidth: 200 }} />
           </a>
         </div>
         {/* Bottom Section: Social & Contact */}
