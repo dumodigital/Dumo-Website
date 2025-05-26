@@ -51,7 +51,7 @@ const HamburgerMenu: React.FC = () => {
       >
         {/* Top Section: Centered Brand Text & Close */}
         <button
-          className="fixed right-4 top-0 z-[60] text-black text-3xl p-2 rounded-bl-xl focus:outline-none md:hidden"
+          className="fixed right-0 top-0 z-[60] text-black text-3xl p-2 rounded-bl-xl focus:outline-none md:hidden"
           onClick={() => setOpen(false)}
           aria-label="Close menu"
           style={{ fontSize: 32 }}
