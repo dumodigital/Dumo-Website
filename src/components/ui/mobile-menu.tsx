@@ -13,8 +13,8 @@ const MobileMenu: React.FC = () => {
 
   return (
     <div className="mobile-menu">
-      <button onClick={toggleMenu} className="hamburger-button">
-        <span className={`hamburger-icon ${isOpen ? 'open' : ''}`}></span>
+      <button onClick={toggleMenu} className="menu-button">
+        {isOpen ? 'Close' : 'Menu'}
       </button>
       {isOpen && (
         <nav className="mobile-nav">
