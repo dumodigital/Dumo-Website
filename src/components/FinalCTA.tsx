@@ -35,7 +35,7 @@ const FinalCTA = () => {
           </div>
 
           {/* Additional benefits */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-center">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-center">
             <div className="bg-white/5 rounded-xl p-6 backdrop-blur-sm">
               <div className="text-2xl font-bold text-white mb-2">Flexible</div>
               <div className="text-blue-100">No long-term contracts</div>
