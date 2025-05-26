@@ -13,7 +13,7 @@ const AsSeenOn: React.FC = () => {
     {
       name: "Ohio State University",
       width: "w-40 sm:w-48",
-      image: "/images/osu.png",
+      image: "/images/keenan.png",
     },
   ];
 
