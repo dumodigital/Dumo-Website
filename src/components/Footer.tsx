@@ -18,7 +18,9 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Contact</h4>
             <div className="space-y-2 text-gray-300">
-              <div>(847) 624-6003</div>
+              <div>
+                <a href="tel:8476246003" className="hover:underline text-gray-300">(847) 624-6003</a>
+              </div>
               <div>info@dumodigital.com</div>
               <div>@dumo_digital</div>
             </div>
