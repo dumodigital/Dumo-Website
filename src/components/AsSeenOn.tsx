@@ -10,11 +10,13 @@ const AsSeenOn: React.FC = () => {
       name: "Amazon Prime Video",
       width: "w-48 sm:w-56",
       image: "/images/prime-video-logo.png",
+      link: "https://www.amazon.com/The-Blox/dp/B0CGRZMX2K",
     },
     {
       name: "Keenan",
       width: "w-40 sm:w-48",
       image: "/images/keenan-logo.png",
+      link: "https://keenan.osu.edu/",
     },
   ];
 
