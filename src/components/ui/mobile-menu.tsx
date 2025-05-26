@@ -7,6 +7,10 @@ const MobileMenu: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleMenuItemClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="mobile-menu">
       <button onClick={toggleMenu} className="hamburger-button">
@@ -15,11 +19,11 @@ const MobileMenu: React.FC = () => {
       {isOpen && (
         <nav className="mobile-nav">
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" onClick={handleMenuItemClick}>Home</a></li>
+            <li><a href="#about" onClick={handleMenuItemClick}>About</a></li>
+            <li><a href="#services" onClick={handleMenuItemClick}>Services</a></li>
+            <li><a href="#portfolio" onClick={handleMenuItemClick}>Portfolio</a></li>
+            <li><a href="#contact" onClick={handleMenuItemClick}>Contact</a></li>
           </ul>
         </nav>
       )}
