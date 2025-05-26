@@ -28,11 +28,11 @@ const AsSeenOn: React.FC = () => {
             As Seen On
           </h2>
         </div>
-        <div className="grid grid-cols-3 gap-x-6 gap-y-0 items-center justify-items-center w-full max-w-xs mx-auto sm:max-w-none sm:gap-x-16 sm:gap-y-8 opacity-60 hover:opacity-80 transition-opacity duration-300">
+        <div className="grid grid-cols-3 w-full max-w-xs mx-auto gap-x-2 sm:max-w-none sm:gap-x-16 items-center justify-items-center opacity-60 hover:opacity-80 transition-opacity duration-300">
           {logos.map((logo) => (
             <div
               key={logo.name}
-              className={`flex flex-col items-center justify-center ${logo.width} h-14 sm:h-20 transform hover:scale-105 transition-transform duration-300`}
+              className={`flex flex-col items-center justify-center h-14 sm:h-20 transform hover:scale-105 transition-transform duration-300`}
             >
               {logo.image ? (
                 logo.link ? (
@@ -40,14 +40,14 @@ const AsSeenOn: React.FC = () => {
                     <img
                       src={logo.image}
                       alt={logo.name}
-                      className="h-full object-contain mx-auto"
+                      className="h-10 sm:h-20 max-w-[80px] w-auto object-contain mx-auto"
                     />
                   </a>
                 ) : (
                   <img
                     src={logo.image}
                     alt={logo.name}
-                    className="h-full object-contain mx-auto"
+                    className="h-10 sm:h-20 max-w-[80px] w-auto object-contain mx-auto"
                   />
                 )
               ) : (
