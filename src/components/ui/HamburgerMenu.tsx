@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const links = [
-  { label: "Our Services", href: "#services" },
   { label: "Services", href: "#services" },
   { label: "Our Work", href: "#our-work" },
   { label: "Contact", href: "#contact" },
@@ -27,12 +26,12 @@ const HamburgerMenu: React.FC = () => {
           onClick={() => setOpen(false)}
         />
       )}
-      {/* Sticky Nav */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between px-4 py-3 sm:px-8 transition-all">
+      {/* Hamburger Only on Mobile */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between px-4 py-3 sm:px-8 transition-all md:hidden">
         <div className="font-bold text-xl text-[#7BB9E8]">Dumo Digital</div>
         {/* Hamburger Icon */}
         <button
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+          className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
           onClick={() => setOpen((v) => !v)}
           aria-label="Open menu"
         >
@@ -46,18 +45,6 @@ const HamburgerMenu: React.FC = () => {
             className={`block w-7 h-1 rounded bg-[#7BB9E8] transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
           ></span>
         </button>
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-8">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-gray-700 hover:text-[#7BB9E8] font-medium transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
       </nav>
       {/* Slide-in Menu */}
       <div
