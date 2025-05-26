@@ -11,31 +11,31 @@ const Testimonials: React.FC = () => {
     {
       text: "You've got steeze in spades. Excellent creative license—your copywriting looks fantastic. Every word feels intentional and on-brand. It's clear you understand how to capture attention while keeping things true to the voice.",
       author: "Ryan",
-      role: "Satisfied Client",
+      title: "Satisfied Client",
       rating: 5,
     },
     {
       text: "Thank you again for doing such a wonderful job on the B2B site. The ease of use is crazy good! I love how the product images will move on the page based on sales performance. Great job! Both you and Alex did such a good job of listening to our business needs and executing appropriately. And so quickly!!!",
       author: "Kathy",
-      role: "B2B Client",
+      title: "B2B Client",
       rating: 5,
     },
     {
       text: "HUGE smiles. Beyond happy. Ecstatic. Over the Moon. Blown away. Impressed. Nice. The website development exceeded every expectation. It looks amazing and works even better—can't recommend them enough.",
       author: "Hannah",
-      role: "Website Client",
+      title: "Website Client",
       rating: 5,
     },
     {
       text: "I can personally attest to Charlie and Alex's mission to make businesses look smart and sell smarter. This dynamic duo relaunched our shipping program for our 15-year-old baking business this weekend -- and the orders are pouring in. From a website refresh to Klaviyo email campaigns to Instagram design and copy, Dumo Digital doesn't miss an opportunity to be creative.",
       author: "HungryMonkeyBaking",
-      role: "E-commerce Client",
+      title: "E-commerce Client",
       rating: 5,
     },
     {
       text: "Just wanted to send a quick note of thanks for all your help getting the Diamond Dots website over the finish line. You both did a fantastic job—responsive, thorough, and easy to work with every step of the way. We really appreciate everything you did. We are so happy to have found you. Looking forward to working together again down the line.",
       author: "Rayne",
-      role: "Diamond Dots",
+      title: "Diamond Dots",
       rating: 5,
     },
   ];
