@@ -50,15 +50,15 @@ const HamburgerMenu: React.FC = () => {
         style={{ boxShadow: "-8px 0 32px 0 rgba(123,185,232,0.10)" }}
       >
         {/* Top Section: Centered Brand Text & Close */}
-        <div className="relative pt-8 pb-6 flex flex-col items-center justify-center">
-          <button
-            className="absolute right-4 top-4 text-[#7BB9E8] text-3xl p-2 rounded-full focus:outline-none"
-            onClick={() => setOpen(false)}
-            aria-label="Close menu"
-            style={{ fontSize: 32 }}
-          >
-            ×
-          </button>
+        <button
+          className="fixed right-4 top-4 z-[60] text-[#7BB9E8] text-3xl p-2 rounded-full focus:outline-none md:hidden"
+          onClick={() => setOpen(false)}
+          aria-label="Close menu"
+          style={{ fontSize: 32 }}
+        >
+          ×
+        </button>
+        <div className="pt-8 pb-6 flex flex-col items-center justify-center">
           <div className="mx-auto text-2xl font-extrabold text-[#7BB9E8] tracking-wide text-center w-full" style={{ letterSpacing: 1 }}>
             Dumo Digital
           </div>
