@@ -11,16 +11,20 @@ const AsSeenOn: React.FC = () => {
       image: "/images/prime-video-logo.png",
     },
     {
-      name: "Ohio State University",
+      name: "Keenan",
       width: "w-40 sm:w-48",
-      image: "/images/keenan.png",
+      image: "/images/keenan-logo.png",
     },
   ];
 
   return (
-    <section className="as-seen-on">
-      <h2>As Seen On</h2>
-      <div className="logos">
+    <section className="as-seen-on py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-wide mb-8">
+            As Seen On
+          </h2>
+        </div>
         <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 opacity-60 hover:opacity-80 transition-opacity duration-300">
           {logos.map((logo) => (
             <div
