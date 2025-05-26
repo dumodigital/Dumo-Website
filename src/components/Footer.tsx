@@ -22,7 +22,9 @@ const Footer = () => {
                 <a href="tel:8476246003" className="hover:underline text-gray-300">(847) 624-6003</a>
               </div>
               <div>info@dumodigital.com</div>
-              <div>@dumo_digital</div>
+              <div>
+                <a href="https://www.instagram.com/dumo_digital/" target="_blank" rel="noopener noreferrer" className="hover:underline text-gray-300">@dumo_digital</a>
+              </div>
             </div>
           </div>
 
