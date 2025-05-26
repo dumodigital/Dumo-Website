@@ -26,26 +26,23 @@ const HamburgerMenu: React.FC = () => {
           onClick={() => setOpen(false)}
         />
       )}
-      {/* Hamburger Only on Mobile */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between px-4 py-3 sm:px-8 transition-all md:hidden">
-        <div className="font-bold text-xl text-[#7BB9E8]">Dumo Digital</div>
-        {/* Hamburger Icon */}
-        <button
-          className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Open menu"
-        >
-          <span
-            className={`block w-7 h-1 rounded bg-[#7BB9E8] transition-all duration-300 mb-1 ${open ? "rotate-45 translate-y-2" : ""}`}
-          ></span>
-          <span
-            className={`block w-7 h-1 rounded bg-[#7BB9E8] transition-all duration-300 mb-1 ${open ? "opacity-0" : ""}`}
-          ></span>
-          <span
-            className={`block w-7 h-1 rounded bg-[#7BB9E8] transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
-          ></span>
-        </button>
-      </nav>
+      {/* Hamburger Icon Only on Mobile */}
+      <button
+        className="fixed top-4 right-4 z-50 md:hidden flex flex-col justify-center items-center w-12 h-12 bg-white rounded-full shadow-lg focus:outline-none"
+        onClick={() => setOpen((v) => !v)}
+        aria-label="Open menu"
+        style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+      >
+        <span
+          className={`block w-8 h-1 rounded bg-[#7BB9E8] transition-all duration-300 mb-1 ${open ? "rotate-45 translate-y-2" : ""}`}
+        ></span>
+        <span
+          className={`block w-8 h-1 rounded bg-[#7BB9E8] transition-all duration-300 mb-1 ${open ? "opacity-0" : ""}`}
+        ></span>
+        <span
+          className={`block w-8 h-1 rounded bg-[#7BB9E8] transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+        ></span>
+      </button>
       {/* Slide-in Menu */}
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${open ? "translate-x-0" : "translate-x-full"}`}
