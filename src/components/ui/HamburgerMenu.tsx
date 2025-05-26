@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaInstagram, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -22,7 +23,7 @@ const HamburgerMenu: React.FC = () => {
       {/* Overlay */}
       {open && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 transition-opacity duration-300"
           onClick={() => setOpen(false)}
         />
       )}
@@ -45,14 +46,29 @@ const HamburgerMenu: React.FC = () => {
       </button>
       {/* Slide-in Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 right-0 h-full w-72 max-w-full bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden flex flex-col font-sans ${open ? "translate-x-0" : "translate-x-full"}`}
+        style={{ boxShadow: "-8px 0 32px 0 rgba(123,185,232,0.10)" }}
       >
-        <div className="flex flex-col h-full pt-24 px-8 gap-8">
+        {/* Top Section: Logo & Close */}
+        <div className="flex items-center justify-center relative pt-8 pb-6">
+          <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 mx-auto" />
+          <button
+            className="absolute right-6 top-6 text-[#7BB9E8] text-3xl p-2 rounded-full focus:outline-none"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            style={{ fontSize: 32 }}
+          >
+            ×
+          </button>
+        </div>
+        {/* Middle Section: Nav Links */}
+        <div className="flex flex-col gap-6 px-8 pb-6">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-lg text-gray-800 font-semibold hover:text-[#7BB9E8] transition-colors duration-200"
+              className="text-2xl text-[#111] font-semibold py-2 tracking-wide hover:text-[#7BB9E8] transition-colors duration-200"
+              style={{ letterSpacing: 0.5 }}
               onClick={(e) => {
                 e.preventDefault();
                 handleLinkClick(link.href);
@@ -61,6 +77,32 @@ const HamburgerMenu: React.FC = () => {
               {link.label}
             </a>
           ))}
+        </div>
+        {/* Bottom Section: Social & Contact */}
+        <div className="mt-auto px-8 pb-8">
+          <hr className="mb-6 border-gray-200" />
+          <div className="flex flex-col gap-4">
+            <a
+              href="https://instagram.com/dumodigital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-[#111] hover:text-[#7BB9E8] text-lg font-medium transition-colors duration-200"
+            >
+              <FaInstagram className="text-2xl" /> Instagram
+            </a>
+            <a
+              href="tel:8476246003"
+              className="flex items-center gap-3 text-[#111] hover:text-[#7BB9E8] text-lg font-medium transition-colors duration-200"
+            >
+              <FaPhoneAlt className="text-xl" /> Call Us
+            </a>
+            <a
+              href="mailto:info@dumodigital.com"
+              className="flex items-center gap-3 text-[#111] hover:text-[#7BB9E8] text-lg font-medium transition-colors duration-200"
+            >
+              <FaEnvelope className="text-xl" /> Email
+            </a>
+          </div>
         </div>
       </div>
     </>
