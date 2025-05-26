@@ -1,3 +1,5 @@
+import { FaInstagram } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white py-12">
@@ -21,8 +23,11 @@ const Footer = () => {
               <div>
                 <a href="tel:8476246003" className="hover:underline text-gray-300">(847) 624-6003</a>
               </div>
-              <div>info@dumodigital.com</div>
               <div>
+                <a href="mailto:info@dumodigital.com" className="hover:underline text-gray-300">info@dumodigital.com</a>
+              </div>
+              <div className="flex items-center gap-1">
+                <FaInstagram className="text-pink-500" />
                 <a href="https://www.instagram.com/dumo_digital/" target="_blank" rel="noopener noreferrer" className="hover:underline text-gray-300">@dumo_digital</a>
               </div>
             </div>
