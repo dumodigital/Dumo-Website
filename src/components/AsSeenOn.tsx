@@ -28,7 +28,7 @@ const AsSeenOn: React.FC = () => {
             As Seen On
           </h2>
         </div>
-        <div className="grid grid-cols-3 w-full max-w-xs mx-auto gap-x-2 sm:max-w-none sm:gap-x-16 items-center justify-items-center opacity-60 hover:opacity-80 transition-opacity duration-300">
+        <div className="grid grid-cols-3 w-full gap-x-4 sm:gap-x-16 items-center justify-items-center opacity-60 hover:opacity-80 transition-opacity duration-300">
           {logos.map((logo) => (
             <div
               key={logo.name}
