@@ -6,6 +6,7 @@ const Testimonials: React.FC = () => {
       text: "Dumo Digital seriously leveled us up. Charlie and Alex jumped in, cleaned up our Shopify mess, redesigned the site, fixed stuff we didn't even know was broken, and made the whole thing actually convert. They move fast, they're easy to work with, and they just get how to make brands look good online. We're already planning the next project with them.",
       author: "Morgan",
       title: "DTC Founder",
+      rating: 5,
     },
     {
       text: "You've got steeze in spades. Excellent creative license—your copywriting looks fantastic. Every word feels intentional and on-brand. It's clear you understand how to capture attention while keeping things true to the voice.",
@@ -76,7 +77,7 @@ const Testimonials: React.FC = () => {
                   {testimonial.author}
                 </div>
                 <div className="text-blue-600 font-medium">
-                  {testimonial.role}
+                  {testimonial.title}
                 </div>
               </div>
             </div>
