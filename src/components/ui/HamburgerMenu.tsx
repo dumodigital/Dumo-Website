@@ -51,7 +51,7 @@ const HamburgerMenu: React.FC = () => {
       >
         {/* Top Section: Centered Brand Text & Close */}
         <button
-          className="fixed left-0 top-0 z-[60] text-[#7BB9E8] text-3xl p-4 rounded-br-xl focus:outline-none md:hidden"
+          className="fixed right-0 top-0 z-[60] text-[#7BB9E8] text-3xl p-4 rounded-bl-xl focus:outline-none md:hidden"
           onClick={() => setOpen(false)}
           aria-label="Close menu"
           style={{ fontSize: 32 }}
@@ -79,6 +79,10 @@ const HamburgerMenu: React.FC = () => {
               {link.label}
             </a>
           ))}
+        </div>
+        {/* Centered Buckeye Image */}
+        <div className="flex justify-center items-center pb-6">
+          <img src="/images/buckeye.png" alt="Buckeye" className="h-12 w-auto object-contain" style={{ maxWidth: 80 }} />
         </div>
         {/* Bottom Section: Social & Contact */}
         <div className="mt-auto px-8 pb-8">
