@@ -40,14 +40,14 @@ const AsSeenOn: React.FC = () => {
                     <img
                       src={logo.image}
                       alt={logo.name}
-                      className="h-10 sm:h-20 max-w-[80px] w-auto object-contain mx-auto"
+                      className="h-14 sm:h-20 max-w-[100px] w-auto object-contain mx-auto"
                     />
                   </a>
                 ) : (
                   <img
                     src={logo.image}
                     alt={logo.name}
-                    className="h-10 sm:h-20 max-w-[80px] w-auto object-contain mx-auto"
+                    className="h-14 sm:h-20 max-w-[100px] w-auto object-contain mx-auto"
                   />
                 )
               ) : (
