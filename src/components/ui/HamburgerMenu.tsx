@@ -49,9 +49,11 @@ const HamburgerMenu: React.FC = () => {
         className={`fixed top-0 right-0 h-full w-72 max-w-full bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden flex flex-col font-sans ${open ? "translate-x-0" : "translate-x-full"}`}
         style={{ boxShadow: "-8px 0 32px 0 rgba(123,185,232,0.10)" }}
       >
-        {/* Top Section: Logo & Close */}
+        {/* Top Section: Centered Brand Text & Close */}
         <div className="flex items-center justify-center relative pt-8 pb-6">
-          <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 mx-auto" />
+          <div className="mx-auto text-2xl font-extrabold text-[#7BB9E8] tracking-wide text-center w-full" style={{ letterSpacing: 1 }}>
+            Dumo Digital
+          </div>
           <button
             className="absolute right-6 top-6 text-[#7BB9E8] text-3xl p-2 rounded-full focus:outline-none"
             onClick={() => setOpen(false)}
