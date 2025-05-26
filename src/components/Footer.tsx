@@ -1,4 +1,3 @@
-
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white py-12">
@@ -10,10 +9,11 @@ const Footer = () => {
               DUMO DIGITAL
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              Your personal digital Genius Bar. Digital strategies that help businesses establish, optimize, and grow their online sales.
+              Your personal digital Genius Bar. Digital strategies that help
+              businesses establish, optimize, and grow their online sales.
             </p>
           </div>
-          
+
           {/* Contact Info */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Contact</h4>
@@ -23,27 +23,55 @@ const Footer = () => {
               <div>@dumo_digital</div>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Quick Links</h4>
             <div className="space-y-2">
-              <a href="#services" className="block text-gray-300 hover:text-white transition-colors duration-300">Services</a>
-              <a href="#about" className="block text-gray-300 hover:text-white transition-colors duration-300">About</a>
-              <a href="#work" className="block text-gray-300 hover:text-white transition-colors duration-300">Work</a>
-              <a href="#testimonials" className="block text-gray-300 hover:text-white transition-colors duration-300">Testimonials</a>
-              <a href="#contact" className="block text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+              <a
+                href="#services"
+                className="block text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Services
+              </a>
+              <a
+                href="#about"
+                className="block text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                About
+              </a>
+              <a
+                href="#our-work"
+                className="block text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Work
+              </a>
+              <a
+                href="#testimonials"
+                className="block text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Testimonials
+              </a>
+              <a
+                href="#contact"
+                className="block text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Contact
+              </a>
             </div>
           </div>
         </div>
-        
+
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400">
             © 2025 Dumo Digital. All rights reserved.
           </div>
           <div className="mt-4 md:mt-0">
-            <a href="#privacy" className="text-gray-400 hover:text-white transition-colors duration-300">
+            <a
+              href="/PrivacyPolicy"
+              className="text-gray-400 hover:text-white transition-colors duration-300 ml-4"
+            >
               Privacy Policy
             </a>
           </div>

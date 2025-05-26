@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Hero";
 import AsSeenOn from "@/components/AsSeenOn";
 import Services from "@/components/Services";
@@ -16,9 +15,9 @@ const Index = () => {
       <AsSeenOn />
       <Services />
       <Stats />
-      <About />
-      <Portfolio />
       <Testimonials />
+      <Portfolio />
+      <About />
       <FinalCTA />
       <Footer />
     </div>

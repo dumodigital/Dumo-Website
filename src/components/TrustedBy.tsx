@@ -1,23 +1,12 @@
-const AsSeenOn = () => {
-  const logos = [
-    {
-      name: "Blox",
-      width: "w-32 sm:w-40",
-      image: "/images/the-blox-logo.png",
-    },
-    {
-      name: "Amazon Prime Video",
-      width: "w-40 sm:w-48",
-      image: "/images/prime-video-logo.png",
-    },
-  ];
+const TrustedBy = () => {
+  const logos = [];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="text-2xl sm:text-4xl font-bold text-gray-900 tracking-wide mb-8">
-            As Seen On
+          <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-8">
+            Trusted By
           </p>
 
           <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 opacity-60 hover:opacity-80 transition-opacity duration-300">
@@ -46,4 +35,4 @@ const AsSeenOn = () => {
   );
 };
 
-export default AsSeenOn;
+export default TrustedBy;
