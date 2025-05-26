@@ -5,7 +5,7 @@ const Testimonials: React.FC = () => {
     {
       text: "Dumo Digital seriously leveled us up. Charlie and Alex jumped in, cleaned up our Shopify mess, redesigned the site, fixed stuff we didn't even know was broken, and made the whole thing actually convert. They move fast, they're easy to work with, and they just get how to make brands look good online. We're already planning the next project with them.",
       author: "Morgan",
-      title: "DTC Founder",
+      title: "Satisfied Client",
       rating: 5,
     },
     {
@@ -17,25 +17,25 @@ const Testimonials: React.FC = () => {
     {
       text: "Thank you again for doing such a wonderful job on the B2B site. The ease of use is crazy good! I love how the product images will move on the page based on sales performance. Great job! Both you and Alex did such a good job of listening to our business needs and executing appropriately. And so quickly!!!",
       author: "Kathy",
-      title: "B2B Client",
+      title: "Satisfied Client",
       rating: 5,
     },
     {
       text: "HUGE smiles. Beyond happy. Ecstatic. Over the Moon. Blown away. Impressed. Nice. The website development exceeded every expectation. It looks amazing and works even better—can't recommend them enough.",
       author: "Hannah",
-      title: "Website Client",
+      title: "Satisfied Client",
       rating: 5,
     },
     {
       text: "I can personally attest to Charlie and Alex's mission to make businesses look smart and sell smarter. This dynamic duo relaunched our shipping program for our 15-year-old baking business this weekend -- and the orders are pouring in. From a website refresh to Klaviyo email campaigns to Instagram design and copy, Dumo Digital doesn't miss an opportunity to be creative.",
-      author: "HungryMonkeyBaking",
-      title: "E-commerce Client",
+      author: "Cindy",
+      title: "Satisfied Client",
       rating: 5,
     },
     {
       text: "Just wanted to send a quick note of thanks for all your help getting the Diamond Dots website over the finish line. You both did a fantastic job—responsive, thorough, and easy to work with every step of the way. We really appreciate everything you did. We are so happy to have found you. Looking forward to working together again down the line.",
       author: "Rayne",
-      title: "Diamond Dots",
+      title: "Satisfied Client",
       rating: 5,
     },
   ];
