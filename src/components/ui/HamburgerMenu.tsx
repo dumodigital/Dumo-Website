@@ -80,6 +80,10 @@ const HamburgerMenu: React.FC = () => {
             </a>
           ))}
         </div>
+        {/* Centered Buckeye Image */}
+        <div className="flex justify-center items-center pb-6">
+          <img src="/images/buckeye.png" alt="Buckeye" className="h-12 w-auto object-contain" style={{ maxWidth: 80 }} />
+        </div>
         {/* Bottom Section: Social & Contact */}
         <div className="mt-auto px-8 pb-8">
           <hr className="mb-6 border-gray-200" />
