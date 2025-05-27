@@ -91,7 +91,7 @@ const HamburgerMenu: React.FC = () => {
           <hr className="mb-6 border-gray-200" />
           <div className="flex flex-col gap-4">
             <a
-              href="https://instagram.com/dumodigital"
+              href="https://www.instagram.com/dumo_digital/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-[#111] hover:text-[#7BB9E8] text-lg font-medium transition-colors duration-200"
