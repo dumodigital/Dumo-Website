@@ -12,17 +12,15 @@ import React from "react";
 const queryClient = new QueryClient();
 
 const RedirectToAbout = () => {
-  // Use window.location to ensure hash scroll works
-  // (Navigate does not scroll to hash on SPA)
   React.useEffect(() => {
-    window.location.replace('/#about');
+    window.location.href = '/#about';
   }, []);
   return null;
 };
 
 const RedirectToServices = () => {
   React.useEffect(() => {
-    window.location.replace('/#services');
+    window.location.href = '/#services';
   }, []);
   return null;
 };
