@@ -27,6 +27,12 @@ const Portfolio = () => {
       url: "https://theriotprjct.com/",
     },
     {
+      name: "Savannah Bee Company",
+      type: "Premium honey, beauty, and lifestyle brand",
+      gradient: "from-yellow-300 to-amber-500",
+      url: "https://savannahbee.com/",
+    },
+    {
       name: "Mamasita's Kitchen",
       type: "Commercial kitchen rental platform",
       gradient: "from-purple-500 to-indigo-500",
