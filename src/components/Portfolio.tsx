@@ -39,12 +39,6 @@ const Portfolio = () => {
       url: "https://mamasitaskitchen.com/",
     },
     {
-      name: "Dumo Digital",
-      type: "Digital Marketing Agency",
-      gradient: "from-blue-500 to-cyan-500",
-      url: "https://dumodigital.com/",
-    },
-    {
       name: "Diamond Dots",
       type: "Premium luxury jewelry brand",
       gradient: "from-blue-400 to-purple-500",
