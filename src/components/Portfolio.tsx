@@ -57,12 +57,6 @@ const Portfolio = () => {
       url: "https://hungrymonkeybaking.com/",
     },
     {
-      name: "Good Stuff Sauce",
-      type: "Brand-focused e-commerce store",
-      gradient: "from-green-500 to-teal-500",
-      url: "https://goodstuffsauce.com/",
-    },
-    {
       name: "The Handless Handle",
       type: "Innovative kitchen cabinet solution",
       gradient: "from-indigo-500 to-blue-500",
