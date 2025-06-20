@@ -12,7 +12,7 @@ const marqueeStyles = `
 
 const Stats = () => {
   const stats = [
-    { number: "1,000+", label: "Hours on Shopify", delay: "0ms" },
+    { number: "3,000+", label: "Hours on Shopify", delay: "0ms" },
     { number: "92%", label: "Repeat Buyer Rate", delay: "200ms" },
     { number: "500+", label: "Campaigns Created", delay: "400ms" },
     { number: "25+", label: "Stores Launched", delay: "600ms" },

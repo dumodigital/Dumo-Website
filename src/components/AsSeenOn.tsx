@@ -29,12 +29,12 @@ const AsSeenOn: React.FC = () => {
           </h2>
         </div>
         <div className="grid grid-cols-3 w-full gap-x-4 sm:gap-x-10 lg:gap-x-20 items-center justify-items-center opacity-60 hover:opacity-80 transition-opacity duration-300">
-          {logos.map((logo) => (
-            <div
-              key={logo.name}
+            {logos.map((logo) => (
+              <div
+                key={logo.name}
               className={`flex flex-col items-center justify-center h-14 sm:h-24 lg:h-32 transform hover:scale-105 transition-transform duration-300`}
-            >
-              {logo.image ? (
+              >
+                {logo.image ? (
                 logo.link ? (
                   <a href={logo.link} target="_blank" rel="noopener noreferrer">
                     <img
@@ -50,13 +50,13 @@ const AsSeenOn: React.FC = () => {
                     className="h-14 sm:h-24 lg:h-32 max-w-[100px] sm:max-w-[160px] lg:max-w-[200px] w-auto object-contain mx-auto"
                   />
                 )
-              ) : (
-                <span className="text-gray-600 font-semibold text-sm">
-                  {logo.name}
-                </span>
-              )}
-            </div>
-          ))}
+                ) : (
+                  <span className="text-gray-600 font-semibold text-sm">
+                    {logo.name}
+                  </span>
+                )}
+              </div>
+            ))}
         </div>
       </div>
     </section>
