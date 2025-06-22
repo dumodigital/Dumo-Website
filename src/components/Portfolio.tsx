@@ -9,10 +9,10 @@ const Portfolio = () => {
       url: "https://charliescrunch.com/",
     },
     {
-      name: "Gotta B Crepes",
-      type: "Farmers market food business with local delivery",
-      gradient: "from-green-400 to-blue-500",
-      url: "https://www.gottabcrepes.com/",
+      name: "Savannah Bee Company",
+      type: "Premium honey, beauty, and lifestyle brand",
+      gradient: "from-yellow-300 to-amber-500",
+      url: "https://savannahbee.com/",
     },
     {
       name: "Savannah Bee Wholesale",
@@ -27,10 +27,10 @@ const Portfolio = () => {
       url: "https://theriotprjct.com/",
     },
     {
-      name: "Savannah Bee Company",
-      type: "Premium honey, beauty, and lifestyle brand",
-      gradient: "from-yellow-300 to-amber-500",
-      url: "https://savannahbee.com/",
+      name: "Gotta B Crepes",
+      type: "Farmers market food business with local delivery",
+      gradient: "from-green-400 to-blue-500",
+      url: "https://www.gottabcrepes.com/",
     },
     {
       name: "Mamasita's Kitchen",
