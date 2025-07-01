@@ -222,12 +222,8 @@ const Hero = () => {
                     <h3 className="text-white/60 text-xs font-semibold mb-2 tracking-widest uppercase">Our Impact</h3>
                     <div className="space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="text-white/70 text-xs">Stores Managed</span>
-                        <span className="text-[#7BB9E8] font-bold text-base">500+</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-white/70 text-xs">Revenue Generated</span>
-                        <span className="text-[#7BB9E8] font-bold text-base">$50M+</span>
+                        <span className="text-white/70 text-xs">24/7 Shopify Support</span>
+                        <span className="text-[#7BB9E8] font-bold text-base">Yes</span>
                       </div>
                     </div>
                   </div>
