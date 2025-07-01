@@ -25,10 +25,10 @@ const DESKTOP_HEADLINE_MIN_HEIGHT = '4.5rem'; // Adjust as needed for perfect al
 
 const Services = () => {
   return (
-    <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center">
+    <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="mb-10 md:mb-20">
+        <div className="mb-10 md:mb-20 mt-16">
           <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">What We Do</span>
           <h2 className="text-[2.1rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-3 max-w-3xl" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.1}}>
             Your brand and our model.<br />

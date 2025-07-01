@@ -11,7 +11,7 @@ import PrivacyConsent from "../components/ui/PrivacyConsent";
 
 const Index = () => {
   return (
-    <div className="bg-white">
+    <div>
       <PrivacyConsent />
       <Hero />
       <AsSeenOn />

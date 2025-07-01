@@ -199,8 +199,8 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full block md:flex md:flex-col md:items-center md:min-h-[calc(100vh-300px)] md:pt-16 md:pb-16 min-h-0 pt-0 pb-0 mb-0">
-        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 block md:flex md:flex-col items-start justify-start text-left pt-0 pb-0 md:pt-0 md:pb-0">
+      <section className="relative z-10 w-full block md:flex md:flex-col md:items-center md:justify-center md:min-h-screen min-h-0 pt-0 pb-0 mb-0">
+        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 block md:flex md:flex-col items-start justify-start text-left pt-0 pb-0">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
@@ -225,7 +225,7 @@ const Hero = () => {
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8]">|</span>}
             </span>
           </div>
-          {/* Animated, glowing CTAs */}
+          {/* CTAs */}
           <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-4 md:mb-6 text-left w-full max-w-xs md:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
@@ -242,7 +242,7 @@ const Hero = () => {
               View Our Work
             </a>
           </div>
-          {/* Stats with shimmer and hover effect */}
+          {/* Stats */}
           <div className="flex items-center space-x-6 md:space-x-10 text-white/70 text-sm md:text-base font-light mt-2 mb-0 pb-0 text-left">
             <div className="flex items-center space-x-2">
               <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
