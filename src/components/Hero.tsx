@@ -69,7 +69,7 @@ const Hero = () => {
 
 
   return (
-    <div ref={heroRef} className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" role="region" aria-label="Homepage Hero Banner">
+    <div ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" role="region" aria-label="Homepage Hero Banner">
       {/* Parallax luxury background: blue spotlight + faint grid + vignette + diagonal light streak */}
       <div className="absolute left-0 top-0 w-screen h-full pointer-events-none z-0" style={{minWidth: '100vw'}}>
         <div
@@ -199,8 +199,8 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full block md:flex md:flex-col md:items-center md:justify-center md:min-h-screen min-h-0 pt-0 pb-0 mb-0">
-        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 block md:flex md:flex-col items-start justify-start text-left pt-0 pb-0">
+      <section className="hero relative z-10 w-full block md:flex md:flex-col md:items-center md:justify-center min-h-0 pt-0 pb-6 md:pb-20 mb-0">
+        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 block md:flex md:flex-col items-start justify-start text-left pt-0 pb-0 mb-0 md:mb-20">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
@@ -243,7 +243,7 @@ const Hero = () => {
             </a>
           </div>
           {/* Stats */}
-          <div className="flex items-center space-x-6 md:space-x-10 text-white/70 text-sm md:text-base font-light mt-2 mb-0 pb-0 text-left">
+          <div className="flex items-center space-x-6 md:space-x-10 text-white/70 text-sm md:text-base font-light mt-2 mb-2 md:mb-0 pb-0 text-left">
             <div className="flex items-center space-x-2">
               <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
