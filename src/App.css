@@ -69,10 +69,14 @@
 }
 
 .hero {
-  min-height: 120dvh;
+  min-height: 200vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   padding-bottom: 0 !important;
-  margin-bottom: 48px !important;
+  margin-bottom: 0 !important;
 }
 
 @media (max-width: 767px) {
