@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Navigation from "./ui/Navigation";
 
 const typewriterText = "We manage, optimize, and scale your Shopify store so you can focus on what matters most.";
 
@@ -17,15 +18,10 @@ const stats = [
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [animatedStats, setAnimatedStats] = useState([0, 0]);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [ribbonWipe, setRibbonWipe] = useState(0);
   const heroRef = useRef(null);
-  const menuButtonRef = useRef(null);
-  const closeButtonRef = useRef(null);
-  const firstLinkRef = useRef(null);
-  const lastLinkRef = useRef(null);
 
   // Typewriter effect with ribbon wipe
   useEffect(() => {
@@ -54,33 +50,6 @@ const Hero = () => {
     return () => intervals.forEach(clearInterval);
   }, []);
 
-  // Accessibility: close menu on Esc, trap focus, prevent background scroll
-  useEffect(() => {
-    if (!menuOpen) return;
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setMenuOpen(false);
-      // Trap focus
-      if (e.key === "Tab") {
-        const focusableEls = [closeButtonRef.current, ...Array.from(document.querySelectorAll('.mobile-nav-link'))];
-        const firstEl = focusableEls[0];
-        const lastEl = focusableEls[focusableEls.length - 1];
-        if (e.shiftKey && document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        } else if (!e.shiftKey && document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
-        }
-      }
-    };
-    document.body.style.overflow = 'hidden';
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [menuOpen]);
-
   // Responsive parallax: only on desktop
   useEffect(() => {
     const isDesktop = () => window.innerWidth >= 768;
@@ -99,6 +68,8 @@ const Hero = () => {
 
   return (
     <div ref={heroRef} className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" role="region" aria-label="Homepage Hero Banner">
+      {/* Navigation (robust, portal-based, covers all content) */}
+      <Navigation />
       {/* Parallax luxury background: blue spotlight + faint grid + vignette + diagonal light streak */}
       <div className="absolute left-0 top-0 w-screen h-full pointer-events-none z-0" style={{minWidth: '100vw'}}>
         <div
@@ -157,111 +128,6 @@ const Hero = () => {
         }} />
       </div>
 
-      {/* Header */}
-      <header className="relative z-30 w-full border-b border-white/5 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-6">
-          <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-14 w-auto transition-all duration-300" />
-          <nav className="hidden md:flex items-center space-x-12" aria-label="Main Navigation">
-            {menuItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-white/50 hover:text-white font-light transition-all duration-300 text-sm tracking-wide relative group"
-                tabIndex={0}
-                aria-label={item.name}
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#7BB9E8] transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-            <a
-              href="https://calendly.com/charlie-dumo/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-8 px-8 py-3 bg-[#7BB9E8] text-black font-medium text-sm tracking-wide hover:bg-white transition-all duration-300 hover:scale-105 shadow-lg"
-              tabIndex={0}
-              aria-label="Get Started"
-            >
-              Get Started
-            </a>
-          </nav>
-          <button
-            className="md:hidden p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Open navigation menu"
-            ref={menuButtonRef}
-          >
-            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <line x1="5" y1="7" x2="19" y2="7" stroke="currentColor" strokeLinecap="round" />
-              <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" strokeLinecap="round" />
-              <line x1="5" y1="17" x2="19" y2="17" stroke="currentColor" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="fixed inset-0 z-[99999] flex flex-col items-center justify-between md:hidden animate-menu-fade-in" style={{background: 'linear-gradient(120deg, #10151a 80%, #7BB9E8 100%)', backdropFilter: 'blur(32px)'}} role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
-            {/* Logo and close button */}
-            <div className="w-full flex items-center justify-between px-8 pt-8">
-              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-16 w-auto transition-all duration-300" />
-              <button
-                className="p-3 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none text-3xl"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Close navigation menu"
-                ref={closeButtonRef}
-              >
-                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
-                  <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-            {/* Nav links */}
-            <div className="flex flex-col items-center justify-center flex-1 w-full gap-12">
-              {menuItems.map((item, idx) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-white text-3xl font-semibold tracking-wide mb-2 relative group transition-all duration-300 fancy-nav-link mobile-nav-link"
-                  onClick={() => setMenuOpen(false)}
-                  style={{textShadow: '0 2px 16px #7BB9E8aa'}}
-                  tabIndex={0}
-                  aria-label={item.name}
-                  ref={idx === 0 ? firstLinkRef : idx === menuItems.length - 1 ? lastLinkRef : undefined}
-                >
-                  {item.name}
-                  <span className="block h-0.5 w-0 bg-[#7BB9E8] transition-all duration-300 group-hover:w-full mt-2 mx-auto rounded-full"></span>
-                </a>
-              ))}
-            </div>
-            {/* CTA at the bottom */}
-            <div className="w-full flex flex-col items-center pb-12 px-8">
-              <a
-                href="https://calendly.com/charlie-dumo/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-xl rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 fancy-nav-cta"
-                style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
-                tabIndex={0}
-                aria-label="Get Started"
-              >
-                Get Started
-              </a>
-            </div>
-            <style>{`
-              .animate-menu-fade-in {
-                animation: menuFadeIn 0.5s cubic-bezier(.4,0,.2,1) both;
-              }
-              @keyframes menuFadeIn {
-                from { opacity: 0; transform: translateY(40px) scale(0.98); }
-                to { opacity: 1; transform: none; }
-              }
-              .fancy-nav-link { font-family: 'Inter', 'Satoshi', 'sans-serif'; letter-spacing: 0.04em; }
-              .fancy-nav-cta { font-family: 'Inter', 'Satoshi', 'sans-serif'; letter-spacing: 0.06em; }
-            `}</style>
-          </div>
-        )}
-      </header>
-
       {/* Fancy, premium, editorial hero (restored, open layout) */}
       <section className="relative z-10 w-full min-h-[calc(100vh-120px)] flex items-center">
         <div className="max-w-5xl mx-auto w-full px-8 flex flex-col items-start justify-center animate-fade-in">
@@ -277,14 +143,14 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words !text-[clamp(2.5rem,8vw,6rem)]" style={{wordBreak: 'break-word'}}>
+          <h1 className="font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words !text-[clamp(2.5rem,8vw,6rem)] md:!text-7xl lg:!text-8xl" style={{wordBreak: 'break-word'}}>
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
           <div className="mb-10 animate-slide-in-3">
-            <span className="text-base xs:text-lg sm:text-xl text-white/80 font-light block !text-[clamp(1.1rem,3vw,1.5rem)]" style={{fontFamily: 'Inter, Satoshi, sans-serif', wordBreak: 'break-word'}}>
+            <span className="font-light block !text-[clamp(1.1rem,3vw,1.5rem)] md:!text-xl text-white/80" style={{fontFamily: 'Inter, Satoshi, sans-serif', wordBreak: 'break-word'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
