@@ -199,7 +199,7 @@ const Hero = () => {
           </button>
         </div>
         {menuOpen && (
-          <div className="fixed inset-0 z-50 flex flex-col items-center justify-between md:hidden animate-menu-fade-in" style={{background: 'linear-gradient(120deg, #10151a 80%, #7BB9E8 100%)', backdropFilter: 'blur(32px)'}} role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+          <div className="fixed inset-0 z-[99999] flex flex-col items-center justify-between md:hidden animate-menu-fade-in" style={{background: 'linear-gradient(120deg, #10151a 80%, #7BB9E8 100%)', backdropFilter: 'blur(32px)'}} role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
             {/* Logo and close button */}
             <div className="w-full flex items-center justify-between px-8 pt-8">
               <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-16 w-auto transition-all duration-300" />
@@ -277,37 +277,37 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words" style={{wordBreak: 'break-word'}}>
+          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words !text-[clamp(2.5rem,8vw,6rem)]" style={{wordBreak: 'break-word'}}>
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
           <div className="mb-10 animate-slide-in-3">
-            <span className="text-base xs:text-lg sm:text-xl text-white/80 font-light block" style={{fontFamily: 'Inter, Satoshi, sans-serif', wordBreak: 'break-word'}}>
+            <span className="text-base xs:text-lg sm:text-xl text-white/80 font-light block !text-[clamp(1.1rem,3vw,1.5rem)]" style={{fontFamily: 'Inter, Satoshi, sans-serif', wordBreak: 'break-word'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
           </div>
           {/* Animated, glowing CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 mb-10 animate-slide-in-4">
+          <div className="flex flex-col sm:flex-row gap-6 mb-10 animate-slide-in-4 w-full max-w-xl">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-12 py-5 bg-[#7BB9E8] text-black font-semibold text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple"
+              className="px-12 py-5 bg-[#7BB9E8] text-black font-semibold text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full sm:w-auto text-center"
             >
               Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="px-12 py-5 border-2 border-[#7BB9E8] text-white font-semibold text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple"
+              className="px-12 py-5 border-2 border-[#7BB9E8] text-white font-semibold text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full sm:w-auto text-center"
             >
               View Our Work
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-10 text-white/70 text-base font-light mt-2 animate-slide-in-5">
+          <div className="flex items-center space-x-10 text-white/70 text-base font-light mt-2 animate-slide-in-5 w-full max-w-xl justify-between">
             <div className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
