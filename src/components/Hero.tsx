@@ -199,8 +199,8 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full flex flex-col md:flex-row md:items-center md:min-h-[calc(100vh-300px)]">
-        <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-start animate-fade-in text-left pt-4 sm:pt-6">
+      <section className="relative z-10 w-full flex flex-col items-start h-auto min-h-0 pt-0 pb-0 md:items-center md:min-h-[calc(100vh-300px)] md:pt-8 md:pb-8">
+        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 flex flex-col items-start justify-start animate-fade-in text-left pt-0 pb-0 md:pt-0 md:pb-0">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
@@ -213,43 +213,43 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-6 relative animate-slide-in-2 text-left">
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 md:mb-6 relative animate-slide-in-2 text-left">
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
-          <div className="mb-4 sm:mb-6 animate-slide-in-3 text-left">
-            <span className="text-base sm:text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+          <div className="mb-4 md:mb-6 animate-slide-in-3 text-left">
+            <span className="text-base md:text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
           </div>
           {/* Animated, glowing CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-4 sm:mb-6 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-4 md:mb-6 animate-slide-in-4 text-left w-full max-w-xs md:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 sm:px-12 sm:py-5 bg-[#7BB9E8] text-black font-semibold text-base sm:text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full sm:w-auto text-center"
+              className="px-5 py-2.5 md:px-12 md:py-5 bg-[#7BB9E8] text-black font-semibold text-base md:text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full md:w-auto text-center"
             >
               Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="px-5 py-2.5 sm:px-12 sm:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base sm:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full sm:w-auto text-center"
+              className="px-5 py-2.5 md:px-12 md:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full md:w-auto text-center"
             >
               View Our Work
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 animate-slide-in-5 text-left !mb-0 !pb-0">
+          <div className="flex items-center space-x-6 md:space-x-10 text-white/70 text-sm md:text-base font-light mt-2 mb-0 pb-0 animate-slide-in-5 text-left">
             <div className="flex items-center space-x-2">
-              <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
+              <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">24/7</span>
+              <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">24/7</span>
               <span>Shopify Support</span>
             </div>
           </div>
