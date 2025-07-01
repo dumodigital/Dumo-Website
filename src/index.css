@@ -251,3 +251,14 @@ html {
 button, .btn, .premium-btn {
   @apply bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-semibold rounded-[40px] transition-all duration-300 px-8 py-4;
 }
+
+/* Bulletproof hero section spacing for mobile */
+.hero-section, .hero, section[aria-label="Homepage Hero Banner"] {
+  min-height: 0 !important;
+  height: auto !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  display: block !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+}
