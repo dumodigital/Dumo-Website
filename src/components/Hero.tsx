@@ -123,7 +123,7 @@ const Hero = () => {
       </div>
 
       {/* Header */}
-      <header className="relative z-30 w-full border-b border-white/5 backdrop-blur-sm">
+      <header className="sticky top-0 z-30 w-full border-b border-white/5 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-6">
           <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-14 w-auto transition-all duration-300" />
           <nav className="hidden md:flex items-center space-x-12" aria-label="Main Navigation">
