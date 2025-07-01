@@ -19,7 +19,7 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [animatedStats, setAnimatedStats] = useState([0, 0]);
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
   const [ribbonWipe, setRibbonWipe] = useState(0);
   const heroRef = useRef(null);
   const menuButtonRef = useRef(null);
@@ -81,21 +81,7 @@ const Hero = () => {
     };
   }, [menuOpen]);
 
-  // Responsive parallax: only on desktop
-  useEffect(() => {
-    const isDesktop = () => window.innerWidth >= 768;
-    const handleMouseMove = (e) => {
-      if (!isDesktop() || !heroRef.current) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-      setParallax({ x, y });
-    };
-    if (isDesktop()) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+
 
   return (
     <div ref={heroRef} className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" role="region" aria-label="Homepage Hero Banner">
@@ -108,8 +94,6 @@ const Hero = () => {
             left: 0,
             boxShadow: 'none',
             border: 'none',
-            transform: `translate3d(${parallax.x * 20}px, ${parallax.y * 10}px, 0)`,
-            transition: "transform 0.3s cubic-bezier(.4,0,.2,1)",
           }}
         />
         <div
@@ -119,8 +103,6 @@ const Hero = () => {
             left: 0,
             boxShadow: 'none',
             border: 'none',
-            transform: `translate3d(${parallax.x * 40}px, ${parallax.y * 20}px, 0)`,
-            transition: "transform 0.3s cubic-bezier(.4,0,.2,1)",
           }}
         />
         <svg
@@ -131,8 +113,6 @@ const Hero = () => {
             boxShadow: 'none',
             border: 'none',
             zIndex: 0,
-            transform: `translate3d(${parallax.x * 10}px, ${parallax.y * 5}px, 0)`,
-            transition: "transform 0.3s cubic-bezier(.4,0,.2,1)",
           }}
           width="100vw"
           height="100%"
@@ -198,33 +178,46 @@ const Hero = () => {
             </svg>
           </button>
         </div>
-        {/* Mobile Menu Overlay - bulletproof full-screen */}
+        {/* Mobile Menu Drawer - slides in from right */}
         {menuOpen && (
           <>
             {/* Body scroll lock */}
             <style>{`body { overflow: hidden !important; }`}</style>
-            <div className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-gradient-to-br from-[#10151a] via-[#181c22] to-[#0a0a0a] bg-opacity-95 backdrop-blur-2xl transition-all duration-300 md:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 z-[1000] bg-black/50 backdrop-blur-sm transition-all duration-300 md:hidden"
+              onClick={() => setMenuOpen(false)}
+              role="button"
+              tabIndex={-1}
+              aria-label="Close menu"
+            />
+                      {/* Drawer */}
+          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] z-[1001] bg-black/95 backdrop-blur-xl transform translate-x-0 transition-transform duration-300 ease-out md:hidden flex flex-col" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
               {/* Close button */}
               <button
-                className="absolute top-6 right-6 p-3 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none text-3xl z-[1010]"
+                className="absolute top-6 right-6 p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none text-2xl z-[1010]"
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
                 ref={closeButtonRef}
               >
-                <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
                   <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeLinecap="round" />
                 </svg>
               </button>
+              
               {/* Logo */}
-              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-16 w-auto mb-8 mt-2" />
+              <div className="flex justify-center pt-8 pb-6">
+                <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-12 w-auto" />
+              </div>
+              
               {/* Nav links */}
-              <nav className="flex flex-col items-center justify-center gap-2 w-full max-w-xs mx-auto">
+              <nav className="flex flex-col px-6 flex-1">
                 {menuItems.map((item, idx) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block w-full text-center text-white text-xl font-semibold py-3 rounded-lg hover:bg-[#7BB9E8]/10 transition-all duration-200 tracking-wide focus:outline-none focus:ring-2 focus:ring-[#7BB9E8]"
+                    className="block text-white text-lg font-medium py-3 px-4 rounded-lg hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-inset"
                     onClick={() => setMenuOpen(false)}
                     tabIndex={0}
                     aria-label={item.name}
@@ -234,13 +227,14 @@ const Hero = () => {
                   </a>
                 ))}
               </nav>
+              
               {/* CTA at the bottom */}
-              <div className="w-full flex flex-col items-center mt-8 px-8">
+              <div className="p-6 border-t border-white/10">
                 <a
                   href="https://calendly.com/charlie-dumo/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-xl rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
+                  className="w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-lg rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
                   style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
                   tabIndex={0}
                   aria-label="Get Started"
@@ -268,7 +262,7 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-7xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-6 relative animate-slide-in-2 text-left">
+          <h1 className="text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-6 relative animate-slide-in-2 text-left">
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
