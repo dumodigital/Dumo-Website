@@ -1,93 +1,31 @@
+import React from "react";
 import { FaInstagram } from "react-icons/fa";
 
-const Footer = () => {
-  return (
-    <footer className="bg-slate-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              DUMO DIGITAL
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Your personal digital Genius Bar. Digital strategies that help
-              businesses establish, optimize, and grow their online sales.
-            </p>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Contact</h4>
-            <div className="space-y-2 text-gray-300">
-              <div>
-                <a href="tel:8476246003" className="hover:underline text-gray-300">(847) 624-6003</a>
-              </div>
-              <div>
-                <a href="mailto:info@dumodigital.com" className="hover:underline text-gray-300">info@dumodigital.com</a>
-              </div>
-              <div className="flex items-center gap-1">
-                <FaInstagram className="text-pink-500" />
-                <a href="https://www.instagram.com/dumo_digital/" target="_blank" rel="noopener noreferrer" className="hover:underline text-gray-300">@dumo_digital</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
-            <div className="space-y-2">
-              <a
-                href="#services"
-                className="block text-gray-300 hover:text-white transition-colors duration-300"
-              >
-                Services
-              </a>
-              <a
-                href="#about"
-                className="block text-gray-300 hover:text-white transition-colors duration-300"
-              >
-                About
-              </a>
-              <a
-                href="#our-work"
-                className="block text-gray-300 hover:text-white transition-colors duration-300"
-              >
-                Work
-              </a>
-              <a
-                href="#testimonials"
-                className="block text-gray-300 hover:text-white transition-colors duration-300"
-              >
-                Testimonials
-              </a>
-              <a
-                href="#contact"
-                className="block text-gray-300 hover:text-white transition-colors duration-300"
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400">
-            © 2025 Dumo Digital. All rights reserved.
-          </div>
-          <div className="mt-4 md:mt-0">
-            <a
-              href="/PrivacyPolicy"
-              className="text-gray-400 hover:text-white transition-colors duration-300 ml-4"
-            >
-              Privacy Policy
-            </a>
-          </div>
-        </div>
+const Footer = () => (
+  <footer className="w-full bg-gradient-to-br from-[#10151a] to-[#181c22] border-t border-white/10 py-10 px-4 md:px-0 mt-16">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+      {/* Logo */}
+      <div className="flex items-center justify-center w-full md:w-auto mb-6 md:mb-0">
+        <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-12 w-auto" />
       </div>
-    </footer>
-  );
-};
+      {/* Links */}
+      <div className="flex flex-col md:flex-row items-center gap-6 text-white/70 text-base font-medium">
+        <a href="#services" className="hover:text-[#7BB9E8] hover:underline transition-all duration-200">Services</a>
+        <a href="#portfolio" className="hover:text-[#7BB9E8] hover:underline transition-all duration-200">Portfolio</a>
+        <a href="#about" className="hover:text-[#7BB9E8] hover:underline transition-all duration-200">About</a>
+        <a href="#contact" className="hover:text-[#7BB9E8] hover:underline transition-all duration-200">Contact</a>
+        <a href="/PrivacyPolicy" className="hover:text-[#7BB9E8] hover:underline transition-all duration-200" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://www.instagram.com/dumo_digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-2 hover:text-[#7BB9E8] transition-all duration-200">
+          <FaInstagram className="text-lg" />
+          <span className="hidden md:inline">Instagram</span>
+        </a>
+      </div>
+      {/* Copyright */}
+      <div className="text-white/40 text-sm mt-6 md:mt-0 text-center md:text-right w-full md:w-auto">
+        © {new Date().getFullYear()} Dumo Digital. All rights reserved.
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

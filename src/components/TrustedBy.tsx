@@ -1,38 +1,35 @@
-const TrustedBy = () => {
-  const logos = [];
+import React from "react";
 
-  return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-8">
-            Trusted By
-          </p>
+const logos = [
+  { src: "/images/shopify-logo-white.png", alt: "Shopify" },
+  { src: "/images/keenan-logo.png", alt: "Keenan" },
+  { src: "/images/klaviyo-logo-white.png", alt: "Klaviyo" },
+  { src: "/images/meta-logo-white.png", alt: "Meta" },
+  { src: "/images/ohio-state-logo-white.png", alt: "Ohio State" },
+  { src: "/images/prime-video-logo.png", alt: "Prime Video" },
+  { src: "/images/the-blox-logo.png", alt: "The Blox" },
+  // Add more logos as needed
+];
 
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 opacity-60 hover:opacity-80 transition-opacity duration-300">
-            {logos.map((logo) => (
-              <div
-                key={logo.name}
-                className={`${logo.width} h-16 sm:h-20 flex items-center justify-center transform hover:scale-105 transition-transform duration-300`}
-              >
-                {logo.image ? (
-                  <img
-                    src={logo.image}
-                    alt={logo.name}
-                    className="h-full object-contain"
-                  />
-                ) : (
-                  <span className="text-gray-600 font-semibold text-sm">
-                    {logo.name}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+const TrustedBy = () => (
+  <section className="py-20 bg-gradient-to-br from-[#10151a] to-[#181c22] border-b border-white/10">
+    <div className="max-w-5xl mx-auto px-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center tracking-tight">
+        Partners We've Grown
+      </h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center bg-white/5 rounded-2xl p-8 shadow-lg">
+        {logos.map((logo, i) => (
+          <img
+            key={i}
+            src={logo.src}
+            alt={logo.alt}
+            className="h-10 md:h-14 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+            style={{ maxHeight: 56, maxWidth: 160 }}
+          />
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default TrustedBy;

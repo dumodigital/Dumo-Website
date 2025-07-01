@@ -1,123 +1,95 @@
-import { Button } from "@/components/ui/button";
-import {
-  FaShoppingCart,
-  FaLaptopCode,
-  FaChartLine,
-  FaEnvelope,
-  FaShareAlt,
-  FaLightbulb,
-} from "react-icons/fa";
+import React from "react";
+
+const services = [
+  {
+    number: "01",
+    title: "Custom Shopify Store Design",
+    description:
+      "Bespoke, high-converting Shopify stores tailored to your brand and audience.",
+  },
+  {
+    number: "02",
+    title: "Ongoing Support & Growth",
+    description:
+      "Proactive support, optimization, and strategy to keep your store performing at its best.",
+  },
+  {
+    number: "03",
+    title: "Shopify Plus Integrations",
+    description:
+      "Seamless integrations, automation, and advanced features for ambitious brands.",
+  },
+];
+
+const DESKTOP_HEADLINE_MIN_HEIGHT = '4.5rem'; // Adjust as needed for perfect alignment
 
 const Services = () => {
-  const services = [
-    {
-      title: "Shopify Support",
-      description:
-        "Expert e-commerce website development and optimization on Shopify, delivering clean design, intuitive user experience, and backend simplicity.",
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Website Creative Design",
-      description:
-        "Creating professional and effective online presence with user-friendly and easily manageable solutions tailored to your business needs.",
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Digital Marketing",
-      description:
-        "Tailored online marketing plans and high-converting campaign execution to improve client visibility, sales, and brand consistency.",
-      gradient: "from-green-500 to-teal-500",
-    },
-    {
-      title: "Klaviyo Email & SMS Marketing",
-      description:
-        "Strategic email and SMS campaign development using Klaviyo's automation platform, delivering personalized customer communications, effective list segmentation, and revenue-generating flows.",
-      gradient: "from-orange-500 to-red-500",
-    },
-    {
-      title: "Social Media Management",
-      description:
-        "Comprehensive social media strategy and content creation to build brand awareness, engage with your audience, and drive traffic to your online platforms.",
-      gradient: "from-indigo-500 to-purple-500",
-    },
-    {
-      title: "Digital Genius Bar",
-      description:
-        "On-demand digital expertise and personalized training sessions for business owners, providing hands-on education and problem-solving support.",
-      gradient: "from-pink-500 to-rose-500",
-    },
-  ];
-
   return (
-    <section
-      id="services"
-      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Our Services
+    <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Section Header */}
+        <div className="mb-10 md:mb-20">
+          <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">What We Do</span>
+          <h2 className="text-[2.1rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-3 max-w-3xl" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.1}}>
+            Your brand and our model.<br />
+            <span className="bg-gradient-to-r from-[#7BB9E8] to-[#4A90E2] bg-clip-text text-transparent italic font-semibold">The perfect match.</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive digital solutions to help your business thrive online
+          <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2" />
+          <p className="text-base xs:text-lg text-white/80 max-w-xl font-light">
+            Your vision, realized—exceptional Shopify stores, ongoing growth, and expert support from a team trusted by leading brands.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div
-                className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.gradient} mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-              >
-                <div className="w-8 h-8 bg-white rounded-lg opacity-90 flex items-center justify-center">
-                  {service.title === "Shopify Support" && (
-                    <FaShoppingCart className="text-2xl" />
-                  )}
-                  {service.title === "Website Creative Design" && (
-                    <FaLaptopCode className="text-2xl" />
-                  )}
-                  {service.title === "Digital Marketing" && (
-                    <FaChartLine className="text-2xl" />
-                  )}
-                  {service.title === "Klaviyo Email & SMS Marketing" && (
-                    <FaEnvelope className="text-2xl" />
-                  )}
-                  {service.title === "Social Media Management" && (
-                    <FaShareAlt className="text-2xl" />
-                  )}
-                  {service.title === "Digital Genius Bar" && (
-                    <FaLightbulb className="text-2xl" />
+        {/* Vertical timeline/stepper for mobile, grid for desktop */}
+        <div className="block md:hidden relative pl-8">
+          {/* Vertical connector line */}
+          <div className="absolute left-4 top-6 bottom-6 w-0.5 bg-[#7BB9E8]/30 z-0" style={{borderRadius: '2px'}} />
+          <div className="flex flex-col gap-12 relative z-10">
+            {services.map((service, idx) => (
+              <div key={service.number} className="flex items-start gap-4 relative">
+                {/* Step circle */}
+                <div className="flex flex-col items-center">
+                  <div className="w-8 h-8 rounded-full bg-[#7BB9E8] flex items-center justify-center text-white font-bold text-base shadow-md mb-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+                    {service.number}
+                  </div>
+                  {/* Connector for all but last */}
+                  {idx !== services.length - 1 && (
+                    <div className="flex-1 w-0.5 bg-[#7BB9E8]/30 mt-1" style={{minHeight: '2.5rem', borderRadius: '2px'}} />
                   )}
                 </div>
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-xl font-extrabold text-white mb-2" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{service.title}</h3>
+                  <p className="text-base text-white/80 leading-relaxed font-medium mb-1">{service.description}</p>
+                </div>
               </div>
-
-              <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                {service.title}
-              </h3>
-
-              <p className="text-gray-600 leading-relaxed mb-6">
-                {service.description}
-              </p>
+            ))}
+          </div>
+        </div>
+        {/* Desktop grid unchanged, but with aligned headlines */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12">
+          {services.map((service) => (
+            <div
+              key={service.number}
+              className="bg-white rounded-2xl border border-neutral-200 p-8 flex flex-col shadow-lg min-h-[240px] transition-all duration-200 hover:border-[#7BB9E8] group"
+              style={{ boxShadow: "0 4px 24px 0 rgba(20,40,80,0.08)" }}
+            >
+              <span className="text-sm text-neutral-400 font-mono mb-2">{service.number}</span>
+              <div style={{ minHeight: DESKTOP_HEADLINE_MIN_HEIGHT, display: 'flex', alignItems: 'flex-end' }}>
+                <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3 group-hover:text-[#7BB9E8] transition-colors duration-200" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{service.title}</h3>
+              </div>
+              <div className="w-full h-px bg-neutral-200 mb-4" />
+              <p className="text-base text-neutral-600 leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>
-
-        <div className="text-center mt-16">
+        {/* CTA Button */}
+        <div className="flex justify-center mt-8">
           <a
-            href="https://calendly.com/charlie-dumo/30min"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
+            className="inline-block px-8 py-4 rounded-full bg-[#7BB9E8] text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
+            style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
           >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full transform hover:scale-105 transition-all duration-300"
-            >
-              Book Your Free Consultation
-            </Button>
+            Start Your Project
           </a>
         </div>
       </div>

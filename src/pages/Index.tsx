@@ -7,16 +7,18 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import PrivacyConsent from "../components/ui/PrivacyConsent";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-white">
+      <PrivacyConsent />
       <Hero />
       <AsSeenOn />
       <Services />
+      <Portfolio />
       <Stats />
       <Testimonials />
-      <Portfolio />
       <About />
       <FinalCTA />
       <Footer />

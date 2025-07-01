@@ -1,66 +1,76 @@
-const AsSeenOn: React.FC = () => {
-  const logos = [
-    {
-      name: "Blox",
-      width: "w-40 sm:w-48",
-      image: "/images/the-blox-logo.png",
-      link: "https://www.betablox.com/theblox",
-    },
-    {
-      name: "Amazon Prime Video",
-      width: "w-48 sm:w-56",
-      image: "/images/prime-video-logo.png",
-      link: "https://www.amazon.com/The-Blox/dp/B0CGRZMX2K",
-    },
-    {
-      name: "Keenan",
-      width: "w-40 sm:w-48",
-      image: "/images/keenan-logo.png",
-      link: "https://keenan.osu.edu/",
-    },
-  ];
+import React from "react";
 
-  return (
-    <section className="as-seen-on py-8 px-2 sm:py-8 sm:px-0 bg-white">
-      <div className="max-w-7xl mx-auto px-0 sm:px-4 lg:px-6">
-        <div className="text-center mb-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-wide mb-4">
-            As Seen On
+const logos = [
+  { src: "/images/shopify-logo-white.png", alt: "Shopify" },
+  { src: "/images/klaviyo-logo-white.png", alt: "Klaviyo" },
+  { src: "/images/meta-logo-white.png", alt: "Meta" },
+  { src: "/images/Celigo.png", alt: "Celigo" },
+  { src: "/images/keenan-logo.png", alt: "Keenan" },
+  { src: "/images/jotform.png", alt: "Jotform" },
+  { src: "/images/ohio-state-logo-white.png", alt: "Ohio State" },
+  { src: "/images/monday.png", alt: "Monday" },
+  { src: "/images/prime-video-logo.png", alt: "Prime Video" },
+  { src: "/images/netsuite.webp", alt: "NetSuite" },
+  { src: "/images/SS.webp", alt: "SS" },
+  // Removed The Blox logo
+];
+
+const AsSeenOn = () => (
+  <section className="py-8 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+    <div className="w-full px-4">
+      {/* Section Header */}
+      <div className="mb-6 text-center relative">
+        {/* Clean horizontal lines for visual hierarchy */}
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-y-1/2"></div>
+        
+        {/* Header with clean styling */}
+        <div className="relative inline-block px-8 py-2">
+          <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-tight mb-0" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+            Our Trusted Partners
           </h2>
         </div>
-        <div className="grid grid-cols-3 w-full gap-x-4 sm:gap-x-10 lg:gap-x-20 items-center justify-items-center opacity-60 hover:opacity-80 transition-opacity duration-300">
-            {logos.map((logo) => (
-              <div
-                key={logo.name}
-              className={`flex flex-col items-center justify-center h-14 sm:h-24 lg:h-32 transform hover:scale-105 transition-transform duration-300`}
-              >
-                {logo.image ? (
-                logo.link ? (
-                  <a href={logo.link} target="_blank" rel="noopener noreferrer">
-                    <img
-                      src={logo.image}
-                      alt={logo.name}
-                      className="h-14 sm:h-24 lg:h-32 max-w-[100px] sm:max-w-[160px] lg:max-w-[200px] w-auto object-contain mx-auto"
-                    />
-                  </a>
-                ) : (
-                  <img
-                    src={logo.image}
-                    alt={logo.name}
-                    className="h-14 sm:h-24 lg:h-32 max-w-[100px] sm:max-w-[160px] lg:max-w-[200px] w-auto object-contain mx-auto"
-                  />
-                )
-                ) : (
-                  <span className="text-gray-600 font-semibold text-sm">
-                    {logo.name}
-                  </span>
-                )}
-              </div>
-            ))}
-        </div>
+        
+        {/* Vertical accent lines */}
+        <div className="absolute top-1/2 left-1/4 w-px h-8 bg-gradient-to-b from-transparent via-[#7BB9E8] to-transparent transform -translate-y-1/2"></div>
+        <div className="absolute top-1/2 right-1/4 w-px h-8 bg-gradient-to-b from-transparent via-[#7BB9E8] to-transparent transform -translate-y-1/2"></div>
       </div>
-    </section>
-  );
-};
+      {/* Infinite scrolling logo carousel */}
+      <div className="relative overflow-hidden w-full">
+        <div
+          className="flex items-center gap-14 animate-marquee whitespace-nowrap min-w-max"
+          style={{}}
+        >
+          {[...logos, ...logos].map((logo, i) => (
+            <div key={i} className="flex items-center justify-center h-20 min-w-[160px] max-w-[220px]">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className={`h-18 w-auto object-contain filter brightness-0 invert ${
+                  logo.alt === "Celigo" ? "scale-75" : ""
+                }`}
+                style={{ 
+                  maxHeight: logo.alt === "Celigo" ? 54 : 72, 
+                  maxWidth: logo.alt === "Celigo" ? 150 : 200 
+                }}
+                draggable={false}
+              />
+            </div>
+          ))}
+        </div>
+        {/* Marquee animation */}
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            animation: marquee 45s linear infinite;
+            will-change: transform;
+          }
+        `}</style>
+      </div>
+    </div>
+  </section>
+);
 
 export default AsSeenOn;

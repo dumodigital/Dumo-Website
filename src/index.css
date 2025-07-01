@@ -96,7 +96,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] text-foreground font-sans;
+    font-family: 'Inter', 'Satoshi', 'sans-serif';
   }
 }
 
@@ -222,4 +223,31 @@ html {
 
 .menu-button:hover {
   color: #007bff;
+}
+
+/* Simple logo hover effect */
+.logo-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Typewriter cursor animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  animation: blink 1s infinite;
+}
+
+button, .btn, .premium-btn {
+  @apply bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-semibold rounded-[40px] transition-all duration-300 px-8 py-4;
 }
