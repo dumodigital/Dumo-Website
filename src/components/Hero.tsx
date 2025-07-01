@@ -199,10 +199,10 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="hero relative z-10 w-full block md:flex md:flex-col md:items-center md:justify-center min-h-0 pt-0 pb-6 md:pb-20 mb-0">
-        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 block md:flex md:flex-col items-start justify-start text-left pt-0 pb-0 mb-0 md:mb-20">
+      <section className="hero relative z-10 w-full flex flex-col justify-center items-center min-h-screen pt-0 pb-0 mb-0">
+        <div className="max-w-5xl mx-auto w-full px-4 md:px-8 flex flex-col items-start justify-center text-left pt-0 pb-0 mb-0 md:mb-20">
           {/* Shopify badge integrated */}
-          <div className="flex items-center space-x-4 mb-4 mt-2">
+          <div className="flex items-center space-x-4 mb-10 mt-10">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
               <img
                 src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg"
@@ -212,11 +212,11 @@ const Hero = () => {
               <span className="text-[#7BB9E8] font-medium text-xs tracking-widest uppercase">Plus Partner</span>
             </div>
           </div>
-          {/* Headline with blue accent and creative line breaks */}
+          {/* Headline with blue accent and creative line breaks, each line animated */}
           <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 md:mb-6 relative text-left">
-            <span className="block">Shopify</span>
-            <span className="block text-[#7BB9E8] font-extralight">Management</span>
-            <span className="block font-extralight">Redefined</span>
+            <span key="hero-shopify" className="block animate-fade-in-hero" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>Shopify</span>
+            <span key="hero-management" className="block text-[#7BB9E8] font-extralight animate-fade-in-hero" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>Management</span>
+            <span key="hero-redefined" className="block font-extralight animate-fade-in-hero" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
           <div className="mb-4 md:mb-6 text-left">
@@ -244,11 +244,11 @@ const Hero = () => {
           </div>
           {/* Stats */}
           <div className="flex items-center space-x-6 md:space-x-10 text-white/70 text-sm md:text-base font-light mt-2 mb-2 md:mb-0 pb-0 text-left">
-            <div className="flex items-center space-x-2">
+            <div className="hidden md:flex items-center space-x-2">
               <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="hidden md:flex items-center space-x-2">
               <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">24/7</span>
               <span>Shopify Support</span>
             </div>

@@ -69,17 +69,28 @@
 }
 
 .hero {
-  padding-bottom: 24px !important;
-  margin-bottom: 0 !important;
-  min-height: auto !important;
-  height: auto !important;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 0 !important;
 }
 
 @media (max-width: 767px) {
   .hero {
-    padding-bottom: 24px !important;
-    margin-bottom: 0 !important;
-    min-height: auto !important;
-    height: auto !important;
+    min-height: 100dvh !important;
+    padding-bottom: 40px !important;
   }
+}
+
+@keyframes fadeInHero {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-fade-in-hero {
+  animation: fadeInHero 1.2s cubic-bezier(.4,0,.2,1) both;
+  will-change: opacity, transform;
+  display: block;
+}
+
+.partner-carousel {
+  margin-top: 0 !important;
 }

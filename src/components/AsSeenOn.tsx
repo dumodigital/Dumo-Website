@@ -16,7 +16,7 @@ const logos = [
 ];
 
 const AsSeenOn = () => (
-  <section className="py-12 pt-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+  <section className="partner-carousel py-8 pt-24 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
     <div className="w-full px-4">
       {/* Section Header */}
       <div className="mb-4 text-center relative">
