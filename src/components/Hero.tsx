@@ -143,14 +143,27 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words !text-[clamp(2.5rem,8vw,6rem)] md:!text-7xl lg:!text-8xl" style={{wordBreak: 'break-word'}}>
+          <h1
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words"
+            style={{
+              wordBreak: 'break-word',
+              fontSize: 'clamp(2.5rem,8vw,6rem)',
+            }}
+          >
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
           <div className="mb-10 animate-slide-in-3">
-            <span className="font-light block !text-[clamp(1.1rem,3vw,1.5rem)] md:!text-xl text-white/80" style={{fontFamily: 'Inter, Satoshi, sans-serif', wordBreak: 'break-word'}}>
+            <span
+              className="text-base xs:text-lg sm:text-xl text-white/80 font-light block"
+              style={{
+                fontFamily: 'Inter, Satoshi, sans-serif',
+                wordBreak: 'break-word',
+                fontSize: 'clamp(1.1rem,3vw,1.5rem)',
+              }}
+            >
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
