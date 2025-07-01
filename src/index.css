@@ -262,3 +262,7 @@ button, .btn, .premium-btn {
   flex-grow: 0 !important;
   flex-shrink: 0 !important;
 }
+section, main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
