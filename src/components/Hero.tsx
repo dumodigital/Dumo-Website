@@ -163,67 +163,44 @@ const Hero = () => {
             </svg>
           </button>
         </div>
-        {/* Mobile Menu Dropdown - simple and bulletproof */}
+        
+        {/* Mobile Menu - inline within header */}
         {menuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 z-50 bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-2xl">
-            {/* Close button */}
-            <div className="flex justify-end p-4">
-              <button
-                className="p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Close navigation menu"
-                ref={closeButtonRef}
-              >
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
-                  <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-            
-            {/* Logo */}
-            <div className="flex justify-center pb-4">
-              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 w-auto" />
-            </div>
-            
-            {/* Nav links */}
-            <nav className="px-6 pb-6">
-              {menuItems.map((item, idx) => (
+          <div className="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-sm">
+            <nav className="px-8 py-4 space-y-2">
+              {menuItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-white text-lg font-medium py-3 px-4 rounded-lg hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-inset"
+                  className="block text-white text-lg font-medium py-3 px-4 rounded-lg hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide"
                   onClick={() => setMenuOpen(false)}
                   tabIndex={0}
                   aria-label={item.name}
-                  ref={idx === 0 ? firstLinkRef : idx === menuItems.length - 1 ? lastLinkRef : undefined}
                 >
                   {item.name}
                 </a>
               ))}
+              <div className="pt-2">
+                <a
+                  href="https://calendly.com/charlie-dumo/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-lg rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105"
+                  style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
+                  tabIndex={0}
+                  aria-label="Get Started"
+                >
+                  Get Started
+                </a>
+              </div>
             </nav>
-            
-            {/* CTA */}
-            <div className="px-6 pb-6">
-              <a
-                href="https://calendly.com/charlie-dumo/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-lg rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
-                style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
-                tabIndex={0}
-                aria-label="Get Started"
-              >
-                Get Started
-              </a>
-            </div>
           </div>
         )}
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
       <section className="relative z-10 w-full min-h-[calc(100vh-250px)] flex items-center">
-                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left py-6 sm:py-8">
+                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left pt-6 sm:pt-8">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
