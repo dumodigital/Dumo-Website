@@ -198,15 +198,15 @@ const Hero = () => {
             </svg>
           </button>
         </div>
+        {/* Mobile Menu Overlay - bulletproof full-screen */}
         {menuOpen && (
-          <div className="fixed inset-0 z-[100] flex flex-col md:hidden animate-menu-fade-in bg-gradient-to-br from-[#10151a] via-[#181c22] to-[#0a0a0a] bg-opacity-95 backdrop-blur-2xl overscroll-none" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu" style={{touchAction: 'none'}}>
-            {/* Logo and close button */}
-            <div className="flex items-center justify-between px-6 pt-6 pb-2 w-full">
-              <div className="flex-1 flex justify-center">
-                <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-16 w-auto mx-auto" />
-              </div>
+          <>
+            {/* Body scroll lock */}
+            <style>{`body { overflow: hidden !important; }`}</style>
+            <div className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-gradient-to-br from-[#10151a] via-[#181c22] to-[#0a0a0a] bg-opacity-95 backdrop-blur-2xl transition-all duration-300 md:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+              {/* Close button */}
               <button
-                className="p-3 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none text-3xl absolute right-4 top-4"
+                className="absolute top-6 right-6 p-3 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none text-3xl z-[1010]"
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
                 ref={closeButtonRef}
@@ -216,15 +216,15 @@ const Hero = () => {
                   <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeLinecap="round" />
                 </svg>
               </button>
-            </div>
-            {/* Nav links */}
-            <nav className="flex-1 flex flex-col justify-center gap-2 px-8 w-full">
-              {menuItems.map((item, idx) => (
-                <>
+              {/* Logo */}
+              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-16 w-auto mb-8 mt-2" />
+              {/* Nav links */}
+              <nav className="flex flex-col items-center justify-center gap-2 w-full max-w-xs mx-auto">
+                {menuItems.map((item, idx) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block w-full text-left text-white text-2xl font-semibold py-5 px-2 rounded-lg hover:bg-[#7BB9E8]/10 transition-all duration-200 tracking-wide group bg-transparent focus:outline-none focus:ring-2 focus:ring-[#7BB9E8]"
+                    className="block w-full text-center text-white text-xl font-semibold py-3 rounded-lg hover:bg-[#7BB9E8]/10 transition-all duration-200 tracking-wide focus:outline-none focus:ring-2 focus:ring-[#7BB9E8]"
                     onClick={() => setMenuOpen(false)}
                     tabIndex={0}
                     aria-label={item.name}
@@ -232,34 +232,24 @@ const Hero = () => {
                   >
                     {item.name}
                   </a>
-                  {idx !== menuItems.length - 1 && <div className="w-full h-px bg-white/10 my-1" />}
-                </>
-              ))}
-            </nav>
-            {/* CTA at the bottom */}
-            <div className="w-full flex flex-col items-center pb-10 px-8">
-              <a
-                href="https://calendly.com/charlie-dumo/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-xl rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
-                style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
-                tabIndex={0}
-                aria-label="Get Started"
-              >
-                Get Started
-              </a>
+                ))}
+              </nav>
+              {/* CTA at the bottom */}
+              <div className="w-full flex flex-col items-center mt-8 px-8">
+                <a
+                  href="https://calendly.com/charlie-dumo/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-xl rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
+                  style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
+                  tabIndex={0}
+                  aria-label="Get Started"
+                >
+                  Get Started
+                </a>
+              </div>
             </div>
-            <style>{`
-              .animate-menu-fade-in {
-                animation: menuFadeIn 0.5s cubic-bezier(.4,0,.2,1) both;
-              }
-              @keyframes menuFadeIn {
-                from { opacity: 0; transform: translateY(40px) scale(0.98); }
-                to { opacity: 1; transform: none; }
-              }
-            `}</style>
-          </div>
+          </>
         )}
       </header>
 
@@ -267,54 +257,54 @@ const Hero = () => {
       <section className="relative z-10 w-full min-h-[calc(100vh-120px)] flex items-center">
         <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left">
           {/* Shopify badge integrated */}
-          <div className="flex items-center space-x-4 mb-8 mt-4 animate-slide-in-1">
-            <div className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm">
+          <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
+            <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
               <img
                 src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg"
                 alt="Shopify"
-                className="h-7 w-auto"
+                className="h-6 w-auto"
               />
               <span className="text-[#7BB9E8] font-medium text-xs tracking-widest uppercase">Plus Partner</span>
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-7xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6 relative animate-slide-in-2 text-left">
+          <h1 className="text-7xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-6 relative animate-slide-in-2 text-left">
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
-          <div className="mb-10 animate-slide-in-3 text-left">
-            <span className="text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+          <div className="mb-6 sm:mb-10 animate-slide-in-3 text-left">
+            <span className="text-base sm:text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
           </div>
           {/* Animated, glowing CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-10 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-6 sm:mb-10 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 sm:px-12 sm:py-5 bg-[#7BB9E8] text-black font-semibold text-base sm:text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full sm:w-auto text-center"
+              className="px-5 py-2.5 sm:px-12 sm:py-5 bg-[#7BB9E8] text-black font-semibold text-base sm:text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full sm:w-auto text-center"
             >
               Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="px-6 py-3 sm:px-12 sm:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base sm:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full sm:w-auto text-center"
+              className="px-5 py-2.5 sm:px-12 sm:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base sm:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full sm:w-auto text-center"
             >
               View Our Work
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-10 text-white/70 text-base font-light mt-3 mb-2 animate-slide-in-5 text-left">
+          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 mb-2 animate-slide-in-5 text-left">
             <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
+              <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-[#7BB9E8]">24/7</span>
+              <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">24/7</span>
               <span>Shopify Support</span>
             </div>
           </div>
