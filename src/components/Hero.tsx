@@ -199,7 +199,7 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="hero relative z-10 w-full flex flex-col justify-center items-center min-h-screen pt-0 pb-0 mb-0">
+      <section className="hero relative z-10 w-full flex flex-col justify-center items-center min-h-screen pt-0 pb-0 mb-0" style={{ paddingBottom: '100vh' }}>
         <div className="max-w-5xl mx-auto w-full px-4 md:px-8 flex flex-col items-start justify-center text-left pt-0 pb-0 mb-0 md:mb-20">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-10 mt-10">
