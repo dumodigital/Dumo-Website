@@ -243,7 +243,7 @@ const Hero = () => {
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 mb-0 animate-slide-in-5 text-left">
+          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 animate-slide-in-5 text-left">
             <div className="flex items-center space-x-2">
               <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
