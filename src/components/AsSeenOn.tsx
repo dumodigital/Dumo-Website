@@ -16,7 +16,7 @@ const logos = [
 ];
 
 const AsSeenOn = () => (
-  <section className="py-8 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+  <section className="py-8 mt-10 sm:mt-16 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
     <div className="w-full px-4">
       {/* Section Header */}
       <div className="mb-6 text-center relative">

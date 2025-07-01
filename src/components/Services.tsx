@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const services = [
   {
@@ -24,11 +24,42 @@ const services = [
 const DESKTOP_HEADLINE_MIN_HEIGHT = '4.5rem'; // Adjust as needed for perfect alignment
 
 const Services = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false); // Reset for demo/testing, remove this line for one-time animation
+          }
+        });
+      },
+      {
+        threshold: 0.3, // 30% of the section must be visible
+        rootMargin: "0px 0px -20% 0px" // triggers a bit later as you scroll
+      }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center">
+    <section 
+      ref={sectionRef}
+      id="services" 
+      className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center"
+    >
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="mb-10 md:mb-20">
+        <div className={`mb-10 md:mb-20 transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+        }`}>
           <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">What We Do</span>
           <h2 className="text-[2.1rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-3 max-w-3xl" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.1}}>
             Your brand and our model.<br />
@@ -39,8 +70,11 @@ const Services = () => {
             Your vision, realized—exceptional Shopify stores, ongoing growth, and expert support from a team trusted by leading brands.
           </p>
         </div>
-        {/* Vertical timeline/stepper for mobile, grid for desktop */}
-        <div className="block md:hidden relative pl-8">
+
+        {/* Vertical timeline/stepper for mobile */}
+        <div className={`block md:hidden relative pl-8 transition-all duration-1000 ease-out delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+        }`}>
           {/* Vertical connector line */}
           <div className="absolute left-4 top-6 bottom-6 w-0.5 bg-[#7BB9E8]/30 z-0" style={{borderRadius: '2px'}} />
           <div className="flex flex-col gap-12 relative z-10">
@@ -65,8 +99,11 @@ const Services = () => {
             ))}
           </div>
         </div>
-        {/* Desktop grid unchanged, but with aligned headlines */}
-        <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12">
+
+        {/* Desktop grid */}
+        <div className={`hidden md:grid md:grid-cols-3 gap-8 mb-12 transition-all duration-1000 ease-out delay-500 ${
+          isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+        }`}>
           {services.map((service) => (
             <div
               key={service.number}
@@ -82,8 +119,11 @@ const Services = () => {
             </div>
           ))}
         </div>
+
         {/* CTA Button */}
-        <div className="flex justify-center mt-8">
+        <div className={`flex justify-center mt-8 transition-all duration-1000 ease-out delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+        }`}>
           <a
             href="#contact"
             className="inline-block px-8 py-4 rounded-full bg-[#7BB9E8] text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"

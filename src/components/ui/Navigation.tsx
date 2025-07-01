@@ -71,13 +71,22 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-white/10 bg-black/90 backdrop-blur-xl animate-fade-in">
-            <div className="px-4 py-8 space-y-6 flex flex-col items-center">
+          <div className="lg:hidden border-t border-white/10 bg-black/90 backdrop-blur-xl animate-fade-in fixed inset-0 z-[99] flex flex-col items-center justify-center">
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 p-3 rounded-full bg-[#7BB9E8] text-white text-3xl z-50 shadow-lg focus:outline-none"
+              aria-label="Close menu"
+              style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <div className="w-full max-w-xs mx-auto px-4 py-8 space-y-8 flex flex-col items-center justify-center">
               {menuItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-center px-4 py-4 text-white text-2xl font-semibold hover:text-[#7BB9E8] hover:bg-white/10 rounded-2xl transition-all duration-200 tracking-wide group bg-transparent"
+                  className="block w-full text-center px-4 py-4 text-white text-3xl font-extrabold tracking-tight hover:text-[#7BB9E8] hover:bg-white/10 rounded-2xl transition-all duration-200 group bg-transparent"
+                  style={{fontFamily: 'Inter, Satoshi, sans-serif', letterSpacing: '0.02em'}}
                 >
                   {item.name}
                   <span className="block h-0.5 w-0 bg-[#7BB9E8] transition-all duration-300 group-hover:w-full mt-2 mx-auto rounded-full"></span>
@@ -87,7 +96,8 @@ const Navigation = () => {
                 href="https://calendly.com/charlie-dumo/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-semibold text-xl rounded-[40px] shadow-2xl hover:from-[#5fa6d6] hover:to-[#357abd] transition-all duration-300 hover:scale-105 premium-btn"
+                className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-extrabold text-2xl rounded-[40px] shadow-2xl hover:from-[#5fa6d6] hover:to-[#357abd] transition-all duration-300 hover:scale-105 premium-btn"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif', letterSpacing: '0.02em'}}
               >
                 Get Started
               </a>

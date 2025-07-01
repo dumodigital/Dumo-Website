@@ -266,7 +266,7 @@ const Hero = () => {
       <section className="relative z-10 w-full min-h-[calc(100vh-120px)] flex items-center">
         <div className="max-w-5xl mx-auto w-full px-8 flex flex-col items-start justify-center animate-fade-in">
           {/* Shopify badge integrated */}
-          <div className="flex items-center space-x-4 mb-8 animate-slide-in-1">
+          <div className="flex items-center space-x-4 mb-8 animate-slide-in-1 mt-8 sm:mt-10 md:mt-12">
             <div className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm">
               <img
                 src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg"
@@ -277,14 +277,14 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-7xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6 relative animate-slide-in-2">
+          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight mb-6 relative animate-slide-in-2 break-words" style={{wordBreak: 'break-word'}}>
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
           <div className="mb-10 animate-slide-in-3">
-            <span className="text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+            <span className="text-base xs:text-lg sm:text-xl text-white/80 font-light block" style={{fontFamily: 'Inter, Satoshi, sans-serif', wordBreak: 'break-word'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
