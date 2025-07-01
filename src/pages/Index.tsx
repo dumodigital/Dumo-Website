@@ -11,7 +11,7 @@ import PrivacyConsent from "../components/ui/PrivacyConsent";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       <PrivacyConsent />
       <Hero />
       <AsSeenOn />
