@@ -199,8 +199,8 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full min-h-[calc(100vh-300px)] flex items-center">
-                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left pt-4 sm:pt-6">
+      <section className="relative z-10 w-full flex flex-col md:flex-row md:items-center md:min-h-[calc(100vh-300px)]">
+        <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-start animate-fade-in text-left pt-4 sm:pt-6">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
@@ -243,7 +243,7 @@ const Hero = () => {
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 animate-slide-in-5 text-left">
+          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 animate-slide-in-5 text-left !mb-0 !pb-0">
             <div className="flex items-center space-x-2">
               <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
