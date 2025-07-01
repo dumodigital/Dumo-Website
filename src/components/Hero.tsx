@@ -34,7 +34,7 @@ const Hero = () => {
         setDisplayText(typewriterText.slice(0, currentIndex + 1));
         setCurrentIndex(currentIndex + 1);
         setRibbonWipe(((currentIndex + 1) / typewriterText.length) * 100);
-      }, 50);
+      }, 80);
       return () => clearTimeout(timeout);
     }
   }, [currentIndex]);
@@ -199,7 +199,7 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="hero relative z-10 w-full flex flex-col justify-center items-center min-h-screen pt-0 pb-0 mb-0" style={{ paddingBottom: '100vh' }}>
+      <section className="hero relative z-10 w-full flex flex-col justify-center items-center min-h-screen pt-0 pb-0 mb-0" style={{ paddingBottom: '300vh' }}>
         <div className="max-w-5xl mx-auto w-full px-4 md:px-8 flex flex-col items-start justify-center text-left pt-0 pb-0 mb-0 md:mb-20">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-10 mt-10">
@@ -214,12 +214,12 @@ const Hero = () => {
           </div>
           {/* Headline with blue accent and creative line breaks, each line animated */}
           <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 md:mb-6 relative text-left">
-            <span key="hero-shopify" className="block animate-fade-in-hero" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>Shopify</span>
-            <span key="hero-management" className="block text-[#7BB9E8] font-extralight animate-fade-in-hero" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>Management</span>
-            <span key="hero-redefined" className="block font-extralight animate-fade-in-hero" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>Redefined</span>
+            <span key="hero-shopify" className="block animate-fade-in-hero opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>Shopify</span>
+            <span key="hero-management" className="block text-[#7BB9E8] font-extralight animate-fade-in-hero opacity-0" style={{ animationDelay: '1.2s', animationFillMode: 'forwards' }}>Management</span>
+            <span key="hero-redefined" className="block font-extralight animate-fade-in-hero opacity-0" style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}>Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
-          <div className="mb-4 md:mb-6 text-left">
+          <div className="mb-4 md:mb-6 text-left animate-fade-in-hero opacity-0" style={{ animationDelay: '2.0s', animationFillMode: 'forwards' }}>
             <span className="text-base md:text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8]">|</span>}
@@ -259,7 +259,9 @@ const Hero = () => {
       <style>{`
         .animate-fade-in { animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
         .animate-fade-in-slow { animation: fadeIn 2.2s cubic-bezier(.4,0,.2,1) both; }
+        .animate-fade-in-hero { animation: fadeInHero 1.5s cubic-bezier(.4,0,.2,1) both; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+        @keyframes fadeInHero { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: none; } }
         .animate-glow { box-shadow: 0 0 24px 0 #7BB9E8aa, 0 2px 8px 0 #0003; }
         .animate-countup { transition: color 0.3s; }
         .animate-accent-bar { animation: accentBar 1.2s cubic-bezier(.4,0,.2,1) 0.5s forwards, accentGlow 2.5s infinite alternate; }
