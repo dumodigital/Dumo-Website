@@ -199,7 +199,7 @@ const Hero = () => {
           </button>
         </div>
         {menuOpen && (
-          <div className="fixed inset-0 z-50 flex flex-col md:hidden animate-menu-fade-in bg-gradient-to-br from-[#10151a] via-[#181c22] to-[#0a0a0a] bg-opacity-95 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+          <div className="fixed inset-0 z-[100] flex flex-col md:hidden animate-menu-fade-in bg-gradient-to-br from-[#10151a] via-[#181c22] to-[#0a0a0a] bg-opacity-95 backdrop-blur-2xl overscroll-none" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu" style={{touchAction: 'none'}}>
             {/* Logo and close button */}
             <div className="flex items-center justify-between px-6 pt-6 pb-2 w-full">
               <div className="flex-1 flex justify-center">
@@ -278,7 +278,7 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6 relative animate-slide-in-2 text-left">
+          <h1 className="text-7xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6 relative animate-slide-in-2 text-left">
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
@@ -291,24 +291,24 @@ const Hero = () => {
             </span>
           </div>
           {/* Animated, glowing CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 mb-10 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-10 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-12 py-5 bg-[#7BB9E8] text-black font-semibold text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full sm:w-auto text-center"
+              className="px-6 py-3 sm:px-12 sm:py-5 bg-[#7BB9E8] text-black font-semibold text-base sm:text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] ripple w-full sm:w-auto text-center"
             >
               Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="px-12 py-5 border-2 border-[#7BB9E8] text-white font-semibold text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full sm:w-auto text-center"
+              className="px-6 py-3 sm:px-12 sm:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base sm:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm animate-glow ripple w-full sm:w-auto text-center"
             >
               View Our Work
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-10 text-white/70 text-base font-light mt-8 mb-2 animate-slide-in-5 text-left">
+          <div className="flex items-center space-x-10 text-white/70 text-base font-light mt-3 mb-2 animate-slide-in-5 text-left">
             <div className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
