@@ -66,7 +66,17 @@ const Hero = () => {
     };
   }, [menuOpen]);
 
-
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [menuOpen]);
 
   return (
     <div ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" role="region" aria-label="Homepage Hero Banner">
@@ -164,37 +174,91 @@ const Hero = () => {
           </button>
         </div>
         
-        {/* Mobile Menu - inline within header */}
+        {/* Mobile Menu - Left Side Drawer */}
         {menuOpen && (
-          <div className="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-sm">
-            <nav className="px-8 py-4 space-y-2">
-              {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-white text-lg font-medium py-3 px-4 rounded-lg hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide"
-                  onClick={() => setMenuOpen(false)}
-                  tabIndex={0}
-                  aria-label={item.name}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <div className="pt-2">
-                <a
-                  href="https://calendly.com/charlie-dumo/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-lg rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105"
-                  style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
-                  tabIndex={0}
-                  aria-label="Get Started"
-                >
-                  Get Started
-                </a>
+          <>
+            {/* Backdrop */}
+            <div 
+              className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              onClick={() => setMenuOpen(false)}
+            />
+            {/* Drawer */}
+            <div className="md:hidden fixed left-0 top-0 h-screen w-80 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22] border-r border-white/10 shadow-2xl z-50 transform transition-transform duration-300 ease-out rounded-r-3xl backdrop-blur-lg" style={{boxShadow: '0 8px 32px #7BB9E833', borderRight: '1.5px solid #7BB9E822'}}>
+              <div className="flex flex-col h-full relative">
+                {/* Header */}
+                <div className="flex items-center justify-between p-6 border-b border-white/10">
+                  <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 w-auto" />
+                  <button
+                    onClick={() => setMenuOpen(false)}
+                    className="p-1.5 text-white/70 hover:text-[#7BB9E8] transition-colors duration-200 rounded-full hover:bg-white/10 border border-[#7BB9E8]/30 shadow-sm"
+                    aria-label="Close menu"
+                    style={{width: 36, height: 36, minWidth: 36, minHeight: 36, display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                  >
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeLinecap="round" />
+                      <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
+                    </svg>
+                  </button>
+                </div>
+                {/* Navigation */}
+                <nav className="flex-1 px-6 py-8 space-y-2">
+                  {menuItems.map((item, index) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="block text-white font-bold text-2xl py-4 px-4 rounded-xl hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide border-l-4 border-transparent hover:border-[#7BB9E8] shadow-sm"
+                      onClick={() => setMenuOpen(false)}
+                      tabIndex={0}
+                      aria-label={item.name}
+                      style={{ animationDelay: `${index * 0.08 + 0.1}s` }}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </nav>
+                {/* Impact Section */}
+                <div className="px-6 pb-32 pt-4">
+                  <div className="bg-white/5 rounded-2xl p-4 mb-2 shadow-inner border border-white/10">
+                    <h3 className="text-white/60 text-xs font-semibold mb-2 tracking-widest uppercase">Our Impact</h3>
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-white/70 text-xs">Stores Managed</span>
+                        <span className="text-[#7BB9E8] font-bold text-base">500+</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white/70 text-xs">Revenue Generated</span>
+                        <span className="text-[#7BB9E8] font-bold text-base">$50M+</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Sticky CTA at Bottom */}
+                <div className="absolute left-0 bottom-0 w-full px-6 pb-8 pt-4 bg-gradient-to-t from-[#10151a]/95 to-transparent z-50 flex flex-col gap-3 rounded-br-3xl">
+                  <a
+                    href="https://calendly.com/charlie-dumo/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center px-6 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-extrabold text-lg rounded-2xl shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 tracking-wide border-2 border-[#7BB9E8]/30"
+                    style={{boxShadow: '0 8px 32px #7BB9E8aa'}}
+                    tabIndex={0}
+                    aria-label="Start Your Project"
+                  >
+                    Start Your Project
+                  </a>
+                  <a
+                    href="https://calendly.com/charlie-dumo/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center px-6 py-4 bg-transparent text-[#7BB9E8] font-extrabold text-lg rounded-2xl border-2 border-[#7BB9E8] shadow hover:bg-[#7BB9E8]/10 hover:text-white transition-all duration-300 hover:scale-105 tracking-wide"
+                    tabIndex={0}
+                    aria-label="Get Started Today"
+                  >
+                    Get Started Today
+                  </a>
+                </div>
               </div>
-            </nav>
-          </div>
+            </div>
+          </>
         )}
       </header>
 
@@ -281,6 +345,20 @@ const Hero = () => {
         @keyframes glassFloat { from { opacity: 0; transform: translateY(60px) scale(0.98); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
         .animate-bounce-slow {
           animation: none;
+        }
+        .mobile-drawer-enter {
+          transform: translateX(-100%);
+        }
+        .mobile-drawer-enter-active {
+          transform: translateX(0);
+          transition: transform 300ms ease-out;
+        }
+        .mobile-drawer-exit {
+          transform: translateX(0);
+        }
+        .mobile-drawer-exit-active {
+          transform: translateX(-100%);
+          transition: transform 300ms ease-in;
         }
       `}</style>
     </div>
