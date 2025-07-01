@@ -178,7 +178,7 @@ const Hero = () => {
             </svg>
           </button>
         </div>
-        {/* Mobile Menu Drawer - slides in from right */}
+        {/* Mobile Menu Bottom Sheet - slides up from bottom */}
         {menuOpen && (
           <>
             {/* Body scroll lock */}
@@ -191,28 +191,33 @@ const Hero = () => {
               tabIndex={-1}
               aria-label="Close menu"
             />
-                      {/* Drawer */}
-          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] z-[1001] bg-black/95 backdrop-blur-xl transform translate-x-0 transition-transform duration-300 ease-out md:hidden flex flex-col" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+            {/* Bottom Sheet */}
+            <div className="fixed bottom-0 left-0 right-0 z-[1001] bg-black/95 backdrop-blur-xl border-t border-white/10 md:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+              {/* Handle */}
+              <div className="flex justify-center pt-3 pb-2">
+                <div className="w-12 h-1 bg-white/30 rounded-full"></div>
+              </div>
+              
               {/* Close button */}
               <button
-                className="absolute top-6 right-6 p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none text-2xl z-[1010]"
+                className="absolute top-4 right-4 p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
                 ref={closeButtonRef}
               >
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
                   <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeLinecap="round" />
                 </svg>
               </button>
               
               {/* Logo */}
-              <div className="flex justify-center pt-8 pb-6">
-                <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-12 w-auto" />
+              <div className="flex justify-center pb-4">
+                <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 w-auto" />
               </div>
               
               {/* Nav links */}
-              <nav className="flex flex-col px-6 flex-1">
+              <nav className="px-6 pb-6">
                 {menuItems.map((item, idx) => (
                   <a
                     key={item.name}
@@ -228,8 +233,8 @@ const Hero = () => {
                 ))}
               </nav>
               
-              {/* CTA at the bottom */}
-              <div className="p-6 border-t border-white/10">
+              {/* CTA */}
+              <div className="px-6 pb-8">
                 <a
                   href="https://calendly.com/charlie-dumo/30min"
                   target="_blank"
@@ -248,8 +253,8 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full min-h-[calc(100vh-120px)] flex items-center">
-        <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left">
+      <section className="relative z-10 w-full min-h-[calc(100vh-200px)] flex items-center">
+                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left py-8 sm:py-12">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
@@ -262,7 +267,7 @@ const Hero = () => {
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks */}
-          <h1 className="text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-6 relative animate-slide-in-2 text-left">
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-6 relative animate-slide-in-2 text-left">
             <span className="block">Shopify</span>
             <span className="block text-[#7BB9E8] font-extralight">Management</span>
             <span className="block font-extralight">Redefined</span>
