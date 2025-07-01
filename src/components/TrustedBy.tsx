@@ -12,7 +12,7 @@ const logos = [
 ];
 
 const TrustedBy = () => (
-  <section className="py-20 bg-gradient-to-br from-[#10151a] to-[#181c22] border-b border-white/10">
+  <section className="py-20 bg-gradient-to-br from-[#10151a] to-[#181c22] border-b border-white/10" style={{ marginTop: '100vh' }}>
     <div className="max-w-5xl mx-auto px-4">
       <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center tracking-tight">
         Partners We've Grown
