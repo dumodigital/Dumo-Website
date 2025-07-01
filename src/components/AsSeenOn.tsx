@@ -15,6 +15,19 @@ const logos = [
   // Removed The Blox logo
 ];
 
+// Shuffle the logos array each render
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
+const shuffledLogos = shuffle([...logos]);
+
 const AsSeenOn = () => (
   <section className="partner-carousel py-12 pt-8 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
     <div className="w-full px-4">
@@ -40,7 +53,7 @@ const AsSeenOn = () => (
           className="flex items-center gap-14 animate-marquee whitespace-nowrap min-w-max"
           style={{}}
         >
-          {[...logos, ...logos].map((logo, i) => (
+          {[...shuffledLogos, ...shuffledLogos].map((logo, i) => (
             <div key={i} className="flex items-center justify-center h-20 min-w-[160px] max-w-[220px]">
               <img
                 src={logo.src}
