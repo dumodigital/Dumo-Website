@@ -199,7 +199,7 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full block md:flex md:flex-col md:items-center md:min-h-[calc(100vh-300px)] md:pt-8 md:pb-8 min-h-0 pt-0 pb-0 mb-0">
+      <section className="relative z-10 w-full block md:flex md:flex-col md:items-center md:min-h-[calc(100vh-300px)] md:pt-16 md:pb-16 min-h-0 pt-0 pb-0 mb-0">
         <div className="max-w-5xl mx-auto w-full px-4 md:px-8 block md:flex md:flex-col items-start justify-start text-left pt-0 pb-0 md:pt-0 md:pb-0">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2">
