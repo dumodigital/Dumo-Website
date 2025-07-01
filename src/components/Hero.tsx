@@ -199,8 +199,8 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full min-h-[calc(100vh-250px)] flex items-center">
-                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left pt-6 sm:pt-8">
+      <section className="relative z-10 w-full min-h-[calc(100vh-300px)] flex items-center">
+                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left pt-4 sm:pt-6">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
@@ -219,14 +219,14 @@ const Hero = () => {
             <span className="block font-extralight">Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
-          <div className="mb-6 sm:mb-10 animate-slide-in-3 text-left">
+          <div className="mb-4 sm:mb-6 animate-slide-in-3 text-left">
             <span className="text-base sm:text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8] animate-pulse">|</span>}
             </span>
           </div>
           {/* Animated, glowing CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-6 sm:mb-10 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-4 sm:mb-6 animate-slide-in-4 text-left w-full max-w-xs sm:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
