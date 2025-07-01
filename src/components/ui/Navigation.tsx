@@ -71,33 +71,48 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-white/10 bg-black/90 backdrop-blur-xl animate-fade-in fixed inset-0 z-[99] flex flex-col items-center justify-center">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-6 p-3 rounded-full bg-[#7BB9E8] text-white text-3xl z-50 shadow-lg focus:outline-none"
-              aria-label="Close menu"
-              style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
-            >
-              <X className="w-8 h-8" />
-            </button>
-            <div className="w-full max-w-xs mx-auto px-4 py-8 space-y-8 flex flex-col items-center justify-center">
+          <div className="fixed inset-0 z-[99] bg-[#10151a] flex flex-col justify-between animate-fade-in">
+            {/* Top bar: Logo left, close right */}
+            <div className="flex items-center justify-between w-full px-6 pt-6">
+              <img src="/images/DD.png" alt="Dumo Digital" className="h-10 w-auto" />
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-3 rounded-full bg-[#7BB9E8] text-white text-3xl shadow-lg focus:outline-none"
+                aria-label="Close menu"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+              >
+                <X className="w-8 h-8" />
+              </button>
+            </div>
+            {/* Centered menu links */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-10">
               {menuItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-center px-4 py-4 text-white text-3xl font-extrabold tracking-tight hover:text-[#7BB9E8] hover:bg-white/10 rounded-2xl transition-all duration-200 group bg-transparent"
-                  style={{fontFamily: 'Inter, Satoshi, sans-serif', letterSpacing: '0.02em'}}
+                  className="text-white text-3xl font-extrabold tracking-tight transition-all duration-200 group bg-transparent"
+                  style={{
+                    fontFamily: 'Inter, Satoshi, sans-serif',
+                    letterSpacing: '0.02em',
+                    textShadow: '0 4px 24px #7BB9E8, 0 1.5px 0 #fff',
+                  }}
                 >
                   {item.name}
-                  <span className="block h-0.5 w-0 bg-[#7BB9E8] transition-all duration-300 group-hover:w-full mt-2 mx-auto rounded-full"></span>
                 </button>
               ))}
+            </div>
+            {/* Get Started button at bottom */}
+            <div className="w-full flex justify-center pb-8">
               <a
                 href="https://calendly.com/charlie-dumo/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-extrabold text-2xl rounded-[40px] shadow-2xl hover:from-[#5fa6d6] hover:to-[#357abd] transition-all duration-300 hover:scale-105 premium-btn"
-                style={{fontFamily: 'Inter, Satoshi, sans-serif', letterSpacing: '0.02em'}}
+                className="w-[90%] max-w-xl text-center px-8 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-extrabold text-2xl rounded-[40px] shadow-2xl hover:from-[#5fa6d6] hover:to-[#357abd] transition-all duration-300 hover:scale-105 premium-btn"
+                style={{
+                  fontFamily: 'Inter, Satoshi, sans-serif',
+                  letterSpacing: '0.02em',
+                  boxShadow: '0 0 32px 0 #7BB9E8cc',
+                }}
               >
                 Get Started
               </a>
