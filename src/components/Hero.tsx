@@ -26,6 +26,8 @@ const Hero = () => {
   const closeButtonRef = useRef(null);
   const firstLinkRef = useRef(null);
   const lastLinkRef = useRef(null);
+  const [showStickyHeader, setShowStickyHeader] = useState(true);
+  const lastScrollY = useRef(0);
 
   // Typewriter effect with ribbon wipe
   useEffect(() => {
@@ -66,7 +68,7 @@ const Hero = () => {
     };
   }, [menuOpen]);
 
-  // Prevent body scroll when menu is open
+  // Prevent body scroll when menu is open (no scroll-to-top)
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -78,8 +80,32 @@ const Hero = () => {
     };
   }, [menuOpen]);
 
+  // Sticky header on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 10) {
+        setShowStickyHeader(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        setShowStickyHeader(false); // scrolling down
+      } else {
+        setShowStickyHeader(true); // scrolling up
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" role="region" aria-label="Homepage Hero Banner">
+    <div ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans pt-0 md:pt-0 mobile-hero-padding" role="region" aria-label="Homepage Hero Banner">
+      <style>{`
+        @media (max-width: 767px) {
+          .mobile-hero-padding {
+            padding-top: 72px !important;
+          }
+        }
+      `}</style>
       {/* Parallax luxury background: blue spotlight + faint grid + vignette + diagonal light streak */}
       <div className="absolute left-0 top-0 w-screen h-full pointer-events-none z-0" style={{minWidth: '100vw'}}>
         <div
@@ -132,8 +158,8 @@ const Hero = () => {
         }} />
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-30 w-full border-b border-white/5 backdrop-blur-sm">
+      {/* Sticky Header (fixed on mobile, sticky on desktop) */}
+      <header className="sticky top-0 z-30 w-full border-b border-white/5 backdrop-blur-sm mobile-fixed-header">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-6">
           <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-14 w-auto transition-all duration-300" />
           <nav className="hidden md:flex items-center space-x-12" aria-label="Main Navigation">
@@ -173,90 +199,105 @@ const Hero = () => {
             </svg>
           </button>
         </div>
-        
-        {/* Mobile Menu - Left Side Drawer */}
-        {menuOpen && (
-          <>
-            {/* Backdrop */}
-            <div 
-              className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-              onClick={() => setMenuOpen(false)}
-            />
-            {/* Drawer */}
-            <div className="md:hidden fixed left-0 top-0 h-screen w-80 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22] border-r border-white/10 shadow-2xl z-50 transform transition-transform duration-300 ease-out rounded-r-3xl backdrop-blur-lg" style={{boxShadow: '0 8px 32px #7BB9E833', borderRight: '1.5px solid #7BB9E822'}}>
-              <div className="flex flex-col h-full relative">
-                {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-white/10">
-                  <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 w-auto" />
-                  <button
+      </header>
+
+      {/* Left-side Mobile Drawer Menu */}
+      {menuOpen && (
+        <>
+          {/* Backdrop */}
+          <div className="fixed inset-0 z-[998] bg-black/30 backdrop-blur-sm md:hidden" onClick={() => setMenuOpen(false)} />
+          {/* Drawer - full height, scalable, premium hierarchy */}
+          <div className="fixed inset-0 z-[999] bg-gradient-to-b from-[#0a0a0a]/90 via-[#10151a]/95 to-[#181c22]/98 backdrop-blur-2xl shadow-2xl rounded-r-3xl border-r border-white/10 flex flex-col md:hidden animate-slide-in-drawer overflow-y-auto" style={{boxShadow: '8px 0 32px 0 #7BB9E844', borderRight: '1.5px solid #7BB9E822', maxWidth: '90vw', width: '340px'}}>
+            {/* Faint pattern overlay for depth */}
+            <div className="absolute inset-0 pointer-events-none opacity-10 z-0" style={{background: 'url(/images/pattern.svg) repeat'}} />
+            {/* Header: Logo & Close */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 relative z-10">
+              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-8 w-auto" />
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="p-1.5 text-white/70 hover:text-[#7BB9E8] transition-colors duration-200 rounded-full hover:bg-white/10 border border-[#7BB9E8]/20 shadow-sm"
+                aria-label="Close menu"
+                style={{width: 28, height: 28, minWidth: 28, minHeight: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+              >
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeLinecap="round" />
+                  <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+            {/* Navigation Section */}
+            <div className="px-7 pt-6 pb-2 flex flex-col gap-2 relative z-10">
+              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Navigation</div>
+              <nav className="flex flex-col gap-1">
+                {menuItems.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-white text-lg font-semibold tracking-tight hover:text-[#7BB9E8] transition-all duration-200 text-left px-2 py-2 rounded-lg hover:bg-[#7BB9E8]/10 w-full"
                     onClick={() => setMenuOpen(false)}
-                    className="p-1.5 text-white/70 hover:text-[#7BB9E8] transition-colors duration-200 rounded-full hover:bg-white/10 border border-[#7BB9E8]/30 shadow-sm"
-                    aria-label="Close menu"
-                    style={{width: 36, height: 36, minWidth: 36, minHeight: 36, display: 'flex', alignItems: 'center', justifyContent: 'center'}}
-                  >
-                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeLinecap="round" />
-                      <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
-                    </svg>
-                  </button>
-                </div>
-                {/* Navigation */}
-                <nav className="flex-1 px-6 py-8 space-y-2">
-                  {menuItems.map((item, index) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="block text-white font-bold text-2xl py-4 px-4 rounded-xl hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide border-l-4 border-transparent hover:border-[#7BB9E8] shadow-sm"
-                      onClick={() => setMenuOpen(false)}
-                      tabIndex={0}
-                      aria-label={item.name}
-                      style={{ animationDelay: `${index * 0.08 + 0.1}s` }}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </nav>
-                {/* Impact Section */}
-                <div className="px-6 pb-32 pt-4">
-                  <div className="bg-white/5 rounded-2xl p-4 mb-2 shadow-inner border border-white/10">
-                    <h3 className="text-white/60 text-xs font-semibold mb-2 tracking-widest uppercase">Our Impact</h3>
-                    <div className="space-y-1">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white/70 text-xs">24/7 Shopify Support</span>
-                        <span className="text-[#7BB9E8] font-bold text-base">Yes</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Sticky CTA at Bottom */}
-                <div className="absolute left-0 bottom-0 w-full px-6 pb-8 pt-4 bg-gradient-to-t from-[#10151a]/95 to-transparent z-50 flex flex-col gap-3 rounded-br-3xl">
-                  <a
-                    href="https://calendly.com/charlie-dumo/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center px-6 py-4 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-extrabold text-lg rounded-2xl shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 tracking-wide border-2 border-[#7BB9E8]/30"
-                    style={{boxShadow: '0 8px 32px #7BB9E8aa'}}
                     tabIndex={0}
-                    aria-label="Start Your Project"
+                    aria-label={item.name}
                   >
-                    Start Your Project
+                    {item.name}
                   </a>
-                  <a
-                    href="https://calendly.com/charlie-dumo/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center px-6 py-4 bg-transparent text-[#7BB9E8] font-extrabold text-lg rounded-2xl border-2 border-[#7BB9E8] shadow hover:bg-[#7BB9E8]/10 hover:text-white transition-all duration-300 hover:scale-105 tracking-wide"
-                    tabIndex={0}
-                    aria-label="Get Started Today"
-                  >
-                    Get Started Today
-                  </a>
-                </div>
+                ))}
+              </nav>
+            </div>
+            {/* Divider */}
+            <div className="w-full h-px bg-white/10 my-2" />
+            {/* Support Section */}
+            <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
+              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Support</div>
+              <div className="w-full text-left text-lg font-extrabold text-[#7BB9E8] pb-1">24/7 Shopify Support</div>
+              <div className="w-full text-left text-white/80 font-medium text-base pb-1">Real people, real results.</div>
+              <a
+                href="https://calendly.com/charlie-dumo/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-bold text-base rounded-xl shadow-lg hover:bg-white transition-all duration-300 hover:scale-105 tracking-wide border border-[#7BB9E8]/20 mt-2"
+                style={{boxShadow: '0 4px 16px #7BB9E8aa'}}
+                tabIndex={0}
+                aria-label="Get Started"
+              >
+                Get Started
+              </a>
+            </div>
+            {/* Divider */}
+            <div className="w-full h-px bg-white/10 my-2" />
+            {/* Connect Section */}
+            <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
+              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Connect</div>
+              <div className="w-full flex flex-row items-center justify-center gap-4 pb-2">
+                <a href="https://www.instagram.com/dumo_digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.86.7-1.45.92-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41-.59-.22-1.01-.48-1.45-.92-.44-.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.012 7.052.07 5.77.128 4.77.312 4.01.54c-.77.23-1.42.54-2.07 1.19-.65.65-.96 1.3-1.19 2.07C.312 4.77.128 5.77.07 7.052.012 8.332 0 8.736 0 12c0 3.264.012 3.668.07 4.948.058 1.282.242 2.282.47 3.042.23.77.54 1.42 1.19 2.07.65.65 1.3.96 2.07 1.19.76.228 1.76.412 3.042.47C8.332 23.988 8.736 24 12 24s3.668-.012 4.948-.07c1.282-.058 2.282-.242 3.042-.47.77-.23 1.42-.54 2.07-1.19.65-.65.96-1.3 1.19-2.07.228-.76.412-1.76.47-3.042.058-1.28.07-1.684.07-4.948s-.012-3.668-.07-4.948c-.058-1.282-.242-2.282-.47-3.042-.23-.77-.54-1.42-1.19-2.07-.65-.65-1.3-.96-2.07-1.19-.76-.228-1.76-.412-3.042-.47C15.668.012 15.264 0 12 0z"/><path d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A3.999 3.999 0 1 1 12 8.001a3.999 3.999 0 0 1 0 7.999zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/dumo-digital/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
+                </a>
+                <a href="mailto:info@dumodigital.com" aria-label="Email" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"/></svg>
+                </a>
+              </div>
+              {/* Partner Logos */}
+              <div className="w-full flex flex-row items-center justify-center gap-6 pb-6 relative z-10">
+                <img src="/images/buckeye.png" alt="Ohio State Logo" className="h-12 w-auto" />
+                <img src="/images/shopify-logo-white.png" alt="Shopify Logo" className="h-10 w-auto" />
               </div>
             </div>
-          </>
-        )}
-      </header>
+            <style>{`
+              @media (max-width: 767px) {
+                .animate-slide-in-drawer {
+                  animation: slideInDrawer 0.3s cubic-bezier(.4,0,.2,1) both;
+                }
+                @keyframes slideInDrawer {
+                  from { transform: translateX(-100%); opacity: 0; }
+                  to { transform: translateX(0); opacity: 1; }
+                }
+              }
+            `}</style>
+          </div>
+        </>
+      )}
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
       <section className="hero relative z-10 w-full flex flex-col justify-center items-center min-h-screen pt-0 pb-0 mb-0" style={{ paddingBottom: '300vh' }}>
@@ -355,6 +396,15 @@ const Hero = () => {
         .mobile-drawer-exit-active {
           transform: translateX(-100%);
           transition: transform 300ms ease-in;
+        }
+        @media (max-width: 767px) {
+          .mobile-fixed-header {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+          }
         }
       `}</style>
     </div>
