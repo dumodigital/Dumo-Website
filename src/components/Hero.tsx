@@ -199,11 +199,11 @@ const Hero = () => {
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full flex flex-col items-start h-auto min-h-0 pt-0 pb-0 md:items-center md:min-h-[calc(100vh-300px)] md:pt-8 md:pb-8">
+      <section className="relative z-10 w-full flex flex-col items-start max-h-[600px] overflow-hidden min-h-0 pt-0 pb-0 md:items-center md:min-h-[calc(100vh-300px)] md:pt-8 md:pb-8">
         <div className="max-w-5xl mx-auto w-full px-4 md:px-8 flex flex-col items-start justify-start text-left pt-0 pb-0 md:pt-0 md:pb-0">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2">
-            <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+            <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
               <img
                 src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg"
                 alt="Shopify"
@@ -237,7 +237,7 @@ const Hero = () => {
             </a>
             <a
               href="#portfolio"
-              className="px-5 py-2.5 md:px-12 md:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full md:w-auto text-center"
+              className="px-5 py-2.5 md:px-12 md:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 w-full md:w-auto text-center"
             >
               View Our Work
             </a>
