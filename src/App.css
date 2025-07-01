@@ -75,7 +75,8 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding-bottom: 0 !important;
+  padding-top: 10vh !important;
+  padding-bottom: 10vh !important;
   margin-bottom: 0 !important;
 }
 
