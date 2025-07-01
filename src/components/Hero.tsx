@@ -54,29 +54,14 @@ const Hero = () => {
     return () => intervals.forEach(clearInterval);
   }, []);
 
-  // Accessibility: close menu on Esc, trap focus, prevent background scroll
+  // Accessibility: close menu on Esc
   useEffect(() => {
     if (!menuOpen) return;
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setMenuOpen(false);
-      // Trap focus
-      if (e.key === "Tab") {
-        const focusableEls = [closeButtonRef.current, ...Array.from(document.querySelectorAll('.mobile-nav-link'))];
-        const firstEl = focusableEls[0];
-        const lastEl = focusableEls[focusableEls.length - 1];
-        if (e.shiftKey && document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        } else if (!e.shiftKey && document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
-        }
-      }
     };
-    document.body.style.overflow = 'hidden';
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = '';
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
@@ -178,29 +163,13 @@ const Hero = () => {
             </svg>
           </button>
         </div>
-        {/* Mobile Menu Bottom Sheet - slides up from bottom */}
+        {/* Mobile Menu Dropdown - simple and bulletproof */}
         {menuOpen && (
-          <>
-            {/* Body scroll lock */}
-            <style>{`body { overflow: hidden !important; }`}</style>
-            {/* Backdrop */}
-            <div 
-              className="fixed inset-0 z-[1000] bg-black/50 backdrop-blur-sm transition-all duration-300 md:hidden"
-              onClick={() => setMenuOpen(false)}
-              role="button"
-              tabIndex={-1}
-              aria-label="Close menu"
-            />
-            {/* Bottom Sheet */}
-            <div className="fixed bottom-0 left-0 right-0 z-[1001] bg-black/95 backdrop-blur-xl border-t border-white/10 md:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
-              {/* Handle */}
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-12 h-1 bg-white/30 rounded-full"></div>
-              </div>
-              
-              {/* Close button */}
+          <div className="md:hidden absolute top-full left-0 right-0 z-50 bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+            {/* Close button */}
+            <div className="flex justify-end p-4">
               <button
-                className="absolute top-4 right-4 p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
+                className="p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation menu"
                 ref={closeButtonRef}
@@ -210,51 +179,51 @@ const Hero = () => {
                   <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeLinecap="round" />
                 </svg>
               </button>
-              
-              {/* Logo */}
-              <div className="flex justify-center pb-4">
-                <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 w-auto" />
-              </div>
-              
-              {/* Nav links */}
-              <nav className="px-6 pb-6">
-                {menuItems.map((item, idx) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="block text-white text-lg font-medium py-3 px-4 rounded-lg hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-inset"
-                    onClick={() => setMenuOpen(false)}
-                    tabIndex={0}
-                    aria-label={item.name}
-                    ref={idx === 0 ? firstLinkRef : idx === menuItems.length - 1 ? lastLinkRef : undefined}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </nav>
-              
-              {/* CTA */}
-              <div className="px-6 pb-8">
-                <a
-                  href="https://calendly.com/charlie-dumo/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-lg rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
-                  style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
-                  tabIndex={0}
-                  aria-label="Get Started"
-                >
-                  Get Started
-                </a>
-              </div>
             </div>
-          </>
+            
+            {/* Logo */}
+            <div className="flex justify-center pb-4">
+              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-10 w-auto" />
+            </div>
+            
+            {/* Nav links */}
+            <nav className="px-6 pb-6">
+              {menuItems.map((item, idx) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block text-white text-lg font-medium py-3 px-4 rounded-lg hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-200 tracking-wide focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-inset"
+                  onClick={() => setMenuOpen(false)}
+                  tabIndex={0}
+                  aria-label={item.name}
+                  ref={idx === 0 ? firstLinkRef : idx === menuItems.length - 1 ? lastLinkRef : undefined}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
+            
+            {/* CTA */}
+            <div className="px-6 pb-6">
+              <a
+                href="https://calendly.com/charlie-dumo/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-semibold text-lg rounded-full shadow-2xl hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
+                style={{boxShadow: '0 4px 32px #7BB9E8aa'}}
+                tabIndex={0}
+                aria-label="Get Started"
+              >
+                Get Started
+              </a>
+            </div>
+          </div>
         )}
       </header>
 
       {/* Fancy, premium, editorial hero (restored, open layout) */}
-      <section className="relative z-10 w-full min-h-[calc(100vh-200px)] flex items-center">
-                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left py-8 sm:py-12">
+      <section className="relative z-10 w-full min-h-[calc(100vh-250px)] flex items-center">
+                  <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 flex flex-col items-start justify-center animate-fade-in text-left py-6 sm:py-8">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-4 mt-2 animate-slide-in-1">
             <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
@@ -297,7 +266,7 @@ const Hero = () => {
             </a>
           </div>
           {/* Animated stats with shimmer and hover effect */}
-          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 mb-2 animate-slide-in-5 text-left">
+          <div className="flex items-center space-x-6 sm:space-x-10 text-white/70 text-sm sm:text-base font-light mt-2 mb-0 animate-slide-in-5 text-left">
             <div className="flex items-center space-x-2">
               <span className="text-xl sm:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
               <span>Stores Managed</span>
