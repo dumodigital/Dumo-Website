@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(0);
 
   const menuItems = [
     { name: "Services", href: "#services" },
@@ -20,8 +22,51 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  // Show header on scroll up, hide on scroll down (desktop only)
+  useEffect(() => {
+    let ticking = false;
+    const threshold = 10;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (window.innerWidth >= 1024) { // lg: breakpoint
+            if (currentScrollY < threshold) {
+              setShowHeader(true);
+              // Debug
+              // console.log('Show header: at top');
+            } else if (currentScrollY < lastScrollY.current) {
+              setShowHeader(true);
+              // Debug
+              // console.log('Show header: scrolling up');
+            } else if (currentScrollY > lastScrollY.current) {
+              setShowHeader(false);
+              // Debug
+              // console.log('Hide header: scrolling down');
+            }
+          } else {
+            setShowHeader(true); // Always show on mobile
+          }
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Compute nav className so transform only applies on desktop
+  const navClassName = [
+    "fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/10 transition-transform duration-300 ease-in-out",
+    isMenuOpen ? "" : "", // always visible if menu is open
+    "lg:block",
+    showHeader ? "lg:translate-y-0" : "lg:-translate-y-full"
+  ].join(" ");
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
+    <nav className={navClassName}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 py-0">
           {/* Logo */}
