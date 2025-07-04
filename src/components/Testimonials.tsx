@@ -65,11 +65,9 @@ const Testimonials: React.FC = () => {
 
   return (
     <section
-      className="min-h-[38vh] w-full flex items-center justify-center bg-gradient-to-b from-[#23344a] via-[#23344a] to-[#222b36] py-12 relative overflow-hidden"
+      className="min-h-[38vh] w-full flex items-center justify-center bg-gradient-to-b from-[#181c22] via-[#23344a] to-[#7BB9E8]/30 py-12 relative overflow-hidden"
       style={{ minHeight: '38vh' }}
     >
-      {/* Top fade for smooth transition from Hero */}
-      <div className="absolute top-0 left-0 w-full h-40 z-10 pointer-events-none" style={{background: 'linear-gradient(to top, rgba(24,28,34,0) 0%, #181c22 80%, #181c22 100%)'}} />
       {/* Noise Texture Overlay */}
       <div
         aria-hidden="true"

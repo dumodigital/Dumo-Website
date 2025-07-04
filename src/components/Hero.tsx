@@ -98,7 +98,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={heroRef} className="hero w-full bg-gradient-to-b from-[#181c22] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans pt-0 md:pt-0 mobile-hero-padding" role="region" aria-label="Homepage Hero Banner">
+    <div ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans pt-0 md:pt-0 mobile-hero-padding" role="region" aria-label="Homepage Hero Banner">
       <style>{`
         @media (max-width: 767px) {
           .mobile-hero-padding {
@@ -156,8 +156,6 @@ const Hero = () => {
           boxShadow: 'none',
           border: 'none',
         }} />
-        {/* Section bottom fade for smooth transition to Testimonials */}
-        <div className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none" style={{background: 'linear-gradient(to bottom, rgba(24,28,34,0) 0%, #181c22 80%, #181c22 100%)'}} />
       </div>
 
       {/* Sticky Header (fixed on mobile, sticky on desktop) */}
