@@ -208,7 +208,7 @@ const Services: React.FC = () => {
                 href="https://www.shopify.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                className="flex items-center gap-3 px-3 py-2 md:px-4 md:py-2 rounded-full bg-[#181c22] text-white font-bold text-sm md:text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-0 w-full max-w-xs md:min-w-[140px] md:w-auto md:max-w-none justify-center whitespace-normal text-center"
                 style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
                 <span className="block md:hidden">Work With Us on Shopify</span>
@@ -222,7 +222,7 @@ const Services: React.FC = () => {
                 href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                className="flex items-center gap-3 px-3 py-2 md:px-4 md:py-2 rounded-full bg-[#181c22] text-white font-bold text-sm md:text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-0 w-full max-w-xs md:min-w-[140px] md:w-auto md:max-w-none justify-center whitespace-normal text-center"
                 style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
                 <span className="block md:hidden">Work With Us on Klaviyo</span>
