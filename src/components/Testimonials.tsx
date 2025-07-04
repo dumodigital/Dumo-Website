@@ -6,14 +6,14 @@ const testimonials = [
     author: "Kathy",
     title: "Head of Sales",
     company: "Savannah Bee Company",
-    logo: "/images/SavannahBeeLogo.png"
+    logo: "/images/bee.png"
   },
   {
     text: "“I can personally attest to Charlie and Alex's mission to make businesses look smart and sell smarter. This dynamic duo relaunched our shipping program for our 15-year-old baking business this weekend -- and the orders are pouring in. From a website refresh to Klaviyo email campaigns to Instagram design and copy, Dumo Digital doesn't miss an opportunity to be creative.”",
     author: "Cindy",
     title: "Founder",
     company: "Hungry Monkey Baking",
-    logo: "/images/hungrymonkeybaking.png"
+    logo: "/images/HMB.png"
   },
   {
     text: "“You've got steeze in spades. Excellent creative license—your copywriting looks fantastic. Every word feels intentional and on-brand. It's clear you understand how to capture attention while keeping things true to the voice.”",
@@ -27,7 +27,7 @@ const testimonials = [
     author: "Hannah",
     title: "President",
     company: "Savannah Bee Company",
-    logo: "/images/SavannahBeeLogo.png"
+    logo: "/images/bee.png"
   },
   {
     text: "“Just wanted to send a quick note of thanks for all your help getting the Diamond Dots website over the finish line. You both did a fantastic job—responsive, thorough, and easy to work with every step of the way. We really appreciate everything you did. We are so happy to have found you. Looking forward to working together again down the line.”",
@@ -64,31 +64,71 @@ const Testimonials: React.FC = () => {
   }
 
   return (
-    <section className="flex flex-col min-h-[35vh] w-full bg-gradient-to-b from-[#7BB9E8]/40 via-[#4A90E2]/60 to-[#181c22]">
-      <div className="flex-1 flex items-center justify-center w-full h-full">
-        <div className="mx-auto max-w-3xl w-full px-6 md:px-12 flex flex-col items-center justify-center text-center h-full">
-          <div
-            className={`transition-all duration-400 ease-in-out w-full relative`}
-            style={{
-              transform: sliding
-                ? `translateX(${direction === 'right' ? '100%' : '-100%'})`
-                : 'translateX(0)',
-              opacity: sliding ? 0 : 1,
-            }}
-          >
-            <blockquote className="flex flex-col items-center justify-center text-white/90 text-base md:text-lg font-normal leading-snug italic mb-4 mx-auto text-center" style={{fontFamily: 'Inter, Satoshi, sans-serif', transition: 'opacity 0.6s', maxWidth: '100%'}}>
-              <span className="block px-1 mx-auto">{testimonials[index].text}</span>
-            </blockquote>
-            <div className="flex flex-col items-center">
-              <div className="text-white font-semibold text-sm md:text-base mb-0.5 text-center" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{testimonials[index].author}</div>
-              <div className="text-[#7BB9E8]/80 text-xs md:text-sm font-medium tracking-wide uppercase text-center" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
-                {testimonials[index].title}{testimonials[index].company ? `, ${testimonials[index].company}` : ''}
+    <section
+      className="min-h-[38vh] w-full flex items-center justify-center bg-gradient-to-b from-[#181c22] via-[#23344a] to-[#7BB9E8]/30 py-12 relative overflow-hidden"
+      style={{ minHeight: '38vh' }}
+    >
+      {/* Noise Texture Overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage:
+            'url("data:image/svg+xml,%3Csvg width=\'100%25\' height=\'100%25\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.07\'/%3E%3C/svg%3E")',
+          backgroundRepeat: 'repeat',
+          backgroundSize: 'cover',
+          opacity: 0.7,
+        }}
+      />
+      <div className="w-full max-w-3xl mx-auto px-2 md:px-0 flex flex-col items-center justify-center relative z-10" style={{ minHeight: '24vh' }}>
+        {/* Section Header */}
+        <div className="mb-6 text-center mt-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.08}}>
+            Real Results, Real Stories
+          </h2>
+          <div className="mx-auto w-20 h-1 bg-[#7BB9E8] rounded-full mt-3" />
+        </div>
+        <div className="w-full max-w-3xl flex items-center justify-center">
+          <div className="flex flex-col md:flex-row items-center bg-[#eaf3fa]/90 border border-[#7BB9E8] rounded-xl shadow-lg w-full max-w-3xl p-4 md:p-6 gap-6" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
+            {/* Logo */}
+            {testimonials[index].logo && (
+              <img
+                src={testimonials[index].logo}
+                alt={testimonials[index].company + ' logo'}
+                className="h-20 w-20 md:h-24 md:w-24 object-contain mb-2"
+                style={{ maxWidth: '96px' }}
+              />
+            )}
+            {/* Quote and Author */}
+            <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+              <blockquote
+                className="relative text-[#222] text-lg md:text-xl font-serif font-medium leading-relaxed mb-2 pl-3 border-l-4 border-[#7BB9E8]"
+                style={{ fontFamily: 'Inter, Satoshi, serif' }}
+              >
+                {testimonials[index].text}
+              </blockquote>
+              <div className="mt-1">
+                <div className="text-[#181c22] font-semibold text-sm md:text-base mb-0.5" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
+                  {testimonials[index].author}
+                </div>
+                <div className="text-[#7BB9E8] text-xs font-medium tracking-wide uppercase" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
+                  {testimonials[index].title}{testimonials[index].company ? `, ${testimonials[index].company}` : ''}
+                </div>
               </div>
-              {testimonials[index].logo && (
-                <img src={testimonials[index].logo} alt={testimonials[index].company + ' logo'} className="mt-4 h-16 md:h-24 w-auto mx-auto object-contain" style={{maxWidth: '200px'}} />
-              )}
             </div>
           </div>
+        </div>
+        {/* CTA Button */}
+        <div className="flex justify-center mt-16">
+          <a
+            href="https://calendly.com/charliedumo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 rounded-full bg-[#7BB9E8] text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
+            style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+          >
+            Get in touch today
+          </a>
         </div>
       </div>
     </section>
