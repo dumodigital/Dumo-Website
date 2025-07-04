@@ -201,47 +201,57 @@ const Services: React.FC = () => {
             `}</style>
           </div>
           <div className="flex flex-col items-center justify-center mt-8">
-            {/* Responsive button+logo pairs */}
-            <div className="flex flex-row gap-4 w-full justify-center flex-wrap">
-              {/* Shopify Button + Logo (mobile) */}
-              <div className="flex flex-col items-center w-1/2 md:w-auto">
+            {/* Mobile-only button+logo row */}
+            <div className="flex flex-row gap-4 w-full justify-center md:hidden">
+              {/* Shopify Button + Logo */}
+              <div className="flex flex-col items-center w-1/2">
                 <a
                   href="https://www.shopify.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap w-full"
+                  className="w-full flex items-center justify-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition whitespace-nowrap"
                   style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
                 >
-                  <span className="block md:hidden">Work With Us on Shopify</span>
-                  <>
-                    <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain hidden md:block" />
-                    <span className="hidden md:block">Work With Us on Shopify</span>
-                  </>
+                  Work With Us on Shopify
                 </a>
-                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-16 w-16 object-contain mt-4 md:hidden" />
+                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-16 w-16 object-contain mt-3" />
               </div>
-              {/* Klaviyo Button + Logo (mobile) */}
-              <div className="flex flex-col items-center w-1/2 md:w-auto">
+              {/* Klaviyo Button + Logo */}
+              <div className="flex flex-col items-center w-1/2">
                 <a
                   href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap w-full"
+                  className="w-full flex items-center justify-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition whitespace-nowrap"
                   style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
                 >
-                  <span className="block md:hidden">Work With Us on Klaviyo</span>
-                  <>
-                    <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain hidden md:block" />
-                    <span className="hidden md:block">Work With Us on Klaviyo</span>
-                  </>
+                  Work With Us on Klaviyo
                 </a>
-                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-16 w-16 object-contain mt-4 md:hidden" />
+                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-16 w-16 object-contain mt-3" />
               </div>
             </div>
-            {/* Logos below buttons, extra large and centered on mobile only */}
-            <div className="flex flex-row gap-8 justify-center mt-6 md:hidden">
-              <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-28 w-28 object-contain" />
-              <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-28 w-28 object-contain" />
+            {/* Desktop-only button row (unchanged) */}
+            <div className="hidden md:flex flex-row gap-4 w-full justify-center flex-wrap">
+              <a
+                href="https://www.shopify.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+              >
+                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain" />
+                Work With Us on Shopify
+              </a>
+              <a
+                href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+              >
+                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain" />
+                Work With Us on Klaviyo
+              </a>
             </div>
           </div>
         </div>
