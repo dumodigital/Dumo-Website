@@ -201,35 +201,6 @@ const Services: React.FC = () => {
             `}</style>
           </div>
           <div className="flex flex-col items-center justify-center mt-8">
-            {/* Mobile-only button+logo row */}
-            <div className="flex flex-row gap-4 w-full justify-center md:hidden">
-              {/* Shopify Button + Logo */}
-              <div className="flex flex-col items-center w-1/2">
-                <a
-                  href="https://www.shopify.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition whitespace-nowrap"
-                  style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
-                >
-                  Work With Us on Shopify
-                </a>
-                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-16 w-16 object-contain mt-3" />
-              </div>
-              {/* Klaviyo Button + Logo */}
-              <div className="flex flex-col items-center w-1/2">
-                <a
-                  href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition whitespace-nowrap"
-                  style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
-                >
-                  Work With Us on Klaviyo
-                </a>
-                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-16 w-16 object-contain mt-3" />
-              </div>
-            </div>
             {/* Desktop-only button row (unchanged) */}
             <div className="hidden md:flex flex-row gap-4 w-full justify-center flex-wrap">
               <a
