@@ -200,6 +200,30 @@ const Services: React.FC = () => {
               }
             `}</style>
           </div>
+          <div className="flex flex-col items-center justify-center mt-8">
+            <div className="flex flex-row gap-4 w-full justify-center overflow-x-auto" style={{WebkitOverflowScrolling: 'touch'}}>
+              <a
+                href="https://www.shopify.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+              >
+                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain" />
+                Create a Shopify Store
+              </a>
+              <a
+                href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+              >
+                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain" />
+                Get Started with Klaviyo
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

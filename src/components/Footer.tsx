@@ -60,9 +60,6 @@ const Footer = () => (
             Privacy Policy
           </a>
           <span className="text-white/20">•</span>
-          <a href="#" className="text-white/40 hover:text-[#7BB9E8] transition-all duration-200">
-            Terms of Service
-          </a>
         </div>
       </div>
     </div>
