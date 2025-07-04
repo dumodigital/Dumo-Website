@@ -206,21 +206,21 @@ const Services: React.FC = () => {
                 href="https://www.shopify.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                className="flex flex-col md:flex-row items-center gap-1 md:gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
                 style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
-                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain" />
-                Create a Shopify Store
+                <span className="order-2 md:order-1">Create a Shopify Store</span>
+                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain order-1 md:order-2 mt-2 md:mt-0" />
               </a>
               <a
                 href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                className="flex flex-col md:flex-row items-center gap-1 md:gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
                 style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
-                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain" />
-                Get Started with Klaviyo
+                <span className="order-2 md:order-1">Get Started with Klaviyo</span>
+                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain order-1 md:order-2 mt-2 md:mt-0" />
               </a>
             </div>
           </div>
