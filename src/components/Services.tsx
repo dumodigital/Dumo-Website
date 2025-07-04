@@ -72,7 +72,7 @@ const Services: React.FC = () => {
 
   return (
     <>
-      <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8">
+      <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-b from-[#181c22] via-[#222b36] to-[#23344a] min-h-[80vh] flex flex-col justify-center mt-0">
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
           <div className="mb-10 md:mb-20 mt-16">
@@ -201,27 +201,41 @@ const Services: React.FC = () => {
             `}</style>
           </div>
           <div className="flex flex-col items-center justify-center mt-8">
-            <div className="flex flex-row gap-4 w-full justify-center overflow-x-auto" style={{WebkitOverflowScrolling: 'touch'}}>
+            {/* Responsive button+logo pairs */}
+            <div className="flex flex-row gap-4 w-full justify-center flex-wrap">
+              {/* Shopify Button */}
               <a
                 href="https://www.shopify.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col md:flex-row items-center gap-1 md:gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
                 style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
-                <span className="order-2 md:order-1">Create a Shopify Store</span>
-                <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain order-1 md:order-2 mt-2 md:mt-0" />
+                <span className="block md:hidden">Work With Us on Shopify</span>
+                <>
+                  <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-12 w-12 object-contain hidden md:block" />
+                  <span className="hidden md:block">Work With Us on Shopify</span>
+                </>
               </a>
+              {/* Klaviyo Button */}
               <a
                 href="https://www.klaviyo.com/partner/signup?utm_source=001Nu00000NqoTKIAZ&utm_medium=partner"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col md:flex-row items-center gap-1 md:gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
+                className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#181c22] text-white font-bold text-base border-2 border-[#7BB9E8] hover:bg-[#222c38] transition min-w-[140px] justify-center whitespace-nowrap"
                 style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
-                <span className="order-2 md:order-1">Get Started with Klaviyo</span>
-                <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain order-1 md:order-2 mt-2 md:mt-0" />
+                <span className="block md:hidden">Work With Us on Klaviyo</span>
+                <>
+                  <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-12 w-12 object-contain hidden md:block" />
+                  <span className="hidden md:block">Work With Us on Klaviyo</span>
+                </>
               </a>
+            </div>
+            {/* Logos below buttons, extra large and centered on mobile only */}
+            <div className="flex flex-row gap-8 justify-center mt-6 md:hidden">
+              <img src="/images/shopify-logo-white.png" alt="Shopify" className="h-28 w-28 object-contain" />
+              <img src="/images/klaviyo-logo-white.png" alt="Klaviyo" className="h-28 w-28 object-contain" />
             </div>
           </div>
         </div>
