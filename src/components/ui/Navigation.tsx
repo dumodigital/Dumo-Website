@@ -68,13 +68,13 @@ const Navigation = () => {
   return (
     <nav className={navClassName}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 py-0">
+        <div className="flex justify-between items-center h-10 md:h-16 py-1 md:py-0">
           {/* Logo */}
           <div className="flex items-center">
             <img
               src="/images/DD.png"
               alt="Dumo Digital"
-              className="h-10 w-auto md:h-14 transition-all duration-300"
+              className="h-6 w-auto md:h-14 transition-all duration-300"
             />
           </div>
 
@@ -84,7 +84,7 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white/70 font-medium transition-colors duration-200 hover:text-[#7BB9E8] text-lg tracking-wide relative group bg-transparent"
+                className="text-white/70 font-medium transition-colors duration-200 hover:text-[#7BB9E8] text-base md:text-lg tracking-wide relative group bg-transparent"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7BB9E8] transition-all duration-300 group-hover:w-full"></span>
@@ -94,7 +94,7 @@ const Navigation = () => {
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-8 px-8 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-semibold rounded-[40px] shadow-lg hover:from-[#5fa6d6] hover:to-[#357abd] transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] premium-btn"
+              className="ml-4 md:ml-8 px-5 md:px-8 py-2 md:py-3 bg-gradient-to-r from-[#7BB9E8] to-[#357abd] text-black font-semibold rounded-[40px] shadow-lg hover:from-[#5fa6d6] hover:to-[#357abd] transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] premium-btn text-base md:text-lg"
             >
               Get Started
             </a>
@@ -103,13 +103,13 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="lg:hidden p-1.5 md:p-2 rounded-lg hover:bg-white/10 transition-colors"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className="w-7 h-7 text-white" />
+              <X className="w-6 h-6 md:w-7 md:h-7 text-white" />
             ) : (
-              <Menu className="w-7 h-7 text-white" />
+              <Menu className="w-6 h-6 md:w-7 md:h-7 text-white" />
             )}
           </button>
         </div>

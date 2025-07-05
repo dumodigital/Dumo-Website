@@ -74,7 +74,7 @@ const Services: React.FC = () => {
     <>
       <section
         id="services"
-        className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8"
+        className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8 scroll-mt-12 md:scroll-mt-20"
       >
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
@@ -135,7 +135,9 @@ const Services: React.FC = () => {
           {/* CTA Button */}
           <div className="flex justify-center mt-8">
             <a
-              href="#contact"
+              href="https://calendly.com/charlie-dumo/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-8 py-4 rounded-full bg-[#7BB9E8] text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
               style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
             >
@@ -206,7 +208,7 @@ const Services: React.FC = () => {
           <div className="flex flex-col items-center justify-center mt-8">
             {/* Mobile-only CTA button */}
             <a
-              href="https://calendly.com/dumodigital"
+              href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="flex md:hidden btn premium-btn w-full max-w-xs mx-auto mb-4 justify-center items-center text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2 animate-fadein"

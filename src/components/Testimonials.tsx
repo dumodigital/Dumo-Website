@@ -118,7 +118,7 @@ const Testimonials: React.FC = () => {
         {/* CTA Button */}
         <div className="flex justify-center mt-16">
           <a
-            href="https://calendly.com/charliedumo"
+            href="https://calendly.com/charlie-dumo/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 rounded-full bg-[#7BB9E8] text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2"
