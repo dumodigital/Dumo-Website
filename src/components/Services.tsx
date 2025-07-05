@@ -179,13 +179,13 @@ const Services: React.FC = () => {
               ref={marqueeRef}
               className="ecom-marquee flex flex-row items-start divide-x divide-[#7BB9E8]/20"
               style={{
-                width: setWidth ? setWidth * 2 : undefined,
+                width: setWidth ? setWidth * 4 : undefined,
                 animation: setWidth
-                  ? `ecom-marquee-scroll ${setWidth / 40}s linear infinite`
+                  ? `ecom-marquee-scroll ${setWidth / 25}s linear infinite`
                   : undefined,
               }}
             >
-              {[...marqueeServices, ...marqueeServices].map((service, idx) => (
+              {[...marqueeServices, ...marqueeServices, ...marqueeServices, ...marqueeServices].map((service, idx) => (
                 <div
                   key={idx}
                   className="flex flex-col justify-start px-10 py-8 min-w-[260px] max-w-sm"
@@ -199,15 +199,17 @@ const Services: React.FC = () => {
             <style>{`
               @keyframes ecom-marquee-scroll {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(-${setWidth}px); }
+                100% { transform: translateX(-${setWidth * 2}px); }
               }
             `}</style>
           </div>
           <div className="flex flex-col items-center justify-center mt-8">
             {/* Mobile-only CTA button */}
             <a
-              href="#contact"
-              className="flex md:hidden btn premium-btn w-full max-w-xs mx-auto mb-4 text-center text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2 animate-fadein"
+              href="https://calendly.com/dumodigital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex md:hidden btn premium-btn w-full max-w-xs mx-auto mb-4 justify-center items-center text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2 animate-fadein"
               style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
             >
               Scale Your Brand Today
