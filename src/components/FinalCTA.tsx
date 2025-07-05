@@ -2,10 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gradient-to-br from-slate-900 to-blue-900"
-    >
+    <section id="contact" className="py-20 bg-gradient-to-br from-slate-900 to-blue-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 border border-white/20">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">

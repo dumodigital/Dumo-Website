@@ -72,10 +72,13 @@ const Services: React.FC = () => {
 
   return (
     <>
-      <section id="services" className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8">
+      <section
+        id="services"
+        className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8"
+      >
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
-          <div className="mb-10 md:mb-20 mt-16">
+          <div className="mb-10 md:mb-20 mt-16 animate-fadein">
             <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">What We Do</span>
             <h2 className="text-[2.1rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-3 max-w-3xl" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.1}}>
               Your brand and our model.<br />
@@ -201,6 +204,14 @@ const Services: React.FC = () => {
             `}</style>
           </div>
           <div className="flex flex-col items-center justify-center mt-8">
+            {/* Mobile-only CTA button */}
+            <a
+              href="#contact"
+              className="flex md:hidden btn premium-btn w-full max-w-xs mx-auto mb-4 text-center text-white text-lg font-bold shadow-md hover:bg-[#5fa6db] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7BB9E8] focus:ring-offset-2 animate-fadein"
+              style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
+            >
+              Scale Your Brand Today
+            </a>
             {/* Desktop-only button row (unchanged) */}
             <div className="hidden md:flex flex-row gap-4 w-full justify-center flex-wrap">
               <a
