@@ -91,7 +91,7 @@ const FinalCTA = () => {
       <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="27" cy="7" r="1"/%3E%3Ccircle cx="47" cy="7" r="1"/%3E%3Ccircle cx="7" cy="27" r="1"/%3E%3Ccircle cx="27" cy="27" r="1"/%3E%3Ccircle cx="47" cy="27" r="1"/%3E%3Ccircle cx="7" cy="47" r="1"/%3E%3Ccircle cx="27" cy="47" r="1"/%3E%3Ccircle cx="47" cy="47" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}}></div>
       <div className="max-w-4xl mx-auto px-4 md:px-0 relative z-10 flex flex-col items-center justify-center">
         <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-10 mt-10 text-center" style={{ fontWeight: 700, letterSpacing: '0.18em' }}>READY TO SCALE?</span>
-        <h2 className="text-[2rem] xs:text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] text-white mb-2 tracking-tight text-center whitespace-nowrap" style={{fontFamily: 'Inter, Satoshi, sans-serif', letterSpacing: '-0.01em'}}>
+        <h2 className="text-[1.75rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1] text-white mb-2 tracking-tight text-center" style={{fontFamily: 'Inter, Satoshi, sans-serif', letterSpacing: '-0.01em'}}>
           Let's Build Your <span className="text-[#7BB9E8]">Ecommerce Empire</span>
         </h2>
         <div className="w-24 h-1 bg-[#7BB9E8] rounded-full mb-8 mt-2 mx-auto" />
@@ -100,16 +100,32 @@ const FinalCTA = () => {
         </p>
         {/* Main Benefits Row */}
         <div className="w-full flex flex-col md:flex-row gap-6 md:gap-6 mb-8 md:mb-12 items-stretch justify-center md:items-stretch">
-          <div className="flex flex-row md:flex-row w-full gap-3 md:gap-6 justify-center items-stretch">
+          {/* Mobile: Vertical Stack */}
+          <div className="flex flex-col md:hidden w-full gap-6 items-center">
             {benefits.map((benefit, idx) => (
               <div
                 key={benefit.title}
-                className="group flex-1 bg-white/5 border border-[#7BB9E8]/20 rounded-2xl p-4 md:p-8 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-[#7BB9E8] hover:bg-[#10151a]/80 cursor-pointer min-w-0 max-w-[180px] md:max-w-[340px] mx-1 md:mx-2"
+                className="group w-full max-w-sm bg-white/5 border border-[#7BB9E8]/20 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-[#7BB9E8] hover:bg-[#10151a]/80 cursor-pointer"
                 style={{ boxShadow: "0 4px 24px 0 rgba(20,40,80,0.10)" }}
               >
-                <div className="mb-2 md:mb-4" style={{width: 32, height: 32}}>{benefit.icon}</div>
-                <h3 className="text-xs md:text-2xl font-bold text-white mb-1 md:mb-2 group-hover:text-[#7BB9E8] transition-colors duration-200" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{benefit.title}</h3>
-                <p className="text-[10px] md:text-base text-white/80 leading-relaxed font-medium mb-0 md:mb-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{benefit.description}</p>
+                <div className="mb-4" style={{width: 40, height: 40}}>{benefit.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#7BB9E8] transition-colors duration-200" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{benefit.title}</h3>
+                <p className="text-sm text-white/80 leading-relaxed font-medium" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Desktop: Horizontal Row */}
+          <div className="hidden md:flex flex-row w-full gap-6 justify-center items-stretch">
+            {benefits.map((benefit, idx) => (
+              <div
+                key={benefit.title}
+                className="group flex-1 bg-white/5 border border-[#7BB9E8]/20 rounded-2xl p-8 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-[#7BB9E8] hover:bg-[#10151a]/80 cursor-pointer max-w-[340px] mx-2"
+                style={{ boxShadow: "0 4px 24px 0 rgba(20,40,80,0.10)" }}
+              >
+                <div className="mb-4" style={{width: 32, height: 32}}>{benefit.icon}</div>
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#7BB9E8] transition-colors duration-200" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{benefit.title}</h3>
+                <p className="text-base text-white/80 leading-relaxed font-medium mb-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{benefit.description}</p>
               </div>
             ))}
           </div>
