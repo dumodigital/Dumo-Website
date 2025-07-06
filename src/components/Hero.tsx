@@ -26,8 +26,6 @@ const Hero = () => {
   const closeButtonRef = useRef(null);
   const firstLinkRef = useRef(null);
   const lastLinkRef = useRef(null);
-  const [showStickyHeader, setShowStickyHeader] = useState(true);
-  const lastScrollY = useRef(0);
 
   // Typewriter effect with ribbon wipe
   useEffect(() => {
@@ -80,25 +78,8 @@ const Hero = () => {
     };
   }, [menuOpen]);
 
-  // Sticky header on scroll up
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY < 10) {
-        setShowStickyHeader(true);
-      } else if (currentScrollY > lastScrollY.current) {
-        setShowStickyHeader(false); // scrolling down
-      } else {
-        setShowStickyHeader(true); // scrolling up
-      }
-      lastScrollY.current = currentScrollY;
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans pt-0 md:pt-0 mobile-hero-padding" role="region" aria-label="Homepage Hero Banner">
+    <div id="hero" ref={heroRef} className="hero w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans pt-0 md:pt-0 mobile-hero-padding" role="region" aria-label="Homepage Hero Banner">
       <style>{`
         @media (max-width: 767px) {
           .mobile-hero-padding {
@@ -158,36 +139,12 @@ const Hero = () => {
         }} />
       </div>
 
-      {/* Sticky Header (fixed on mobile, sticky on desktop) */}
-      <header className="sticky top-0 z-30 w-full border-b border-white/5 backdrop-blur-sm mobile-fixed-header">
+      {/* Sticky Header (mobile only) */}
+      <header className="lg:hidden sticky top-0 z-30 w-full border-b border-white/5 backdrop-blur-sm mobile-fixed-header">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-6">
           <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-14 w-auto transition-all duration-300" />
-          <nav className="hidden md:flex items-center space-x-12" aria-label="Main Navigation">
-            {menuItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-white/50 hover:text-white font-light transition-all duration-300 text-sm tracking-wide relative group"
-                tabIndex={0}
-                aria-label={item.name}
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#7BB9E8] transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-            <a
-              href="https://calendly.com/charlie-dumo/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-8 px-8 py-3 bg-[#7BB9E8] text-black font-medium text-sm tracking-wide hover:bg-white transition-all duration-300 hover:scale-105 shadow-lg"
-              tabIndex={0}
-              aria-label="Get Started"
-            >
-              Get Started
-            </a>
-          </nav>
           <button
-            className="md:hidden p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
+            className="p-2 text-white hover:text-[#7BB9E8] transition-colors duration-200 focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Open navigation menu"
             ref={menuButtonRef}
@@ -350,52 +307,21 @@ const Hero = () => {
               <span>Stores Managed</span>
             </div>
             <div className="hidden md:flex items-center space-x-2">
-              <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">24/7</span>
-              <span>Shopify Support</span>
+              <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">${animatedStats[1]}M+</span>
+              <span>Revenue Generated</span>
             </div>
           </div>
         </div>
       </section>
-      {/* Animations and microinteractions */}
+
+      {/* Animations */}
       <style>{`
-        .animate-fade-in { animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
-        .animate-fade-in-slow { animation: fadeIn 2.2s cubic-bezier(.4,0,.2,1) both; }
-        .animate-fade-in-hero { animation: fadeInHero 1.5s cubic-bezier(.4,0,.2,1) both; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-        @keyframes fadeInHero { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: none; } }
-        .animate-glow { box-shadow: 0 0 24px 0 #7BB9E8aa, 0 2px 8px 0 #0003; }
-        .animate-countup { transition: color 0.3s; }
-        .animate-accent-bar { animation: accentBar 1.2s cubic-bezier(.4,0,.2,1) 0.5s forwards, accentGlow 2.5s infinite alternate; }
-        .animate-accent-bar-vertical { animation: accentBarVertical 2.5s infinite alternate; }
-        @keyframes accentBar { from { width: 0; } to { width: 4rem; } }
-        @keyframes accentGlow { from { box-shadow: 0 0 8px 0 #7BB9E8; } to { box-shadow: 0 0 24px 4px #7BB9E8; } }
-        @keyframes accentBarVertical { 0% { box-shadow: 0 0 0 0 #7BB9E8; } 100% { box-shadow: 0 0 32px 8px #7BB9E8; } }
-        .animate-slide-in-1 { animation: fadeIn 1.1s 0.1s both; }
-        .animate-slide-in-2 { animation: fadeIn 1.1s 0.3s both; }
-        .animate-slide-in-3 { animation: fadeIn 1.1s 0.5s both; }
-        .animate-slide-in-4 { animation: fadeIn 1.1s 0.7s both; }
-        .animate-slide-in-5 { animation: fadeIn 1.1s 0.9s both; }
-        .ripple { position: relative; overflow: hidden; }
-        .ripple:after { content: ''; position: absolute; left: 50%; top: 50%; width: 0; height: 0; background: rgba(123,185,232,0.2); border-radius: 100%; transform: translate(-50%, -50%); transition: width 0.4s, height 0.4s; z-index: 0; }
-        .ripple:active:after { width: 200px; height: 200px; transition: 0s; }
-        .animate-glass-float { animation: glassFloat 1.5s cubic-bezier(.4,0,.2,1) both; }
-        @keyframes glassFloat { from { opacity: 0; transform: translateY(60px) scale(0.98); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
-        .animate-bounce-slow {
-          animation: none;
+        @keyframes fade-in-hero {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        .mobile-drawer-enter {
-          transform: translateX(-100%);
-        }
-        .mobile-drawer-enter-active {
-          transform: translateX(0);
-          transition: transform 300ms ease-out;
-        }
-        .mobile-drawer-exit {
-          transform: translateX(0);
-        }
-        .mobile-drawer-exit-active {
-          transform: translateX(-100%);
-          transition: transform 300ms ease-in;
+        .animate-fade-in-hero {
+          animation: fade-in-hero 0.8s ease-out;
         }
         @media (max-width: 767px) {
           .mobile-fixed-header {

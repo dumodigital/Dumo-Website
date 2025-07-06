@@ -1,3 +1,4 @@
+import Navigation from "@/components/ui/Navigation";
 import Hero from "@/components/Hero";
 import AsSeenOn from "@/components/AsSeenOn";
 import Services from "@/components/Services";
@@ -12,6 +13,7 @@ const Index = () => {
   return (
     <div>
       <PrivacyConsent />
+      <Navigation />
       <Hero />
       <AsSeenOn />
       <Services />
