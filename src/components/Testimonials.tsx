@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const testimonials = [
   {
@@ -40,28 +40,14 @@ const testimonials = [
 
 const Testimonials: React.FC = () => {
   const [index, setIndex] = useState(0);
-  const [sliding, setSliding] = useState(false);
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
-  const total = testimonials.length;
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
   // Auto-rotate every 5 seconds
   useEffect(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      slideTo((index + 1) % total, 'right');
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 5000);
-    return () => intervalRef.current && clearInterval(intervalRef.current);
-  }, [index, total]);
 
-  function slideTo(newIndex: number, dir: 'left' | 'right') {
-    setDirection(dir);
-    setSliding(true);
-    setTimeout(() => {
-      setIndex(newIndex);
-      setSliding(false);
-    }, 400);
-  }
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="min-h-[38vh] w-full flex items-center justify-center bg-gradient-to-b from-[#181c22] via-[#23344a] to-[#7BB9E8]/30 py-12 relative overflow-hidden" style={{ minHeight: '38vh' }}>
@@ -77,7 +63,7 @@ const Testimonials: React.FC = () => {
           opacity: 0.7,
         }}
       />
-      <div className="w-full max-w-3xl mx-auto px-2 md:px-0 flex flex-col items-center justify-center relative z-10" style={{ minHeight: '24vh' }}>
+      <div className="w-full max-w-6xl mx-auto px-2 md:px-8 flex flex-col items-center justify-center relative z-10" style={{ minHeight: '24vh' }}>
         {/* Section Header */}
         <div className="mb-6 text-center mt-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.08}}>
@@ -85,38 +71,42 @@ const Testimonials: React.FC = () => {
           </h2>
           <div className="mx-auto w-20 h-1 bg-[#7BB9E8] rounded-full mt-3" />
         </div>
-        <div className="w-full max-w-3xl flex items-center justify-center">
-          <div className="flex flex-col md:flex-row items-center bg-[#eaf3fa]/90 border border-[#7BB9E8] rounded-xl shadow-lg w-full max-w-3xl p-4 md:p-6 gap-6" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
+        <div className="w-full max-w-5xl flex items-center justify-center">
+          <div className="flex flex-col md:flex-row items-center bg-[#eaf3fa]/90 border border-[#7BB9E8] rounded-xl shadow-lg w-full p-3 md:p-8 gap-3 md:gap-8 min-h-[320px] md:min-h-[320px]" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
             {/* Logo */}
             {testimonials[index].logo && (
               <img
                 src={testimonials[index].logo}
                 alt={testimonials[index].company + ' logo'}
-                className="h-20 w-20 md:h-24 md:w-24 object-contain mb-2"
-                style={{ maxWidth: '96px' }}
+                className="h-24 w-24 md:h-28 md:w-28 object-contain mb-1 md:mb-2 flex-shrink-0"
+                style={{ maxWidth: '112px' }}
               />
             )}
             {/* Quote and Author */}
-            <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-              <blockquote
-                className="relative text-[#222] text-lg md:text-xl font-serif font-medium leading-relaxed mb-2 pl-3 border-l-4 border-[#7BB9E8]"
-                style={{ fontFamily: 'Inter, Satoshi, serif' }}
-              >
-                {testimonials[index].text}
-              </blockquote>
-              <div className="mt-1">
-                <div className="text-[#181c22] font-semibold text-sm md:text-base mb-0.5" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
+            <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left h-full">
+              <div className="flex-1 flex flex-col justify-center">
+                <blockquote
+                  className="relative text-[#222] text-sm md:text-xl lg:text-2xl font-serif font-medium leading-relaxed mb-3 md:mb-4 pl-3 md:pl-4 border-l-4 border-[#7BB9E8] overflow-y-auto max-h-[200px] md:max-h-[200px]"
+                  style={{ fontFamily: 'Inter, Satoshi, serif' }}
+                >
+                  {testimonials[index].text}
+                </blockquote>
+              </div>
+              <div className="mt-auto">
+                <div className="text-[#181c22] font-semibold text-sm md:text-lg mb-0.5 md:mb-1" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
                   {testimonials[index].author}
                 </div>
-                <div className="text-[#7BB9E8] text-xs font-medium tracking-wide uppercase" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
+                <div className="text-[#7BB9E8] text-xs md:text-base font-medium tracking-wide uppercase" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
                   {testimonials[index].title}{testimonials[index].company ? `, ${testimonials[index].company}` : ''}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        
         {/* CTA Button */}
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-12">
           <a
             href="https://calendly.com/charlie-dumo/30min"
             target="_blank"
