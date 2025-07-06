@@ -2,7 +2,7 @@ const About = () => {
   return (
     <>
       {/* Section 1: Meet the Team */}
-      <section id="about" className="w-full py-20 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] scroll-mt-32 md:scroll-mt-32">
+      <section id="about" className="w-full pt-20 pb-0 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] scroll-mt-32 md:scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Header - moved down */}
@@ -83,16 +83,16 @@ const About = () => {
       </section>
 
       {/* Section 2: Story - Updated to match site theme */}
-      <section className="w-full py-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+      <section className="w-full pt-20 pb-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22]">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Story Header - moved down more */}
-          <div className="text-center mb-20 mt-24">
-            <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">Our Story</span>
+          <div className="text-center mb-20 mt-8">
+            <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 letter-spacing-wide">Our Story</span>
             <h2 className="text-5xl font-bold text-white mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               Built From Grit.<br/>Designed for Growth.
             </h2>
-            <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2" />
+            <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2 mx-auto" />
             <p className="text-xl text-white/70 mb-8">
               From gym sessions at OSU to building for clients nationwide.
             </p>
@@ -111,11 +111,11 @@ const About = () => {
             </div>
           </div>
 
-          {/* Logos - Updated styling */}
-          <div className="flex items-center justify-center gap-16 mb-16">
-            <img src="/images/DD.png" alt="Dumo Digital" className="h-12 opacity-60 hover:opacity-80 transition-opacity filter brightness-0 invert" />
-            <img src="/images/buckeye.png" alt="The Ohio State University" className="h-16 opacity-60 hover:opacity-80 transition-opacity" />
-            <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-12 opacity-60 hover:opacity-80 transition-opacity" />
+          {/* Logos - Centered and properly styled */}
+          <div className="flex items-center justify-center gap-16 mb-16 mx-auto max-w-2xl">
+            <img src="/images/DD.png" alt="Dumo Digital" className="h-12 opacity-60 hover:opacity-80 transition-opacity filter brightness-0 invert flex-shrink-0" />
+            <img src="/images/buckeye.png" alt="The Ohio State University" className="h-16 opacity-60 hover:opacity-80 transition-opacity flex-shrink-0" />
+            <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-12 opacity-60 hover:opacity-80 transition-opacity flex-shrink-0" />
           </div>
 
           {/* CTA - Updated styling */}
