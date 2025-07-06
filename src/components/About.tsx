@@ -2,14 +2,15 @@ const About = () => {
   return (
     <>
       {/* Section 1: Meet the Team */}
-      <section id="about" className="w-full pt-20 pb-16 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] scroll-mt-32 md:scroll-mt-32">
+      <section id="about" className="w-full pt-12 pb-20 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] scroll-mt-32 md:scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6">
           
-          {/* Header - moved down */}
-          <div className="text-center mb-20 mt-8">
+          {/* Header */}
+          <div className="text-center mb-20 pt-12">
             <h2 className="text-5xl font-bold text-white mb-4" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               Meet the Team
             </h2>
+            <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2 mx-auto" />
             <p className="text-xl text-white/70">
               Current students at The Ohio State University
             </p>
@@ -20,8 +21,8 @@ const About = () => {
             
             {/* Charlie - Left */}
             <div className="text-center">
-              <div className="w-64 h-80 mx-auto rounded-lg overflow-hidden mb-6">
-                <img src="/images/charlie-dumo.png" alt="Charlie Dumo" className="w-full h-full object-cover" />
+              <div className="w-64 h-80 mx-auto rounded-lg overflow-hidden mb-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <img src="/images/charlie-dumo.png" alt="Charlie Dumo" className="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-2" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
                 Charlie Dumo
@@ -46,15 +47,15 @@ const About = () => {
               </div>
             </div>
 
-            {/* OSU Logo - Middle - Fixed */}
-            <div className="flex justify-center items-start">
-              <img src="/images/buckeye.png" alt="The Ohio State University" className="w-40 h-40 object-contain -mt-8" />
+            {/* OSU Logo - Middle - Bigger and Higher */}
+            <div className="flex justify-center items-center lg:items-start">
+              <img src="/images/buckeye.png" alt="The Ohio State University" className="w-48 h-48 lg:w-64 lg:h-64 object-contain lg:-mt-12 drop-shadow-2xl" style={{filter: 'drop-shadow(0 0 20px rgba(187, 21, 39, 0.5)) drop-shadow(0 0 40px rgba(187, 21, 39, 0.3))'}} />
             </div>
 
             {/* Alex - Right */}
             <div className="text-center">
-              <div className="w-64 h-80 mx-auto rounded-lg overflow-hidden mb-6">
-                <img src="/images/alex-laplante.png" alt="Alex LaPlante" className="w-full h-full object-cover" />
+              <div className="w-64 h-80 mx-auto rounded-lg overflow-hidden mb-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <img src="/images/alex-laplante.png" alt="Alex LaPlante" className="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-2" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
                 Alex LaPlante
@@ -83,11 +84,11 @@ const About = () => {
       </section>
 
       {/* Section 2: Story - Updated to match site theme */}
-      <section className="w-full pt-16 pb-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+      <section className="w-full py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Story Header - moved down more */}
-          <div className="text-center mb-20 mt-8">
+          <div className="text-center mb-20">
             <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 letter-spacing-wide">Our Story</span>
             <h2 className="text-5xl font-bold text-white mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               Built From Grit.<br/>Designed for Growth.
@@ -101,24 +102,17 @@ const About = () => {
           {/* Story Content - Properly spaced and formatted */}
           <div className="max-w-4xl mx-auto mb-16">
             <div className="space-y-8 text-lg text-white/80 leading-relaxed text-center">
-              <p className="mb-6">Charlie and Alex met at The Ohio State University—two students who didn't plan to become entrepreneurs but ended up building something together that neither of them could have done alone.</p>
+              <p className="mb-6">Charlie and Alex met at The Ohio State University—two students who saw the world the same way. We didn't know exactly what we were building, but we both had drive—and a shared obsession with figuring things out from scratch. That common ground quickly turned into a real friendship built on trust, ambition, and execution.</p>
               
-              <p className="mb-6">It started at the gym. We'd bump into each other, swap life updates between sets, and eventually realized we both had a drive to build something real. One day, over post-workout smoothies, we sketched out a crazy idea. A few months later, that idea turned into Dumo Digital.</p>
+              <p className="mb-6">We met at the gym and became friends fast. We'd talk about business, branding, and building something of our own almost every time we ran into each other. At first, it was just ideas. Then it became weekends of actual work. A few months later, that turned into Dumo Digital.</p>
               
-              <p className="mb-6">We didn't have investors. We didn't have a roadmap. But we had each other—and the obsession to figure it out. Now, we help consumer brands bring their ideas to life online—especially in the CPG and food & beverage space. From bold brand storytelling to conversion-ready Shopify builds, we're focused on helping small teams look like national players.</p>
+              <p className="mb-6">No investors. No shortcuts. Just two 20-year-olds who backed themselves, learned fast, and made it happen. What started as a side hustle is now a full-service digital studio with a growing list of national clients.</p>
               
-              <p className="font-medium text-white text-xl">We haven't looked back since.</p>
+              <p className="font-medium text-white text-xl">Today, we specialize in helping CPG and food & beverage brands grow online—with strategy, creative, and execution that actually converts. From dorm room to boardrooms, we've built this thing brick by brick—and we're just getting started.</p>
             </div>
           </div>
 
-          {/* Logos - Truly centered */}
-          <div className="w-full flex justify-center mb-16">
-            <div className="flex items-center justify-center gap-12 md:gap-16">
-              <img src="/images/DD.png" alt="Dumo Digital" className="h-10 md:h-12 opacity-60 hover:opacity-80 transition-opacity filter brightness-0 invert" />
-              <img src="/images/buckeye.png" alt="The Ohio State University" className="h-12 md:h-16 opacity-60 hover:opacity-80 transition-opacity" />
-              <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-10 md:h-12 opacity-60 hover:opacity-80 transition-opacity" />
-            </div>
-          </div>
+
 
           {/* CTA - Updated styling */}
           <div className="text-center">

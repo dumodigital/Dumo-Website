@@ -74,11 +74,11 @@ const Services: React.FC = () => {
     <>
       <section
         id="services"
-        className="w-full py-10 md:py-28 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center mt-8 scroll-mt-12 md:scroll-mt-20"
+        className="w-full py-20 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center scroll-mt-12 md:scroll-mt-20"
       >
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
-          <div className="mb-10 md:mb-20 mt-16 animate-fadein">
+          <div className="mb-10 md:mb-20 animate-fadein mt-12">
             <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">What We Do</span>
             <h2 className="text-[2.1rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-3 max-w-3xl" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.1}}>
               Your brand and our model.<br />
@@ -148,9 +148,9 @@ const Services: React.FC = () => {
       </section>
 
       {/* Ecom Services Section - Premium Editorial, Infinite Marquee, Modern Copy */}
-      <section className="w-full py-24 md:py-32 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] overflow-hidden relative">
+      <section className="w-full py-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] overflow-hidden relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
-          <div className="pt-16 mb-14 md:mb-20 text-center">
+          <div className="mb-14 md:mb-20 text-center mt-12">
             <h2 className="text-3xl xs:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4 tracking-tight" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.08}}>
               For CPG Brands <span className="text-[#7BB9E8]">Ready to Scale Direct-to-Consumer</span>
             </h2>
