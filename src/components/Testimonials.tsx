@@ -72,28 +72,28 @@ const Testimonials: React.FC = () => {
           <div className="mx-auto w-20 h-1 bg-[#7BB9E8] rounded-full mt-3" />
         </div>
         <div className="w-full max-w-5xl flex items-center justify-center">
-          <div className="flex flex-col md:flex-row items-center bg-[#eaf3fa]/90 border border-[#7BB9E8] rounded-xl shadow-lg w-full p-3 md:p-8 gap-3 md:gap-8 min-h-[320px] md:min-h-[320px]" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
+          <div className="flex flex-col md:flex-row items-center bg-[#eaf3fa]/90 border border-[#7BB9E8] rounded-xl shadow-lg w-full p-3 md:p-8 gap-3 md:gap-8 h-[380px] md:min-h-[320px]" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
             {/* Logo */}
             {testimonials[index].logo && (
               <img
                 src={testimonials[index].logo}
                 alt={testimonials[index].company + ' logo'}
-                className="h-24 w-24 md:h-28 md:w-28 object-contain mb-1 md:mb-2 flex-shrink-0"
+                className="h-20 w-20 md:h-28 md:w-28 object-contain mb-1 md:mb-2 flex-shrink-0"
                 style={{ maxWidth: '112px' }}
               />
             )}
             {/* Quote and Author */}
-            <div className="flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left h-full">
-              <div className="flex-1 flex flex-col justify-center">
+            <div className="flex-1 flex flex-col justify-between items-center md:items-start text-center md:text-left h-full">
+              <div className="flex-1 flex flex-col justify-center overflow-hidden">
                 <blockquote
-                  className="relative text-[#222] text-sm md:text-xl lg:text-2xl font-serif font-medium leading-relaxed mb-3 md:mb-4 pl-3 md:pl-4 border-l-4 border-[#7BB9E8] overflow-y-auto max-h-[200px] md:max-h-[200px]"
-                  style={{ fontFamily: 'Inter, Satoshi, serif' }}
+                  className="relative text-[#222] text-xs md:text-xl lg:text-2xl font-serif font-medium leading-relaxed mb-3 md:mb-4 pl-3 md:pl-4 border-l-4 border-[#7BB9E8] overflow-y-auto"
+                  style={{ fontFamily: 'Inter, Satoshi, serif', maxHeight: '240px' }}
                 >
                   {testimonials[index].text}
                 </blockquote>
               </div>
-              <div className="mt-auto">
-                <div className="text-[#181c22] font-semibold text-sm md:text-lg mb-0.5 md:mb-1" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
+              <div className="mt-auto flex-shrink-0">
+                <div className="text-[#181c22] font-semibold text-xs md:text-lg mb-0.5 md:mb-1" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
                   {testimonials[index].author}
                 </div>
                 <div className="text-[#7BB9E8] text-xs md:text-base font-medium tracking-wide uppercase" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>

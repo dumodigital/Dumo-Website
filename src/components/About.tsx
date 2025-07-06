@@ -2,7 +2,7 @@ const About = () => {
   return (
     <>
       {/* Section 1: Meet the Team */}
-      <section id="about" className="w-full py-20 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#252525] scroll-mt-24 md:scroll-mt-32">
+      <section id="about" className="w-full py-20 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] scroll-mt-32 md:scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Header - moved down */}
@@ -83,11 +83,11 @@ const About = () => {
       </section>
 
       {/* Section 2: Story - Updated to match site theme */}
-      <section className="w-full py-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+      <section className="w-full py-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22]">
         <div className="max-w-6xl mx-auto px-6">
           
-          {/* Story Header - moved down */}
-          <div className="text-center mb-20 mt-16">
+          {/* Story Header - moved down more */}
+          <div className="text-center mb-20 mt-24">
             <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">Our Story</span>
             <h2 className="text-5xl font-bold text-white mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               Built From Grit.<br/>Designed for Growth.
@@ -98,15 +98,17 @@ const About = () => {
             </p>
           </div>
 
-          {/* Story Content - Centered without block */}
-          <div className="max-w-4xl mx-auto space-y-6 text-lg text-white/80 leading-relaxed text-center mb-16">
-            <p>Charlie and Alex met at The Ohio State University—two students who didn't plan to become entrepreneurs but ended up building something together that neither of them could have done alone.</p>
-            
-            <p>It started at the gym. We'd bump into each other, swap life updates between sets, and eventually realized we both had a drive to build something real. One day, over post-workout smoothies, we sketched out a crazy idea. A few months later, that idea turned into Dumo Digital.</p>
-            
-            <p>We didn't have investors. We didn't have a roadmap. But we had each other—and the obsession to figure it out. Now, we help consumer brands bring their ideas to life online—especially in the CPG and food & beverage space. From bold brand storytelling to conversion-ready Shopify builds, we're focused on helping small teams look like national players.</p>
-            
-            <p className="font-medium text-white">We haven't looked back since.</p>
+          {/* Story Content - Properly spaced and formatted */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="space-y-8 text-lg text-white/80 leading-relaxed text-center">
+              <p className="mb-6">Charlie and Alex met at The Ohio State University—two students who didn't plan to become entrepreneurs but ended up building something together that neither of them could have done alone.</p>
+              
+              <p className="mb-6">It started at the gym. We'd bump into each other, swap life updates between sets, and eventually realized we both had a drive to build something real. One day, over post-workout smoothies, we sketched out a crazy idea. A few months later, that idea turned into Dumo Digital.</p>
+              
+              <p className="mb-6">We didn't have investors. We didn't have a roadmap. But we had each other—and the obsession to figure it out. Now, we help consumer brands bring their ideas to life online—especially in the CPG and food & beverage space. From bold brand storytelling to conversion-ready Shopify builds, we're focused on helping small teams look like national players.</p>
+              
+              <p className="font-medium text-white text-xl">We haven't looked back since.</p>
+            </div>
           </div>
 
           {/* Logos - Updated styling */}
