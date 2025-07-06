@@ -91,7 +91,8 @@ const About = () => {
           <div className="text-center mb-20">
             <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 letter-spacing-wide">Our Story</span>
             <h2 className="text-5xl font-bold text-white mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
-              <span className="inline md:block">Built From Grit.</span><br className="hidden md:block"/><span className="inline md:block">Designed for Growth.</span>
+              <span className="block">Built From Grit.</span>
+              <span className="block">Designed for Growth.</span>
             </h2>
             <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2 mx-auto" />
             <p className="text-xl text-white/70 mb-8">
