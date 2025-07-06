@@ -2,7 +2,7 @@ const About = () => {
   return (
     <>
       {/* Section 1: Meet the Team */}
-      <section className="w-full py-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] scroll-mt-12 md:scroll-mt-20">
+      <section id="about" className="w-full py-20 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#252525] scroll-mt-12 md:scroll-mt-20">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Header - moved down */}
@@ -83,37 +83,37 @@ const About = () => {
       </section>
 
       {/* Section 2: Story - Updated to match site theme */}
-      <section id="about" className="w-full py-20 bg-gray-50">
+      <section className="w-full py-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22]">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Story Header - moved down */}
-          <div className="text-center mb-20 mt-8">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+          <div className="text-center mb-20 mt-16">
+            <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">Our Story</span>
+            <h2 className="text-5xl font-bold text-white mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               Built From Grit.<br/>Designed for Growth.
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2" />
+            <p className="text-xl text-white/70 mb-8">
               From gym sessions at OSU to building for clients nationwide.
             </p>
           </div>
 
-          {/* Story Content - Better styling */}
-          <div className="bg-white rounded-2xl p-12 shadow-lg border border-gray-100 mb-16">
-            <div className="max-w-4xl mx-auto space-y-6 text-lg text-gray-700 leading-relaxed">
-              <p>Charlie and Alex met at The Ohio State University—two students who didn't plan to become entrepreneurs but ended up building something together that neither of them could have done alone.</p>
-              
-              <p>It started at the gym. We'd bump into each other, swap life updates between sets, and eventually realized we both had a drive to build something real. One day, over post-workout smoothies, we sketched out a crazy idea. A few months later, that idea turned into Dumo Digital.</p>
-              
-              <p>We didn't have investors. We didn't have a roadmap. But we had each other—and the obsession to figure it out. Now, we help consumer brands bring their ideas to life online—especially in the CPG and food & beverage space. From bold brand storytelling to conversion-ready Shopify builds, we're focused on helping small teams look like national players.</p>
-              
-              <p className="font-medium text-gray-900">We haven't looked back since.</p>
-            </div>
+          {/* Story Content - Centered without block */}
+          <div className="max-w-4xl mx-auto space-y-6 text-lg text-white/80 leading-relaxed text-center mb-16">
+            <p>Charlie and Alex met at The Ohio State University—two students who didn't plan to become entrepreneurs but ended up building something together that neither of them could have done alone.</p>
+            
+            <p>It started at the gym. We'd bump into each other, swap life updates between sets, and eventually realized we both had a drive to build something real. One day, over post-workout smoothies, we sketched out a crazy idea. A few months later, that idea turned into Dumo Digital.</p>
+            
+            <p>We didn't have investors. We didn't have a roadmap. But we had each other—and the obsession to figure it out. Now, we help consumer brands bring their ideas to life online—especially in the CPG and food & beverage space. From bold brand storytelling to conversion-ready Shopify builds, we're focused on helping small teams look like national players.</p>
+            
+            <p className="font-medium text-white">We haven't looked back since.</p>
           </div>
 
           {/* Logos - Updated styling */}
-          <div className="flex items-center justify-center gap-12 mb-16">
-            <img src="/images/buckeye.png" alt="The Ohio State University" className="h-12 opacity-60 hover:opacity-80 transition-opacity" />
-            <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-8 opacity-60 hover:opacity-80 transition-opacity filter brightness-0" />
-            <img src="/images/DD.png" alt="Dumo Digital" className="h-8 opacity-60 hover:opacity-80 transition-opacity" />
+          <div className="flex items-center justify-center gap-16 mb-16">
+            <img src="/images/DD.png" alt="Dumo Digital" className="h-12 opacity-60 hover:opacity-80 transition-opacity filter brightness-0 invert" />
+            <img src="/images/buckeye.png" alt="The Ohio State University" className="h-16 opacity-60 hover:opacity-80 transition-opacity" />
+            <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-12 opacity-60 hover:opacity-80 transition-opacity" />
           </div>
 
           {/* CTA - Updated styling */}
