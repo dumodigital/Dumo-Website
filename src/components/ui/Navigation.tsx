@@ -95,7 +95,7 @@ const Navigation = () => {
           : ""
       } ${
         isSticky 
-          ? "bg-black/95 backdrop-blur-md shadow-2xl border-b border-white/10" 
+          ? "bg-black/95 backdrop-blur-md shadow-2xl" 
           : isAtTop 
             ? "bg-transparent backdrop-blur-none transition-all duration-300" 
             : "bg-black/60 backdrop-blur-sm transition-all duration-300"
