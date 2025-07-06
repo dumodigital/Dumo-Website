@@ -2,7 +2,7 @@ const About = () => {
   return (
     <>
       {/* Section 1: Meet the Team */}
-      <section id="about" className="w-full pt-20 pb-0 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] scroll-mt-32 md:scroll-mt-32">
+      <section id="about" className="w-full pt-20 pb-16 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] scroll-mt-32 md:scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Header - moved down */}
@@ -47,8 +47,8 @@ const About = () => {
             </div>
 
             {/* OSU Logo - Middle - Fixed */}
-            <div className="flex justify-center">
-              <img src="/images/buckeye.png" alt="The Ohio State University" className="w-40 h-40 object-contain" />
+            <div className="flex justify-center items-start">
+              <img src="/images/buckeye.png" alt="The Ohio State University" className="w-40 h-40 object-contain -mt-8" />
             </div>
 
             {/* Alex - Right */}
@@ -83,7 +83,7 @@ const About = () => {
       </section>
 
       {/* Section 2: Story - Updated to match site theme */}
-      <section className="w-full pt-20 pb-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22]">
+      <section className="w-full pt-16 pb-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22]">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Story Header - moved down more */}
@@ -111,11 +111,13 @@ const About = () => {
             </div>
           </div>
 
-          {/* Logos - Centered and properly styled */}
-          <div className="flex items-center justify-center gap-16 mb-16 mx-auto max-w-2xl">
-            <img src="/images/DD.png" alt="Dumo Digital" className="h-12 opacity-60 hover:opacity-80 transition-opacity filter brightness-0 invert flex-shrink-0" />
-            <img src="/images/buckeye.png" alt="The Ohio State University" className="h-16 opacity-60 hover:opacity-80 transition-opacity flex-shrink-0" />
-            <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-12 opacity-60 hover:opacity-80 transition-opacity flex-shrink-0" />
+          {/* Logos - Truly centered */}
+          <div className="w-full flex justify-center mb-16">
+            <div className="flex items-center justify-center gap-12 md:gap-16">
+              <img src="/images/DD.png" alt="Dumo Digital" className="h-10 md:h-12 opacity-60 hover:opacity-80 transition-opacity filter brightness-0 invert" />
+              <img src="/images/buckeye.png" alt="The Ohio State University" className="h-12 md:h-16 opacity-60 hover:opacity-80 transition-opacity" />
+              <img src="/images/shopify-logo-white.png" alt="Shopify Partner" className="h-10 md:h-12 opacity-60 hover:opacity-80 transition-opacity" />
+            </div>
           </div>
 
           {/* CTA - Updated styling */}
