@@ -121,7 +121,7 @@ const Navigation = () => {
               </a>
 
               <a
-                href="https://chat.google.com/dm/4AYsf8AAAAE/yPriQmcRWpU/yPriQmcRWpU?cls=10"
+                href="https://www.tiktok.com/@dumodigital?_t=ZP-8xns4cSilNn&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-colors"
