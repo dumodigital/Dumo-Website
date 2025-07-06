@@ -274,3 +274,16 @@ section, main {
 .animate-fadein {
   animation: fadein 0.9s cubic-bezier(.77,0,.18,1) 0.1s both;
 }
+
+/* OSU Logo Glow Effects */
+.osu-logo-glow {
+  /* Mobile: subtle glow */
+  filter: drop-shadow(0 0 8px rgba(187, 21, 39, 0.2));
+}
+
+@media (min-width: 1024px) {
+  .osu-logo-glow {
+    /* Desktop: full glow effect */
+    filter: drop-shadow(0 0 20px rgba(187, 21, 39, 0.5)) drop-shadow(0 0 40px rgba(187, 21, 39, 0.3));
+  }
+}

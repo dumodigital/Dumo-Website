@@ -206,7 +206,7 @@ const Hero = () => {
             <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
               <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Support</div>
               <div className="w-full text-left text-lg font-extrabold text-[#7BB9E8] pb-1">24/7 Shopify Support</div>
-              <div className="w-full text-left text-white/80 font-medium text-base pb-1">Ready to scale your business?</div>
+              <div className="w-full text-left text-white/80 font-medium text-base pb-1 pt-12">Ready to scale your business?</div>
               <a
                 href="https://calendly.com/charlie-dumo/30min"
                 target="_blank"

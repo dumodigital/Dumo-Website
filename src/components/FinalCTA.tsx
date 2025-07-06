@@ -86,7 +86,7 @@ const additionalFeatures = [
 
 const FinalCTA = () => {
   return (
-    <section id="contact" className="scroll-mt-16 w-full py-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" style={{backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(123, 185, 232, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(123, 185, 232, 0.08) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 50%)'}}>
+    <section id="contact" className="scroll-mt-32 w-full py-20 bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] relative overflow-hidden font-sans" style={{backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(123, 185, 232, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(123, 185, 232, 0.08) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 50%)'}}>
       {/* Background Texture Overlay */}
       <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="27" cy="7" r="1"/%3E%3Ccircle cx="47" cy="7" r="1"/%3E%3Ccircle cx="7" cy="27" r="1"/%3E%3Ccircle cx="27" cy="27" r="1"/%3E%3Ccircle cx="47" cy="27" r="1"/%3E%3Ccircle cx="7" cy="47" r="1"/%3E%3Ccircle cx="27" cy="47" r="1"/%3E%3Ccircle cx="47" cy="47" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}}></div>
       <div className="max-w-4xl mx-auto px-4 md:px-0 relative z-10 flex flex-col items-center justify-center">

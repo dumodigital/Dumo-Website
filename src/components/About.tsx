@@ -49,7 +49,11 @@ const About = () => {
 
             {/* OSU Logo - Middle - Bigger and Higher */}
             <div className="flex justify-center items-center lg:items-start">
-              <img src="/images/buckeye.png" alt="The Ohio State University" className="w-48 h-48 lg:w-64 lg:h-64 object-contain lg:-mt-12 drop-shadow-2xl" style={{filter: 'drop-shadow(0 0 20px rgba(187, 21, 39, 0.5)) drop-shadow(0 0 40px rgba(187, 21, 39, 0.3))'}} />
+              <img 
+                src="/images/buckeye.png" 
+                alt="The Ohio State University" 
+                className="w-48 h-48 lg:w-64 lg:h-64 object-contain lg:-mt-12 osu-logo-glow" 
+              />
             </div>
 
             {/* Alex - Right */}
@@ -91,8 +95,7 @@ const About = () => {
           <div className="text-center mb-20">
             <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 letter-spacing-wide">Our Story</span>
             <h2 className="text-5xl font-bold text-white mb-6" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
-              <span className="block">Built From Grit.</span>
-              <span className="block">Designed for Growth.</span>
+              <span className="md:block">Built From Grit. Designed for Growth.</span>
             </h2>
             <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2 mx-auto" />
             <p className="text-xl text-white/70 mb-8">
