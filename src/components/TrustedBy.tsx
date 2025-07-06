@@ -17,15 +17,16 @@ const TrustedBy = () => (
       <h2 className="text-xl md:text-4xl font-bold text-white mb-2 md:mb-4 text-center tracking-tight">
         Partners We've Grown
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 items-center justify-items-center bg-white/5 rounded-xl p-2 md:p-4 shadow-lg">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 bg-white/5 rounded-xl p-2 md:p-4 shadow-lg">
         {logos.map((logo, i) => (
-          <img
-            key={i}
-            src={logo.src}
-            alt={logo.alt}
-            className="h-6 md:h-14 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
-            style={{ maxHeight: 56, maxWidth: 160 }}
-          />
+          <div key={i} className="flex items-center justify-center h-16 md:h-20">
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              className="h-6 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100 object-contain"
+              style={{ maxHeight: 56, maxWidth: 160 }}
+            />
+          </div>
         ))}
       </div>
     </div>

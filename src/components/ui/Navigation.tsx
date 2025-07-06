@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 const Navigation = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollY = useRef(0);
 
   const menuItems = [
@@ -19,44 +20,86 @@ const Navigation = () => {
     }
   };
 
-  // Simple, bulletproof sticky header behavior
+  // Ultra-smooth sticky header - elegant scroll up animation
   useEffect(() => {
+    let ticking = false;
+    let scrollTimeout: NodeJS.Timeout;
+    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const heroHeight = window.innerHeight;
-      
-      if (window.innerWidth >= 1024) {
-        // Simple sticky logic - show header when past hero section
-        const shouldBeSticky = currentScrollY > heroHeight * 0.8;
-        setIsSticky(shouldBeSticky);
-        
-        if (shouldBeSticky) {
-          // Simple show/hide logic
-          const scrollingUp = currentScrollY < lastScrollY.current;
-          setShowHeader(scrollingUp || currentScrollY < heroHeight * 1.2);
-        } else {
-          setShowHeader(true);
-        }
-      } else {
-        setIsSticky(false);
-        setShowHeader(true);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const heroHeight = window.innerHeight;
+          
+          if (window.innerWidth >= 1024) {
+            // Transparency for first 150px
+            setIsAtTop(currentScrollY < 150);
+            
+            // More gradual sticky behavior
+            const scrollingUp = currentScrollY < lastScrollY.current;
+            const pastHero = currentScrollY > heroHeight * 0.4;
+            const scrollDelta = Math.abs(currentScrollY - lastScrollY.current);
+            
+            // Only become sticky when scrolling up with some momentum
+            const shouldBeSticky = scrollingUp && pastHero && scrollDelta > 5;
+            
+            if (shouldBeSticky) {
+              setIsSticky(true);
+              setShowHeader(true);
+              
+              // Clear any existing timeout
+              clearTimeout(scrollTimeout);
+              
+              // Auto-hide after 3 seconds of no scroll
+              scrollTimeout = setTimeout(() => {
+                if (window.scrollY > heroHeight * 0.4) {
+                  setIsSticky(false);
+                }
+              }, 3000);
+            } else if (!scrollingUp && pastHero) {
+              // Hide immediately when scrolling down
+              setIsSticky(false);
+              setShowHeader(true);
+            }
+            
+          } else {
+            setIsSticky(false);
+            setShowHeader(true);
+            setIsAtTop(currentScrollY < 100);
+          }
+          
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
       }
-      
-      lastScrollY.current = currentScrollY;
+      ticking = true;
     };
     
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   return (
-    <nav className={`hidden lg:block w-full z-50 transition-all duration-500 ease-in-out ${
-      isSticky ? "fixed top-0 left-0 right-0" : "relative"
-    } ${
-      isSticky ? (showHeader ? "translate-y-0" : "-translate-y-full") : ""
-    } ${
-      isSticky ? "bg-black/95 backdrop-blur-sm shadow-lg" : ""
-    }`}>
+    <>
+      {/* Spacer to prevent page jump when header becomes sticky */}
+      {isSticky && <div className="h-[88px] hidden lg:block" />}
+      
+      <nav className={`hidden lg:block w-full z-50 ${
+        isSticky ? "fixed top-0 left-0 right-0" : "relative"
+      } ${
+        isSticky 
+          ? "transform transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] translate-y-0 opacity-100 scale-100" 
+          : ""
+      } ${
+        isSticky 
+          ? "bg-black/95 backdrop-blur-md shadow-2xl border-b border-white/10" 
+          : isAtTop 
+            ? "bg-transparent backdrop-blur-none transition-all duration-300" 
+            : "bg-black/60 backdrop-blur-sm transition-all duration-300"
+      }`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between py-6">
           
@@ -140,6 +183,7 @@ const Navigation = () => {
         </div>
       </div>
     </nav>
+    </>
   );
 };
 
