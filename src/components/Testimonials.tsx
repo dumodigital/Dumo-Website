@@ -50,7 +50,7 @@ const Testimonials: React.FC = () => {
   }, []);
 
   return (
-    <section className="min-h-[38vh] w-full flex items-center justify-center bg-gradient-to-b from-[#181c22] via-[#23344a] to-[#7BB9E8]/30 py-12 relative overflow-hidden" style={{ minHeight: '38vh' }}>
+    <section className="hidden md:block min-h-[38vh] w-full flex items-center justify-center bg-gradient-to-b from-[#181c22] via-[#23344a] to-[#7BB9E8]/30 py-12 relative overflow-hidden" style={{ minHeight: '38vh' }}>
       {/* Noise Texture Overlay */}
       <div
         aria-hidden="true"
