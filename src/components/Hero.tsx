@@ -172,11 +172,11 @@ const Hero = () => {
               <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-8 w-auto" />
               <button
                 onClick={() => setMenuOpen(false)}
-                className="p-1.5 text-white/70 hover:text-[#7BB9E8] transition-colors duration-200 rounded-full hover:bg-white/10 border border-[#7BB9E8]/20 shadow-sm"
+                className="p-1.5 text-white/70 hover:text-[#7BB9E8] transition-colors duration-200 rounded-full hover:bg-white/10 border-0 outline-none focus:outline-none"
                 aria-label="Close menu"
-                style={{width: 28, height: 28, minWidth: 28, minHeight: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                style={{width: 28, height: 28, minWidth: 28, minHeight: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent', boxShadow: 'none'}}
               >
-                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeLinecap="round" />
                   <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeLinecap="round" />
                 </svg>
@@ -206,7 +206,7 @@ const Hero = () => {
             <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
               <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Support</div>
               <div className="w-full text-left text-lg font-extrabold text-[#7BB9E8] pb-1">24/7 Shopify Support</div>
-              <div className="w-full text-left text-white/80 font-medium text-base pb-1">Real people, real results.</div>
+              <div className="w-full text-left text-white/80 font-medium text-base pb-1">Ready to scale your business?</div>
               <a
                 href="https://calendly.com/charlie-dumo/30min"
                 target="_blank"
@@ -221,6 +221,12 @@ const Hero = () => {
             </div>
             {/* Divider */}
             <div className="w-full h-px bg-white/10 my-2" />
+            {/* Dumo Digital Logo Section */}
+            <div className="flex-1 flex items-center justify-center py-8 relative z-10">
+              <img src="/images/DD.png" alt="Dumo Digital Logo" className="h-24 w-auto opacity-90" />
+            </div>
+            {/* Divider */}
+            <div className="w-full h-px bg-white/10 my-2" />
             {/* Connect Section */}
             <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
               <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Connect</div>
@@ -231,13 +237,16 @@ const Hero = () => {
                 <a href="https://www.linkedin.com/company/dumo-digital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
                   <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
                 </a>
+                <a href="https://www.tiktok.com/@dumo.digital" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
                 <a href="mailto:info@dumodigital.com" aria-label="Email" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
                   <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"/></svg>
                 </a>
               </div>
               {/* Partner Logos */}
               <div className="w-full flex flex-row items-center justify-center gap-6 pb-6 relative z-10">
-                <img src="/images/buckeye.png" alt="Ohio State Logo" className="h-12 w-auto" />
+                <img src="/images/ohio-state-logo-white.png" alt="Ohio State Logo" className="h-12 w-auto" />
                 <img src="/images/shopify-logo-white.png" alt="Shopify Logo" className="h-10 w-auto" />
               </div>
             </div>
