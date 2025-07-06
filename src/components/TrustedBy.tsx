@@ -12,12 +12,12 @@ const logos = [
 ];
 
 const TrustedBy = () => (
-  <section className="pt-4 pb-2 md:py-20 bg-gradient-to-br from-[#10151a] to-[#181c22] border-b border-white/10" style={{ marginTop: '100vh' }}>
+  <section className="pt-1 pb-1 md:py-6 bg-gradient-to-br from-[#10151a] to-[#181c22] border-b border-white/10" style={{ marginTop: '100vh' }}>
     <div className="max-w-5xl mx-auto px-4">
-      <h2 className="text-xl md:text-4xl font-bold text-white mb-4 md:mb-10 text-center tracking-tight">
+      <h2 className="text-xl md:text-4xl font-bold text-white mb-2 md:mb-4 text-center tracking-tight">
         Partners We've Grown
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 items-center justify-items-center bg-white/5 rounded-xl p-3 md:p-8 shadow-lg">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 items-center justify-items-center bg-white/5 rounded-xl p-2 md:p-4 shadow-lg">
         {logos.map((logo, i) => (
           <img
             key={i}

@@ -27,6 +27,22 @@ const Hero = () => {
   const firstLinkRef = useRef(null);
   const lastLinkRef = useRef(null);
 
+  // Mobile navigation scroll function with proper offset
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      const mobileHeaderHeight = 88; // Height of mobile sticky header
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - mobileHeaderHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    setMenuOpen(false);
+  };
+
   // Typewriter effect with ribbon wipe
   useEffect(() => {
     if (currentIndex < typewriterText.length) {
@@ -191,7 +207,10 @@ const Hero = () => {
                     key={item.name}
                     href={item.href}
                     className="text-white text-lg font-semibold tracking-tight hover:text-[#7BB9E8] transition-all duration-200 text-left px-2 py-2 rounded-lg hover:bg-[#7BB9E8]/10 w-full"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href);
+                    }}
                     tabIndex={0}
                     aria-label={item.name}
                   >
@@ -205,7 +224,16 @@ const Hero = () => {
             {/* Support Section */}
             <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
               <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Support</div>
-              <div className="w-full text-left text-lg font-extrabold text-[#7BB9E8] pb-1">24/7 Shopify Support</div>
+              <a 
+                href="tel:847-624-6003" 
+                className="w-full text-left text-lg font-extrabold text-[#7BB9E8] pb-1 hover:text-[#5fa6d6] transition-colors duration-200 flex items-center gap-2"
+                aria-label="Call us at 847-624-6003"
+              >
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                24/7 Shopify Support
+              </a>
               <div className="w-full text-left text-white/80 font-medium text-base pb-1 pt-12">Ready to scale your business?</div>
               <a
                 href="https://calendly.com/charlie-dumo/30min"

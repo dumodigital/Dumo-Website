@@ -19,51 +19,43 @@ const Navigation = () => {
     }
   };
 
-  // Sticky header behavior - only on desktop, only after hero section
+  // Simple, bulletproof sticky header behavior
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const heroHeight = window.innerHeight;
-          
-          if (window.innerWidth >= 1024) {
-            const shouldBeSticky = currentScrollY > heroHeight * 0.8;
-            setIsSticky(shouldBeSticky);
-            
-            if (shouldBeSticky) {
-              if (currentScrollY < lastScrollY.current) {
-                setShowHeader(true);
-              } else if (currentScrollY > lastScrollY.current + 10) {
-                setShowHeader(false);
-              }
-            } else {
-              setShowHeader(true);
-            }
-          } else {
-            setIsSticky(false);
-            setShowHeader(true);
-          }
-          
-          lastScrollY.current = currentScrollY;
-          ticking = false;
-        });
-        ticking = true;
+      const currentScrollY = window.scrollY;
+      const heroHeight = window.innerHeight;
+      
+      if (window.innerWidth >= 1024) {
+        // Simple sticky logic - show header when past hero section
+        const shouldBeSticky = currentScrollY > heroHeight * 0.8;
+        setIsSticky(shouldBeSticky);
+        
+        if (shouldBeSticky) {
+          // Simple show/hide logic
+          const scrollingUp = currentScrollY < lastScrollY.current;
+          setShowHeader(scrollingUp || currentScrollY < heroHeight * 1.2);
+        } else {
+          setShowHeader(true);
+        }
+      } else {
+        setIsSticky(false);
+        setShowHeader(true);
       }
+      
+      lastScrollY.current = currentScrollY;
     };
     
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`hidden lg:block w-full z-50 transition-all duration-300 ${
+    <nav className={`hidden lg:block w-full z-50 transition-all duration-500 ease-in-out ${
       isSticky ? "fixed top-0 left-0 right-0" : "relative"
     } ${
       isSticky ? (showHeader ? "translate-y-0" : "-translate-y-full") : ""
     } ${
-      isSticky ? "bg-black/95 backdrop-blur-sm" : ""
+      isSticky ? "bg-black/95 backdrop-blur-sm shadow-lg" : ""
     }`}>
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between py-6">
