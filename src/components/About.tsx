@@ -2,7 +2,7 @@ const About = () => {
   return (
     <>
       {/* Section 1: Meet the Team */}
-      <section id="about" className="w-full py-20 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#252525] scroll-mt-12 md:scroll-mt-20">
+      <section id="about" className="w-full py-20 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#252525] scroll-mt-24 md:scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Header - moved down */}
