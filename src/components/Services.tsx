@@ -74,7 +74,7 @@ const Services: React.FC = () => {
     <>
       <section
         id="services"
-        className="w-full py-20 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center scroll-mt-12 md:scroll-mt-20"
+        className="w-full py-20 font-sans bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] min-h-[80vh] flex flex-col justify-center scroll-mt-32 md:scroll-mt-20"
       >
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
