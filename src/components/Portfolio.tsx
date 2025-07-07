@@ -10,6 +10,12 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
+    id: 'hungry-monkey',
+    companyName: 'Hungry Monkey Baking',
+    image: '/images/hun.png',
+    url: 'https://hungrymonkeybaking.com/products/trio-of-plain-banana-breads'
+  },
+  {
     id: 'savannah-bee',
     companyName: 'Savannah Bee Company',
     image: '/images/$50k.png',
@@ -18,44 +24,20 @@ const caseStudies: CaseStudy[] = [
   {
     id: 'charlies-crunch',
     companyName: "Charlie's Crunch",
-    image: '/placeholder.svg',
+    image: '/images/3.png',
     url: 'https://charliescrunch.com'
   },
   {
-    id: 'hungry-monkey',
-    companyName: 'Hungry Monkey Baking',
-    image: '/placeholder.svg',
-    url: 'https://hungrymonkeybaking.com/products/trio-of-plain-banana-breads'
+    id: 'riot-project',
+    companyName: 'The Riot Project',
+    image: '/images/5.png',
+    url: 'https://theriotprjct.com/'
   },
   {
     id: 'savannah-wholesale',
     companyName: 'Savannah Bee Wholesale',
-    image: '/placeholder.svg',
+    image: '/images/4.png',
     url: 'https://wholesale.savannahbee.com'
-  },
-  {
-    id: 'ohio-state',
-    companyName: 'Ohio State University',
-    image: '/placeholder.svg',
-    url: '#'
-  },
-  {
-    id: 'klaviyo-partner',
-    companyName: 'Klaviyo Integration',
-    image: '/placeholder.svg',
-    url: '#'
-  },
-  {
-    id: 'meta-campaigns',
-    companyName: 'Meta Advertising',
-    image: '/placeholder.svg',
-    url: '#'
-  },
-  {
-    id: 'shopify-development',
-    companyName: 'Shopify Development',
-    image: '/placeholder.svg',
-    url: '#'
   }
 ];
 
@@ -72,15 +54,15 @@ const Portfolio = () => {
 
     let animationId: number;
     let scrollPosition = 0;
-    const scrollSpeed = 0.8; // Slightly faster for 3D effect
+    const scrollSpeed = 0.4; // Reduced from 0.8 to 0.4 (slower)
     
     // Calculate card width based on viewport size
     const getCardWidth = () => {
       const width = window.innerWidth;
-      if (width < 640) return 264; // 240px + 24px gap
-      if (width < 768) return 304; // 280px + 24px gap
-      if (width < 1024) return 344; // 320px + 24px gap
-      return 424; // 400px + 24px gap
+      if (width < 640) return 252; // 240px + 12px gap (reduced from 24px)
+      if (width < 768) return 292; // 280px + 12px gap (reduced from 24px)
+      if (width < 1024) return 332; // 320px + 12px gap (reduced from 24px)
+      return 412; // 400px + 12px gap (reduced from 24px)
     };
     
     const cardWidth = getCardWidth();
@@ -104,6 +86,7 @@ const Portfolio = () => {
         
         Array.from(cards).forEach((card, index) => {
           const cardElement = card as HTMLElement;
+          const cardContent = cardElement.querySelector('.card-content') as HTMLElement;
           const cardRect = cardElement.getBoundingClientRect();
           const cardCenter = cardRect.left + cardRect.width / 2;
           const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
@@ -111,12 +94,21 @@ const Portfolio = () => {
           
           // Calculate 3D transforms based on distance from center
           const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
-          const rotateY = (cardCenter < viewportCenter ? 1 : -1) * normalizedDistance * 25;
-          const scale = 1 - normalizedDistance * 0.2;
-          const opacity = 1 - normalizedDistance * 0.3;
+          const rotateY = (cardCenter < viewportCenter ? 1 : -1) * normalizedDistance * 20;
+          const rotateX = normalizedDistance * 3;
+          const scale = 1 - normalizedDistance * 0.15;
+          const opacity = 1 - normalizedDistance * 0.25;
+          const translateZ = -normalizedDistance * 50;
           
-          cardElement.style.transform = `rotateY(${rotateY}deg) scale(${scale})`;
-          cardElement.style.opacity = opacity.toString();
+          // Apply transforms to the inner content, keep anchor clickable
+          if (cardContent) {
+            cardContent.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale}) translateZ(${translateZ}px)`;
+            cardContent.style.opacity = opacity.toString();
+          }
+          
+          // Ensure anchor remains fully clickable
+          cardElement.style.pointerEvents = 'auto';
+          cardElement.style.transform = 'none';
         });
       }
       
@@ -157,16 +149,19 @@ const Portfolio = () => {
           <div className="overflow-hidden" style={{perspective: '1000px'}}>
             <div 
               ref={scrollRef}
-              className="flex gap-6 w-fit"
+              className="flex gap-3 w-fit"
               style={{transformStyle: 'preserve-3d'}}
             >
               {duplicatedCards.map((study, index) => (
-                <div
+                <a 
+                  href={study.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   key={`${study.id}-${Math.floor(index / caseStudies.length)}`}
-                  className="w-[240px] sm:w-[280px] md:w-[320px] lg:w-[400px] flex-shrink-0"
-                  style={{transformStyle: 'preserve-3d'}}
+                  className="w-[240px] sm:w-[280px] md:w-[320px] lg:w-[400px] flex-shrink-0 block"
+                  style={{transformStyle: 'preserve-3d', pointerEvents: 'auto', position: 'relative', zIndex: 1}}
                 >
-                  <div className="relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer group">
+                  <div className="card-content relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer group">
                     {/* 2:3 aspect ratio container for 2000x3000 images */}
                     <div className="aspect-[2/3] w-full">
                       <img 
@@ -178,28 +173,32 @@ const Portfolio = () => {
                     
                     {/* Bottom overlay with button */}
                     <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center pb-8 z-20">
-                      <a 
-                        href={study.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="bg-white hover:bg-gray-100 text-gray-900 px-6 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/30 inline-block z-30"
-                        style={{fontFamily: 'Poppins, sans-serif', pointerEvents: 'auto'}}
+                      <div className="bg-white hover:bg-gray-100 text-gray-900 px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/30 inline-flex items-center gap-2 z-30"
+                        style={{fontFamily: 'Poppins, sans-serif'}}
                       >
-                        View Results
-                      </a>
-                    </div>
-                    
-                    {/* Company name overlay on hover */}
-                    <div className="absolute top-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <h3 className="text-lg font-bold text-white bg-black/50 backdrop-blur-sm rounded-lg px-4 py-2" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
-                        {study.companyName}
-                      </h3>
+                        See Case Study
+                        <svg 
+                          width="12" 
+                          height="12" 
+                          viewBox="0 0 12 12" 
+                          fill="none" 
+                          className="w-3 h-3 sm:w-4 sm:h-4"
+                        >
+                          <path 
+                            d="M3.5 3.5H8.5V8.5M8.5 3.5L3.5 8.5" 
+                            stroke="currentColor" 
+                            strokeWidth="1.5" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
                     </div>
                     
                     {/* Accent Border */}
                     <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#7BB9E8]/60 transition-all duration-300"></div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
