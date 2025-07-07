@@ -44,36 +44,38 @@ const caseStudies: CaseStudy[] = [
 const Portfolio = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Duplicate cards for seamless infinite scroll
-  const duplicatedCards = [...caseStudies, ...caseStudies];
+  // Create enough duplicates for seamless infinite scroll
+  const duplicatedCards = [...caseStudies, ...caseStudies, ...caseStudies, ...caseStudies];
 
-  // Infinite scroll animation with 3D effects
+  // Clean infinite scroll animation with 3D effects
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let animationId: number;
     let scrollPosition = 0;
-    const scrollSpeed = 0.4; // Reduced from 0.8 to 0.4 (slower)
+    const scrollSpeed = 0.6;
+    let animationId: number;
     
     // Calculate card width based on viewport size
     const getCardWidth = () => {
       const width = window.innerWidth;
-      if (width < 640) return 252; // 240px + 12px gap (reduced from 24px)
-      if (width < 768) return 292; // 280px + 12px gap (reduced from 24px)
-      if (width < 1024) return 332; // 320px + 12px gap (reduced from 24px)
-      return 412; // 400px + 12px gap (reduced from 24px)
+      if (width < 640) return 252; // 240px + 12px gap
+      if (width < 768) return 292; // 280px + 12px gap
+      if (width < 1024) return 332; // 320px + 12px gap
+      return 412; // 400px + 12px gap
     };
     
     const cardWidth = getCardWidth();
-    const totalWidth = caseStudies.length * cardWidth;
+    const oneSetWidth = caseStudies.length * cardWidth;
+    const totalWidth = duplicatedCards.length * cardWidth;
 
     const animate = () => {
       scrollPosition += scrollSpeed;
       
-      // Reset position when we've scrolled through one full set
-      if (scrollPosition >= totalWidth) {
-        scrollPosition = 0;
+      // Reset when we've scrolled past the second set (while third set is visible)
+      // This ensures the reset happens off-screen
+      if (scrollPosition >= oneSetWidth * 2) {
+        scrollPosition = oneSetWidth;
       }
       
       if (scrollContainer) {
@@ -81,12 +83,13 @@ const Portfolio = () => {
         
         // Apply 3D transforms to individual cards
         const cards = scrollContainer.children;
-        const containerRect = scrollContainer.getBoundingClientRect();
         const viewportCenter = window.innerWidth / 2;
         
-        Array.from(cards).forEach((card, index) => {
+        Array.from(cards).forEach((card) => {
           const cardElement = card as HTMLElement;
           const cardContent = cardElement.querySelector('.card-content') as HTMLElement;
+          if (!cardContent) return;
+          
           const cardRect = cardElement.getBoundingClientRect();
           const cardCenter = cardRect.left + cardRect.width / 2;
           const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
@@ -101,10 +104,8 @@ const Portfolio = () => {
           const translateZ = -normalizedDistance * 50;
           
           // Apply transforms to the inner content, keep anchor clickable
-          if (cardContent) {
-            cardContent.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale}) translateZ(${translateZ}px)`;
-            cardContent.style.opacity = opacity.toString();
-          }
+          cardContent.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale}) translateZ(${translateZ}px)`;
+          cardContent.style.opacity = opacity.toString();
           
           // Ensure anchor remains fully clickable
           cardElement.style.pointerEvents = 'auto';
@@ -157,23 +158,23 @@ const Portfolio = () => {
                   href={study.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  key={`${study.id}-${Math.floor(index / caseStudies.length)}`}
+                  key={`${study.id}-${index}`}
                   className="w-[240px] sm:w-[280px] md:w-[320px] lg:w-[400px] flex-shrink-0 block"
                   style={{transformStyle: 'preserve-3d', pointerEvents: 'auto', position: 'relative', zIndex: 1}}
                 >
-                  <div className="card-content relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer group">
+                  <div className="card-content relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 cursor-pointer">
                     {/* 2:3 aspect ratio container for 2000x3000 images */}
                     <div className="aspect-[2/3] w-full">
                       <img 
                         src={study.image} 
                         alt={study.companyName}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     
                     {/* Bottom overlay with button */}
                     <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center pb-8 z-20">
-                      <div className="bg-white hover:bg-gray-100 text-gray-900 px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/30 inline-flex items-center gap-2 z-30"
+                      <div className="bg-white text-gray-900 px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm shadow-lg border border-white/30 inline-flex items-center gap-2 z-30"
                         style={{fontFamily: 'Poppins, sans-serif'}}
                       >
                         See Case Study
@@ -196,7 +197,7 @@ const Portfolio = () => {
                     </div>
                     
                     {/* Accent Border */}
-                    <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#7BB9E8]/60 transition-all duration-300"></div>
+                    <div className="absolute inset-0 rounded-3xl border-2 border-transparent"></div>
                   </div>
                 </a>
               ))}
