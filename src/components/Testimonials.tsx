@@ -86,7 +86,7 @@ const Testimonials: React.FC = () => {
           </div>
           
           {/* Desktop: Original block layout */}
-          <div className="hidden md:flex flex-row items-center bg-[#eaf3fa]/90 border border-[#7BB9E8] rounded-xl shadow-lg w-full p-8 gap-8 min-h-[320px]" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
+          <div className="hidden md:flex flex-row items-center bg-slate-100/95 border border-slate-300/50 rounded-xl shadow-lg w-full p-8 gap-8 min-h-[320px]" style={{ boxShadow: '0 6px 32px 0 rgba(123,185,232,0.10)', transform: 'translateY(8%)' }}>
             {/* Logo */}
             {testimonials[index].logo && (
               <img
@@ -100,14 +100,14 @@ const Testimonials: React.FC = () => {
             <div className="flex-1 flex flex-col justify-between items-start text-left h-full">
               <div className="flex-1 flex flex-col justify-center overflow-hidden">
                 <blockquote
-                  className="relative text-[#222] text-xl lg:text-2xl font-serif font-medium leading-relaxed mb-4 pl-4 border-l-4 border-[#7BB9E8] overflow-y-auto"
+                  className="relative text-slate-700 text-xl lg:text-2xl font-serif font-medium leading-relaxed mb-4 pl-4 border-l-4 border-[#7BB9E8] overflow-y-auto"
                   style={{ fontFamily: 'Inter, Satoshi, serif', maxHeight: '240px' }}
                 >
                   {testimonials[index].text}
                 </blockquote>
               </div>
               <div className="mt-auto flex-shrink-0">
-                <div className="text-[#181c22] font-semibold text-lg mb-1" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
+                <div className="text-slate-800 font-semibold text-lg mb-1" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>
                   {testimonials[index].author}
                 </div>
                 <div className="text-[#7BB9E8] text-base font-medium tracking-wide uppercase" style={{ fontFamily: 'Inter, Satoshi, sans-serif' }}>

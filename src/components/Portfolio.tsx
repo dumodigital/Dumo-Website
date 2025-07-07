@@ -1,123 +1,222 @@
-import { Button } from "@/components/ui/button";
+import React, { useState, useEffect, useRef } from 'react';
+import { Button } from './ui/button';
+
+interface CaseStudy {
+  id: string;
+  companyName: string;
+  image: string;
+  url: string;
+}
+
+const caseStudies: CaseStudy[] = [
+  {
+    id: 'savannah-bee',
+    companyName: 'Savannah Bee Company',
+    image: '/images/$50k.png',
+    url: 'https://savannahbee.com'
+  },
+  {
+    id: 'charlies-crunch',
+    companyName: "Charlie's Crunch",
+    image: '/placeholder.svg',
+    url: 'https://charliescrunch.com'
+  },
+  {
+    id: 'hungry-monkey',
+    companyName: 'Hungry Monkey Baking',
+    image: '/placeholder.svg',
+    url: 'https://hungrymonkeybaking.com/products/trio-of-plain-banana-breads'
+  },
+  {
+    id: 'savannah-wholesale',
+    companyName: 'Savannah Bee Wholesale',
+    image: '/placeholder.svg',
+    url: 'https://wholesale.savannahbee.com'
+  },
+  {
+    id: 'ohio-state',
+    companyName: 'Ohio State University',
+    image: '/placeholder.svg',
+    url: '#'
+  },
+  {
+    id: 'klaviyo-partner',
+    companyName: 'Klaviyo Integration',
+    image: '/placeholder.svg',
+    url: '#'
+  },
+  {
+    id: 'meta-campaigns',
+    companyName: 'Meta Advertising',
+    image: '/placeholder.svg',
+    url: '#'
+  },
+  {
+    id: 'shopify-development',
+    companyName: 'Shopify Development',
+    image: '/placeholder.svg',
+    url: '#'
+  }
+];
 
 const Portfolio = () => {
-  const projects = [
-    {
-      name: "Charlie's Crunch",
-      type: "E-commerce store",
-      gradient: "from-yellow-400 to-orange-500",
-      url: "https://charliescrunch.com/",
-    },
-    {
-      name: "Savannah Bee Company",
-      type: "Premium honey, beauty, and lifestyle brand",
-      gradient: "from-yellow-300 to-amber-500",
-      url: "https://savannahbee.com/",
-    },
-    {
-      name: "Savannah Bee Wholesale",
-      type: "B2B E-commerce store",
-      gradient: "from-amber-400 to-yellow-500",
-      url: "https://wholesale.savannahbee.com/?country=US",
-    },
-    {
-      name: "Riot Project",
-      type: "Exclusive Drop-Based Store",
-      gradient: "from-red-500 to-pink-500",
-      url: "https://theriotprjct.com/",
-    },
-    {
-      name: "Gotta B Crepes",
-      type: "Farmers market food business with local delivery",
-      gradient: "from-green-400 to-blue-500",
-      url: "https://www.gottabcrepes.com/",
-    },
-    {
-      name: "Mamasita's Kitchen",
-      type: "Commercial kitchen rental platform",
-      gradient: "from-purple-500 to-indigo-500",
-      url: "https://mamasitaskitchen.com/",
-    },
-    {
-      name: "Diamond Dots",
-      type: "Premium luxury jewelry brand",
-      gradient: "from-blue-400 to-purple-500",
-      url: "https://www.diamonddots.com/?srsltid=AfmBOopbPXaptZsW7NNRvYWLUtdqJEP7YRg3ErTb0G2HMgOBD1TZ7dYH",
-    },
-    {
-      name: "Hungry Monkey Baking",
-      type: "E-commerce website with custom Shopify theme",
-      gradient: "from-pink-400 to-red-500",
-      url: "https://hungrymonkeybaking.com/",
-    },
-    {
-      name: "The Handless Handle",
-      type: "Innovative kitchen cabinet solution",
-      gradient: "from-indigo-500 to-blue-500",
-      url: "https://handlesshandle.com/?srsltid=AfmBOoop1ZnoDIht5y66CoTC7wb5wW9oOdgAM5ab8hotjO60W5Fwu2Oz",
-    },
-  ];
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Duplicate cards for seamless infinite scroll
+  const duplicatedCards = [...caseStudies, ...caseStudies];
+
+  // Infinite scroll animation with 3D effects
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let animationId: number;
+    let scrollPosition = 0;
+    const scrollSpeed = 0.8; // Slightly faster for 3D effect
+    
+    // Calculate card width based on viewport size
+    const getCardWidth = () => {
+      const width = window.innerWidth;
+      if (width < 640) return 264; // 240px + 24px gap
+      if (width < 768) return 304; // 280px + 24px gap
+      if (width < 1024) return 344; // 320px + 24px gap
+      return 424; // 400px + 24px gap
+    };
+    
+    const cardWidth = getCardWidth();
+    const totalWidth = caseStudies.length * cardWidth;
+
+    const animate = () => {
+      scrollPosition += scrollSpeed;
+      
+      // Reset position when we've scrolled through one full set
+      if (scrollPosition >= totalWidth) {
+        scrollPosition = 0;
+      }
+      
+      if (scrollContainer) {
+        scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+        
+        // Apply 3D transforms to individual cards
+        const cards = scrollContainer.children;
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const viewportCenter = window.innerWidth / 2;
+        
+        Array.from(cards).forEach((card, index) => {
+          const cardElement = card as HTMLElement;
+          const cardRect = cardElement.getBoundingClientRect();
+          const cardCenter = cardRect.left + cardRect.width / 2;
+          const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
+          const maxDistance = window.innerWidth / 2 + cardRect.width;
+          
+          // Calculate 3D transforms based on distance from center
+          const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
+          const rotateY = (cardCenter < viewportCenter ? 1 : -1) * normalizedDistance * 25;
+          const scale = 1 - normalizedDistance * 0.2;
+          const opacity = 1 - normalizedDistance * 0.3;
+          
+          cardElement.style.transform = `rotateY(${rotateY}deg) scale(${scale})`;
+          cardElement.style.opacity = opacity.toString();
+        });
+      }
+      
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
 
   return (
-    <section id="portfolio" className="pb-16 pt-20 bg-gradient-to-b from-gray-50 to-[#0f0f0f] scroll-mt-12 md:scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Our Work
+    <section 
+      id="portfolio" 
+      className="py-20 bg-gradient-to-b from-[#0a0a0a] via-[#10151a] to-[#181c22] scroll-mt-12 md:scroll-mt-20 overflow-hidden relative"
+    >
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-6 mt-16">
+          <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4">
+            Success Stories
+          </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+            Ready to Scale? <span className="text-[#7BB9E8]">We've Done It Before</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Showcasing successful projects and happy clients
+          <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2 mx-auto" />
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            See how we've helped businesses like yours achieve breakthrough growth. Your success story could be next.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {projects.map((project, index) => (
-            <div
-              key={project.name}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
+        {/* Infinite Scroll Container */}
+        <div className="relative mb-16">
+          <div className="overflow-hidden" style={{perspective: '1000px'}}>
+            <div 
+              ref={scrollRef}
+              className="flex gap-6 w-fit"
+              style={{transformStyle: 'preserve-3d'}}
             >
-              {/* Project Screenshot Placeholder */}
-              <div
-                className={`h-48 bg-gradient-to-r ${project.gradient} relative overflow-hidden`}
-              >
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Removed the Website Preview text */}
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                  {project.name}
-                </h3>
-                <p className="text-gray-600 mb-4">{project.type}</p>
-                <Button
-                  variant="outline"
-                  className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
-                  asChild
+              {duplicatedCards.map((study, index) => (
+                <div
+                  key={`${study.id}-${Math.floor(index / caseStudies.length)}`}
+                  className="w-[240px] sm:w-[280px] md:w-[320px] lg:w-[400px] flex-shrink-0"
+                  style={{transformStyle: 'preserve-3d'}}
                 >
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit Site
-                  </a>
-                </Button>
-              </div>
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer group">
+                    {/* 2:3 aspect ratio container for 2000x3000 images */}
+                    <div className="aspect-[2/3] w-full">
+                      <img 
+                        src={study.image} 
+                        alt={study.companyName}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                      />
+                    </div>
+                    
+                    {/* Bottom overlay with button */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center pb-8 z-20">
+                      <a 
+                        href={study.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-white hover:bg-gray-100 text-gray-900 px-6 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/30 inline-block z-30"
+                        style={{fontFamily: 'Poppins, sans-serif', pointerEvents: 'auto'}}
+                      >
+                        View Results
+                      </a>
+                    </div>
+                    
+                    {/* Company name overlay on hover */}
+                    <div className="absolute top-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <h3 className="text-lg font-bold text-white bg-black/50 backdrop-blur-sm rounded-lg px-4 py-2" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+                        {study.companyName}
+                      </h3>
+                    </div>
+                    
+                    {/* Accent Border */}
+                    <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#7BB9E8]/60 transition-all duration-300"></div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg inline-block">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Want to see your business featured here?
+        {/* Bottom CTA */}
+        <div className="text-center mt-20">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+              Ready to be our <span className="text-[#7BB9E8]">next success story?</span>
             </h3>
+            <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+              Join the businesses that chose growth over stagnation.
+            </p>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full transform hover:scale-105 transition-all duration-300"
+              className="bg-[#7BB9E8] hover:bg-[#5fa6d6] text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-[#7BB9E8]/30"
               asChild
             >
               <a
@@ -125,7 +224,7 @@ const Portfolio = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start Your Project
+                Book Your Strategy Call
               </a>
             </Button>
           </div>
