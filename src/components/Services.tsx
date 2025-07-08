@@ -3,21 +3,21 @@ import React, { useRef, useEffect, useState } from "react";
 const services = [
   {
     number: "01",
-    title: "Custom Shopify Store Design",
+    title: "Shopify Website Development",
     description:
-      "Bespoke, high-converting Shopify stores tailored to your brand and audience.",
+      "Bespoke, on-brand Shopify stores with full design, product & collection setup.",
   },
   {
     number: "02",
-    title: "Ongoing Support & Growth",
+    title: "Shopify Management & Maintenance",
     description:
-      "Proactive support, optimization, and strategy to keep your store performing at its best.",
+      "Ongoing support—bug fixes, promotions, and site tweaks to keep you running smoothly.",
   },
   {
     number: "03",
-    title: "Shopify Plus Integrations",
+    title: "Store Optimization & Integrations",
     description:
-      "Seamless integrations, automation, and advanced features for ambitious brands.",
+      "Strategic enhancements and seamless app integrations to proactively drive store growth.",
   },
 ];
 
@@ -78,13 +78,13 @@ const Services: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
         <div className="mb-10 md:mb-20 animate-fadein mt-12">
-          <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide">What We Do</span>
+          <span className="block uppercase tracking-[0.25em] text-xs text-neutral-400 font-semibold mb-4 pl-1 letter-spacing-wide" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>What We Do</span>
           <h2 className="text-[2.1rem] xs:text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-white mb-3 max-w-3xl" style={{fontFamily: 'Inter, Satoshi, sans-serif', lineHeight: 1.1}}>
             Your brand and our model.<br />
             <span className="bg-gradient-to-r from-[#7BB9E8] to-[#4A90E2] bg-clip-text text-transparent italic font-semibold">The perfect match.</span>
           </h2>
           <div className="w-20 h-1 rounded-full bg-[#7BB9E8] mb-6 mt-2" />
-          <p className="text-base xs:text-lg text-white/80 max-w-xl font-light">
+          <p className="text-base xs:text-lg text-white/80 max-w-xl font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
             Your vision, realized—exceptional Shopify stores, ongoing growth, and expert support from a team trusted by leading brands.
           </p>
         </div>
@@ -108,7 +108,7 @@ const Services: React.FC = () => {
                 {/* Content */}
                 <div className="flex-1">
                   <h3 className="text-xl font-extrabold text-white mb-2" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{service.title}</h3>
-                  <p className="text-base text-white/80 leading-relaxed font-medium mb-1">{service.description}</p>
+                  <p className="text-base text-white/80 leading-relaxed font-medium mb-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{service.description}</p>
                 </div>
               </div>
             ))}
@@ -127,7 +127,7 @@ const Services: React.FC = () => {
                 <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3 group-hover:text-[#7BB9E8] transition-colors duration-200" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{service.title}</h3>
               </div>
               <div className="w-full h-px bg-neutral-200 mb-4" />
-              <p className="text-base text-neutral-600 leading-relaxed">{service.description}</p>
+              <p className="text-base text-neutral-600 leading-relaxed" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>{service.description}</p>
             </div>
           ))}
         </div>

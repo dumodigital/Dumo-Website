@@ -5,6 +5,7 @@ const Navigation = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollY = useRef(0);
+  const scrollThreshold = 10; // Minimum scroll distance to trigger changes
 
   const menuItems = [
     { name: "Services", href: "#services" },
@@ -34,19 +35,28 @@ const Navigation = () => {
             // Transparency for first 150px
             setIsAtTop(currentScrollY < 150);
             
-            // Simplified sticky behavior - only show when scrolling up past hero
+            // Fixed sticky behavior - show header when scrolling up past hero
             const scrollingUp = currentScrollY < lastScrollY.current;
+            const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
             const pastHero = currentScrollY > heroHeight * 0.3;
             
-            if (scrollingUp && pastHero) {
-              setIsSticky(true);
-              setShowHeader(true);
-            } else if (!scrollingUp && pastHero) {
-              setIsSticky(false);
-              setShowHeader(true);
-            } else if (!pastHero) {
-              setIsSticky(false);
-              setShowHeader(true);
+            // Only trigger changes if scroll difference exceeds threshold
+            if (scrollDifference > scrollThreshold) {
+              if (pastHero) {
+                if (scrollingUp) {
+                  // Scrolling up past hero - show sticky header
+                  setIsSticky(true);
+                  setShowHeader(true);
+                } else {
+                  // Scrolling down past hero - hide sticky header
+                  setIsSticky(false);
+                  setShowHeader(false);
+                }
+              } else {
+                // At top of page - show normal header
+                setIsSticky(false);
+                setShowHeader(true);
+              }
             }
             
           } else {
@@ -74,7 +84,9 @@ const Navigation = () => {
       {isSticky && <div className="h-[88px] hidden lg:block" />}
       
       <nav 
-        className={`hidden lg:block w-full z-50 ${
+        className={`hidden lg:block w-full z-50 transition-all duration-300 ${
+          !showHeader ? "opacity-0 pointer-events-none" : "opacity-100"
+        } ${
           isSticky ? "fixed top-0 left-0 right-0 animate-slide-down" : "relative"
         } ${
           isSticky 
