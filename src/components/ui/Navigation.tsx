@@ -111,7 +111,7 @@ const Navigation = () => {
             <img
               src="/images/DD.png"
               alt="Dumo Digital"
-              className="h-12 w-auto group-hover:scale-105 transition-transform duration-200"
+              className="h-16 w-auto group-hover:scale-105 transition-transform duration-200"
             />
           </div>
 
@@ -121,7 +121,8 @@ const Navigation = () => {
               <div
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white/80 hover:text-white text-[15px] font-normal transition-all duration-200 cursor-pointer hover:scale-105 relative group"
+                className="text-white/80 hover:text-white text-lg font-normal transition-all duration-200 cursor-pointer hover:scale-105 relative group"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
               >
                 {item.name}
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7BB9E8] group-hover:w-full transition-all duration-300"></div>
@@ -172,10 +173,11 @@ const Navigation = () => {
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#7BB9E8] text-black px-6 py-3 rounded-full text-[15px] font-medium hover:bg-[#5fa6d6] transition-colors duration-200 flex items-center space-x-2"
+              className="bg-[#7BB9E8] text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-[#5fa6d6] transition-colors duration-200 flex items-center space-x-2"
+              style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
             >
               <span>Get Started</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>

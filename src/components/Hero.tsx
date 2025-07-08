@@ -10,15 +10,16 @@ const menuItems = [
 ];
 
 const stats = [
-  { label: "Stores Managed", value: 500 },
-  { label: "Revenue Generated", value: 50 },
+  { label: "Client Retention Rate", value: 98, format: "%" },
+  { label: "Shopify Support", value: "24/7", format: "" },
+  { label: "AOV Increase", value: 34, format: "%" },
 ];
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [animatedStats, setAnimatedStats] = useState([0, 0]);
+  const [animatedStats, setAnimatedStats] = useState([0, "24/7", 0]);
 
   const [ribbonWipe, setRibbonWipe] = useState(0);
   const heroRef = useRef(null);
@@ -58,16 +59,19 @@ const Hero = () => {
   // Animated stats
   useEffect(() => {
     const intervals = stats.map((stat, i) => {
-      return setInterval(() => {
-        setAnimatedStats((prev) => {
-          const next = [...prev];
-          if (i === 0 && next[0] < stat.value) next[0] += 5;
-          if (i === 1 && next[1] < stat.value) next[1] += 1;
-          return next;
-        });
-      }, 20);
+      if (typeof stat.value === 'number') {
+        return setInterval(() => {
+          setAnimatedStats((prev) => {
+            const next = [...prev];
+            if (i === 0 && typeof next[0] === 'number' && typeof stat.value === 'number' && next[0] < stat.value) next[0] += 1;
+            if (i === 2 && typeof next[2] === 'number' && typeof stat.value === 'number' && next[2] < stat.value) next[2] += 1;
+            return next;
+          });
+        }, 30);
+      }
+      return null;
     });
-    return () => intervals.forEach(clearInterval);
+    return () => intervals.forEach(interval => interval && clearInterval(interval));
   }, []);
 
   // Accessibility: close menu on Esc
@@ -200,13 +204,14 @@ const Hero = () => {
             </div>
             {/* Navigation Section */}
             <div className="px-7 pt-6 pb-2 flex flex-col gap-2 relative z-10">
-              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Navigation</div>
+              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>Navigation</div>
               <nav className="flex flex-col gap-1">
                 {menuItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
                     className="text-white text-lg font-semibold tracking-tight hover:text-[#7BB9E8] transition-all duration-200 text-left px-2 py-2 rounded-lg hover:bg-[#7BB9E8]/10 w-full"
+                    style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.href);
@@ -223,10 +228,11 @@ const Hero = () => {
             <div className="w-full h-px bg-white/10 my-2" />
             {/* Support Section */}
             <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
-              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Support</div>
+              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>Support</div>
               <a 
                 href="tel:847-624-6003" 
                 className="w-full text-left text-lg font-extrabold text-[#7BB9E8] pb-1 hover:text-[#5fa6d6] transition-colors duration-200 flex items-center gap-2"
+                style={{fontFamily: 'Inter, Satoshi, sans-serif'}}
                 aria-label="Call us at 847-624-6003"
               >
                 <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
@@ -234,13 +240,13 @@ const Hero = () => {
                 </svg>
                 24/7 Shopify Support
               </a>
-              <div className="w-full text-left text-white/80 font-medium text-base pb-1 pt-12">Ready to scale your business?</div>
+              <div className="w-full text-left text-white/80 font-medium text-base pb-1 pt-12" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>Ready to scale your business?</div>
               <a
                 href="https://calendly.com/charlie-dumo/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#7BB9E8] to-[#4a90e2] text-black font-bold text-base rounded-xl shadow-lg hover:bg-white transition-all duration-300 hover:scale-105 tracking-wide border border-[#7BB9E8]/20 mt-2"
-                style={{boxShadow: '0 4px 16px #7BB9E8aa'}}
+                style={{boxShadow: '0 4px 16px #7BB9E8aa', fontFamily: 'Inter, Satoshi, sans-serif'}}
                 tabIndex={0}
                 aria-label="Get Started"
               >
@@ -257,10 +263,10 @@ const Hero = () => {
             <div className="w-full h-px bg-white/10 my-2" />
             {/* Connect Section */}
             <div className="px-7 pt-2 pb-2 flex flex-col gap-2 relative z-10">
-              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1">Connect</div>
+              <div className="uppercase text-xs tracking-widest text-white/40 font-semibold mb-2 pl-1" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>Connect</div>
               <div className="w-full flex flex-row items-center justify-center gap-4 pb-2">
                 <a href="https://www.instagram.com/dumo_digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
-                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.86.7-1.45.92-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41-.59-.22-1.01-.48-1.45-.92-.44-.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.012 7.052.07 5.77.128 4.77.312 4.01.54c-.77.23-1.42.54-2.07 1.19-.65.65-.96 1.3-1.19 2.07C.312 4.77.128 5.77.07 7.052.012 8.332 0 8.736 0 12c0 3.264.012 3.668.07 4.948.058 1.282.242 2.282.47 3.042.23.77.54 1.42 1.19 2.07.65.65 1.3.96 2.07 1.19.76.228 1.76.412 3.042.47C8.332 23.988 8.736 24 12 24s3.668-.012 4.948-.07c1.282-.058 2.282-.242 3.042-.47.77-.23 1.42-.54 2.07-1.19.65-.65.96-1.3 1.19-2.07.228-.76.412-1.76.47-3.042.058-1.28.07-1.684.07-4.948s-.012-3.668-.07-4.948c-.058-1.282-.242-2.282-.47-3.042-.23-.77-.54-1.42-1.19-2.07-.65-.65-1.3-.96-2.07-1.19-.76-.228-1.76-.412-3.042-.47C15.668.012 15.264 0 12 0z"/><path d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A3.999 3.999 0 1 1 12 8.001a3.999 3.999 0 0 1 0 7.999zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.012 7.052.07 5.77.128 4.77.312 4.01.54c-.77.23-1.42.54-2.07 1.19-.65.65-.96 1.3-1.19 2.07C.312 4.77.128 5.77.07 7.052.012 8.332 0 8.736 0 12c0 3.264.012 3.668.07 4.948.058 1.282.242 2.282.47 3.042.23.77.54 1.42 1.19 2.07.65.65 1.3.96 2.07 1.19.76.228 1.76.412 3.042.47C8.332 23.988 8.736 24 12 24s3.668-.012 4.948-.07c1.282-.058 2.282-.242 3.042-.47.77-.23 1.42-.54 2.07-1.19.65-.65.96-1.3 1.19-2.07.228-.76.412-1.76.47-3.042.058-1.28.07-1.684.07-4.948s-.012-3.668-.07-4.948c-.058-1.282-.242-2.282-.47-3.042-.23-.77-.54-1.42-1.19-2.07-.65-.65-1.3-.96-2.07-1.19-.76-.228-1.76-.412-3.042-.47C15.668.012 15.264 0 12 0z"/><path d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A3.999 3.999 0 1 1 12 8.001a3.999 3.999 0 0 1 0 7.999zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
                 </a>
                 <a href="https://www.linkedin.com/company/dumo-digital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 text-white/70 hover:text-[#7BB9E8] hover:bg-white/10 rounded-full transition-all duration-200">
                   <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
@@ -298,54 +304,58 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto w-full px-4 md:px-8 flex flex-col items-start justify-center text-left pt-0 pb-0 mb-0 md:mb-20">
           {/* Shopify badge integrated */}
           <div className="flex items-center space-x-4 mb-10 mt-10">
-            <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
+            <div className="flex items-center space-x-2 bg-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10">
               <img
                 src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg"
                 alt="Shopify"
-                className="h-6 w-auto"
+                className="h-6 md:h-8 w-auto"
               />
-              <span className="text-[#7BB9E8] font-medium text-xs tracking-widest uppercase">Plus Partner</span>
+              <span className="text-[#7BB9E8] font-medium text-xs md:text-sm tracking-widest uppercase">Plus Partner</span>
             </div>
           </div>
           {/* Headline with blue accent and creative line breaks, each line animated */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-3 md:mb-6 relative text-left">
+          <h1 className="text-6xl md:text-9xl font-bold text-white leading-[1.05] tracking-tight mb-3 md:mb-8 relative text-left">
             <span key="hero-shopify" className="block animate-fade-in-hero opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>Shopify</span>
             <span key="hero-management" className="block text-[#7BB9E8] font-extralight animate-fade-in-hero opacity-0" style={{ animationDelay: '1.2s', animationFillMode: 'forwards' }}>Management</span>
             <span key="hero-redefined" className="block font-extralight animate-fade-in-hero opacity-0" style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}>Redefined</span>
           </h1>
           {/* Subheadline as elegant text only, no block */}
-          <div className="mb-4 md:mb-6 text-left animate-fade-in-hero opacity-0" style={{ animationDelay: '2.0s', animationFillMode: 'forwards' }}>
-            <span className="text-base md:text-lg text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
+          <div className="mb-4 md:mb-8 text-left animate-fade-in-hero opacity-0" style={{ animationDelay: '2.0s', animationFillMode: 'forwards' }}>
+            <span className="text-base md:text-xl text-white/80 font-light" style={{fontFamily: 'Inter, Satoshi, sans-serif'}}>
               {displayText}
               {currentIndex < typewriterText.length && <span className="typewriter-cursor text-[#7BB9E8]">|</span>}
             </span>
           </div>
           {/* CTAs */}
-          <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-4 md:mb-6 text-left w-full max-w-xs md:max-w-none">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-8 mb-4 md:mb-8 text-left w-full max-w-xs md:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 md:px-12 md:py-5 bg-[#7BB9E8] text-black font-semibold text-base md:text-lg rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] w-full md:w-auto text-center"
+              className="px-5 py-2.5 md:px-16 md:py-6 bg-[#7BB9E8] text-black font-semibold text-base md:text-xl rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] w-full md:w-auto text-center"
             >
               Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="px-5 py-2.5 md:px-12 md:py-5 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-lg rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 w-full md:w-auto text-center"
+              className="px-5 py-2.5 md:px-16 md:py-6 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-xl rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 w-full md:w-auto text-center"
             >
               View Our Work
             </a>
           </div>
           {/* Stats */}
-          <div className="flex items-center space-x-6 md:space-x-10 text-white/70 text-sm md:text-base font-light mt-2 mb-2 md:mb-0 pb-0 text-left">
+          <div className="flex items-center space-x-6 md:space-x-12 text-white/70 text-sm md:text-lg font-light mt-2 mb-2 md:mb-0 pb-0 text-left">
             <div className="hidden md:flex items-center space-x-2">
-              <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">{animatedStats[0]}+</span>
-              <span>Stores Managed</span>
+              <span className="text-xl md:text-3xl font-bold text-[#7BB9E8]">{animatedStats[0]}%</span>
+              <span>Client Retention Rate</span>
             </div>
             <div className="hidden md:flex items-center space-x-2">
-              <span className="text-xl md:text-2xl font-bold text-[#7BB9E8]">${animatedStats[1]}M+</span>
-              <span>Revenue Generated</span>
+              <span className="text-xl md:text-3xl font-bold text-[#7BB9E8]">{animatedStats[1]}</span>
+              <span>Shopify Support</span>
+            </div>
+            <div className="hidden md:flex items-center space-x-2">
+              <span className="text-xl md:text-3xl font-bold text-[#7BB9E8]">{animatedStats[2]}%</span>
+              <span>AOV Increase</span>
             </div>
           </div>
         </div>

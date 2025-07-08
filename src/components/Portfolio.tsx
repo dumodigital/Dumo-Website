@@ -10,22 +10,10 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: 'hungry-monkey',
-    companyName: 'Hungry Monkey Baking',
-    image: '/images/hun.png',
-    url: 'https://hungrymonkeybaking.com/products/trio-of-plain-banana-breads'
-  },
-  {
-    id: 'savannah-bee',
-    companyName: 'Savannah Bee Company',
-    image: '/images/$50k.png',
-    url: 'https://savannahbee.com'
-  },
-  {
-    id: 'charlies-crunch',
-    companyName: "Charlie's Crunch",
-    image: '/images/3.png',
-    url: 'https://charliescrunch.com'
+    id: 'savannah-wholesale',
+    companyName: 'Savannah Bee Wholesale',
+    image: '/images/4.png',
+    url: 'https://wholesale.savannahbee.com'
   },
   {
     id: 'riot-project',
@@ -34,10 +22,22 @@ const caseStudies: CaseStudy[] = [
     url: 'https://theriotprjct.com/'
   },
   {
-    id: 'savannah-wholesale',
-    companyName: 'Savannah Bee Wholesale',
-    image: '/images/4.png',
-    url: 'https://wholesale.savannahbee.com'
+    id: 'charlies-crunch',
+    companyName: "Charlie's Crunch",
+    image: '/images/3.png',
+    url: 'https://charliescrunch.com'
+  },
+  {
+    id: 'savannah-bee',
+    companyName: 'Savannah Bee Company',
+    image: '/images/$50k.png',
+    url: 'https://savannahbee.com'
+  },
+  {
+    id: 'hungry-monkey',
+    companyName: 'Hungry Monkey Baking',
+    image: '/images/hun.png',
+    url: 'https://hungrymonkeybaking.com/products/trio-of-plain-banana-breads'
   }
 ];
 
@@ -193,9 +193,9 @@ const Portfolio = () => {
                             strokeLinejoin="round"
                           />
                         </svg>
-                      </div>
-                    </div>
-                    
+                </div>
+              </div>
+
                     {/* Accent Border */}
                     <div className="absolute inset-0 rounded-3xl border-2 border-transparent"></div>
                   </div>
