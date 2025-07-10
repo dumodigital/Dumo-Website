@@ -362,18 +362,20 @@ const Hero = () => {
             </span>
           </div>
           {/* CTAs */}
-          <div className="flex flex-col md:flex-row gap-3 md:gap-8 mb-4 md:mb-8 text-left w-full max-w-xs md:max-w-none animate-fade-in-hero opacity-0" style={{ animationDelay: '2.4s', animationFillMode: 'forwards' }}>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-8 mb-4 md:mb-8 text-left w-full max-w-xs md:max-w-none">
             <a
               href="https://calendly.com/charlie-dumo/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 md:px-16 md:py-6 bg-[#7BB9E8] text-black font-semibold text-base md:text-xl rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] w-full md:w-auto text-center"
+              className="px-5 py-2.5 md:px-16 md:py-6 bg-[#7BB9E8] text-black font-semibold text-base md:text-xl rounded-[40px] overflow-hidden transition-all duration-300 hover:bg-[#5fa6d6] hover:scale-105 border-2 border-transparent hover:border-[#7BB9E8] w-full md:w-auto text-center animate-slide-up-hero opacity-0"
+              style={{ animationDelay: '2.4s', animationFillMode: 'forwards' }}
             >
               Start Your Project
             </a>
             <a
               href="#portfolio"
-              className="px-5 py-2.5 md:px-16 md:py-6 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-xl rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 w-full md:w-auto text-center"
+              className="px-5 py-2.5 md:px-16 md:py-6 border-2 border-[#7BB9E8] text-white font-semibold text-base md:text-xl rounded-full hover:bg-[#7BB9E8]/10 hover:text-[#7BB9E8] transition-all duration-300 hover:scale-105 w-full md:w-auto text-center animate-slide-up-hero opacity-0"
+              style={{ animationDelay: '2.7s', animationFillMode: 'forwards' }}
             >
               View Our Work
             </a>
@@ -404,6 +406,19 @@ const Hero = () => {
         }
         .animate-fade-in-hero {
           animation: fade-in-hero 0.8s ease-out;
+        }
+        @keyframes slide-up-hero {
+          from { 
+            opacity: 0; 
+            transform: translateY(30px) scale(0.95); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+          }
+        }
+        .animate-slide-up-hero {
+          animation: slide-up-hero 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @media (max-width: 767px) {
           .mobile-fixed-header {

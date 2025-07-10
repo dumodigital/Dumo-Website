@@ -87,13 +87,41 @@
   }
 }
 
+/* Force dark background on everything */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure no white shows anywhere */
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #0a0a0a !important;
+  background-image: linear-gradient(135deg, #0a0a0a 0%, #10151a 50%, #181c22 100%) !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  min-height: 100vh !important;
+}
+
+body {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
 @layer base {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] text-foreground font-sans;
+  html, body {
+    @apply text-foreground font-sans;
     font-family: 'Inter', 'Satoshi', 'sans-serif';
+    min-height: 100vh;
   }
 }
 

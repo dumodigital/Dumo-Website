@@ -16,9 +16,25 @@
     
     <!-- Critical CSS inline -->
     <style>
-      /* Critical above-the-fold styles */
-      body { margin: 0; font-family: 'Inter', 'Satoshi', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #10151a 50%, #181c22 100%); }
-      #root { min-height: 100vh; }
+      /* Force dark background immediately */
+      html { 
+        background: #0a0a0a !important;
+        background-image: linear-gradient(135deg, #0a0a0a 0%, #10151a 50%, #181c22 100%) !important;
+        background-attachment: fixed !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
+        margin: 0 !important; 
+        padding: 0 !important;
+        min-height: 100vh !important;
+      }
+      body { 
+        background: transparent !important;
+        margin: 0 !important; 
+        padding: 0 !important;
+        font-family: 'Inter', 'Satoshi', sans-serif; 
+        min-height: 100vh !important;
+      }
+      #root { min-height: 100vh; background: transparent; }
       .hero-container { min-height: 100vh; }
     </style>
     
