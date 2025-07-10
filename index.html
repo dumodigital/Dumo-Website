@@ -3,21 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- DNS Prefetch for faster external resource loading -->
+    <link rel="dns-prefetch" href="//cdn.gpteng.co">
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/src/index.css" as="style">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="/images/dumo-digital-light-bluelogo.png" as="image" type="image/png">
+    <link rel="preload" href="/images/DD.png" as="image" type="image/png">
+    
+    <!-- Critical CSS inline -->
+    <style>
+      /* Critical above-the-fold styles */
+      body { margin: 0; font-family: 'Inter', 'Satoshi', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #10151a 50%, #181c22 100%); }
+      #root { min-height: 100vh; }
+      .hero-container { min-height: 100vh; }
+    </style>
+    
     <title>Dumo Digital | E-Commerce, Shopify Help & Digital Marketing – Deerfield, IL</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <meta name="description" content="Transform your online presence with Dumo Digital. Expert e-commerce, Shopify, and digital marketing services tailored for your success. Based in Deerfield, IL." />
+    <meta name="author" content="Dumo Digital" />
+    <meta name="keywords" content="Shopify, e-commerce, digital marketing, Deerfield IL, online store optimization, Shopify experts" />
 
     <meta property="og:title" content="Dumo Digital | E-Commerce, Shopify Help & Digital Marketing – Deerfield, IL" />
     <meta property="og:description" content="Transform your online presence with Dumo Digital. Expert e-commerce, Shopify, and digital marketing services tailored for your success." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/images/1.png" />
+    <meta property="og:url" content="https://dumodigital.com" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@dumodigital" />
     <meta name="twitter:title" content="Dumo Digital | E-Commerce, Shopify Help & Digital Marketing – Deerfield, IL" />
     <meta name="twitter:description" content="Transform your online presence with Dumo Digital. Expert e-commerce, Shopify, and digital marketing services tailored for your success." />
     <meta name="twitter:image" content="/images/1.png" />
+    
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Resource hints for better performance -->
+    <link rel="prefetch" href="/images/charlie-dumo.png">
+    <link rel="prefetch" href="/images/alex-laplante.png">
   </head>
 
   <body>
