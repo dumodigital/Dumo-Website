@@ -1,5 +1,5 @@
 import React from "react";
-import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone, FaTiktok } from "react-icons/fa";
 
 const Footer = () => (
   <footer className="w-full bg-gradient-to-br from-[#0a0a0a] via-[#10151a] to-[#181c22] border-t border-white/10 py-12 px-4 md:px-8 mt-16">
@@ -67,6 +67,15 @@ const Footer = () => (
               className="p-3 text-white/60 hover:text-[#7BB9E8] hover:bg-white/5 rounded-full transition-all duration-200 hover:scale-110 border border-white/10 hover:border-[#7BB9E8]/30"
             >
               <FaLinkedin className="text-xl" />
+            </a>
+            <a 
+              href="https://www.tiktok.com/@dumodigital?_t=ZP-8xns4cSilNn&_r=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="TikTok"
+              className="p-3 text-white/60 hover:text-[#7BB9E8] hover:bg-white/5 rounded-full transition-all duration-200 hover:scale-110 border border-white/10 hover:border-[#7BB9E8]/30"
+            >
+              <FaTiktok className="text-xl" />
             </a>
           </div>
         </div>
@@ -153,6 +162,15 @@ const Footer = () => (
               className="p-3 text-white/60 hover:text-[#7BB9E8] hover:bg-white/5 rounded-full transition-all duration-200 hover:scale-110 border border-white/10 hover:border-[#7BB9E8]/30"
             >
               <FaLinkedin className="text-xl" />
+            </a>
+            <a 
+              href="https://www.tiktok.com/@dumodigital?_t=ZP-8xns4cSilNn&_r=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="TikTok"
+              className="p-3 text-white/60 hover:text-[#7BB9E8] hover:bg-white/5 rounded-full transition-all duration-200 hover:scale-110 border border-white/10 hover:border-[#7BB9E8]/30"
+            >
+              <FaTiktok className="text-xl" />
             </a>
           </div>
           <p className="text-white/50 text-sm mt-4 font-light">

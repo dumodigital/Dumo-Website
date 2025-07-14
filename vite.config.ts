@@ -52,12 +52,12 @@ export default defineConfig(({ mode }) => ({
             return 'components';
           }
         },
-                 chunkFileNames: (chunkInfo) => {
-           const facadeModuleId = chunkInfo.facadeModuleId
-             ? chunkInfo.facadeModuleId.split('/').pop()?.replace(/\.\w+$/, '') || 'chunk'
-             : 'chunk';
-           return `assets/${facadeModuleId}-[hash].js`;
-         },
+        chunkFileNames: (chunkInfo) => {
+          const facadeModuleId = chunkInfo.facadeModuleId
+            ? chunkInfo.facadeModuleId.split('/').pop()?.replace(/\.\w+$/, '') || 'chunk'
+            : 'chunk';
+          return `assets/${facadeModuleId}-[hash].js`;
+        },
       },
     },
     // Increase chunk size warning limit
